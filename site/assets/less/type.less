@@ -1,0 +1,139 @@
+//
+// Typography
+// --------------------------------------------------
+.sppb-lead {
+  margin-bottom: @line-height-computed;
+  font-size: floor((@font-size-base * 1.15));
+  font-weight: 300;
+  line-height: 1.4;
+
+  @media (min-width: @screen-sm-min) {
+    font-size: (@font-size-base * 1.5);
+  }
+}
+
+// Alignment
+.sppb-text-left           { text-align: left; }
+.sppb-text-right          { text-align: right; }
+.sppb-text-center         { text-align: center; }
+.sppb-text-center .sppb-img-responsive {display: inline-block;}
+.sppb-text-justify        { text-align: justify; }
+.sppb-text-nowrap         { white-space: nowrap; }
+
+// Transformation
+.sppb-text-lowercase      { text-transform: lowercase; }
+.sppb-text-uppercase      { text-transform: uppercase; }
+.sppb-text-capitalize     { text-transform: capitalize; }
+
+// Contextual colors
+.sppb-text-muted {
+  color: @text-muted;
+}
+.sppb-text-primary {
+  .text-emphasis-variant(@brand-primary);
+}
+.sppb-text-success {
+  .text-emphasis-variant(@state-success-text);
+}
+.sppb-text-info {
+  .text-emphasis-variant(@state-info-text);
+}
+.sppb-text-warning {
+  .text-emphasis-variant(@state-warning-text);
+}
+.sppb-text-danger {
+  .text-emphasis-variant(@state-danger-text);
+}
+
+// Blockquotes
+.sppb-blockquote {
+  padding: (@line-height-computed / 2) @line-height-computed;
+  margin: 0 0 @line-height-computed;
+  font-size: @blockquote-font-size;
+  border-left: 5px solid @blockquote-border-color;
+
+  p,
+  ul,
+  ol {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Note: Deprecated small and .small as of v3.1.0
+  // Context: https://github.com/twbs/bootstrap/issues/11660
+  footer,
+  small,
+  .small {
+    display: block;
+    font-size: 80%; // back to default font-size
+    line-height: @line-height-base;
+    color: @blockquote-small-color;
+
+    &:before {
+      content: '\2014 \00A0'; // em dash, nbsp
+    }
+  }
+}
+
+// Opposite alignment of blockquote
+//
+// Heads up: `blockquote.pull-right` has been deprecated as of v3.1.0.
+.sppb-blockquote.pull-right {
+  padding-right: 15px;
+  padding-left: 0;
+  border-right: 5px solid @blockquote-border-color;
+  border-left: 0;
+  text-align: right;
+
+  // Account for citation
+  footer,
+  small,
+  .small {
+    &:before { content: ''; }
+    &:after {
+      content: '\00A0 \2014'; // nbsp, em dash
+    }
+  }
+}
+
+// Quotes
+.sppb-blockquote:before,
+.sppb-blockquote:after {
+  content: "";
+}
+
+// Addresses
+.sppb-address {
+  margin-bottom: @line-height-computed;
+  font-style: normal;
+  line-height: @line-height-base;
+}
+
+//Block Number
+.sppb-addon-blocknumber {
+  .sppb-blocknumber-number {
+    display: inline-block;
+    text-align: center;
+  }
+
+  .sppb-media-body.sppb-text-center {
+    margin-top: 15px;
+  }
+
+  .sppb-media-body {
+    h1,h2,h3,h4,h5,h6 {
+      margin-top: 0;
+    }
+  }
+}
+
+//Dropcap
+.sppb-dropcap:first-letter {
+  color: #666;
+  display: block;
+  float: left;
+  font-size: 50px;
+  line-height: 40px;
+  padding: 4px 8px 0 0;
+}

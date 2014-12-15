@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field name="title" type="text" label="JGLOBAL_TITLE" description="JFIELD_TITLE_DESC" size="40" class="input-xxlarge input-large-text" default="" required="true" />
+		<field name="alias" type="text" label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC" hint="JFIELD_ALIAS_PLACEHOLDER" class="input-xlarge input-large-text" default="" />
+	</fieldset>
+
+	<fieldset name="basic" label="COM_SPPAGEBUILDER_FIELDSET_BASIC">
+		<field name="id" type="hidden" />
+		<field name="text" id="sptext" type="hidden" filter="raw" />
+		<field name="page_layout" type="checkbox" label="JGLOBAL_PAGE_LAYOUT" id="page_layout" value="1" default="0" />
+	</fieldset>
+
+	<fieldset name="seosettings" label="COM_SPPAGEBUILDER_FIELDSET_SEOSETTINGS">
+		<field name="og_title" type="text" label="COM_SPPAGEBUILDER_FIELD_OG_TITLE" hint="COM_SPPAGEBUILDER_FIELD_OG_TITLE_PLACEHOLDER" />
+		<field name="og_image" type="media" directory="stories" label="COM_SPPAGEBUILDER_FIELD_OG_IMAGE" />
+		<field name="og_description" type="textarea" label="COM_SPPAGEBUILDER_FIELD_OG_DESC" description="COM_SPPAGEBUILDER_FIELD_OG_DESC_DESC" rows="5" cols="5" filter="raw" />
+	</fieldset>
+
+	<fieldset name="publishing" label="JGLOBAL_FIELDSET_PUBLISHING">
+		<field name="published" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="chzn-color-state" filter="intval" size="1" default="1" >
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+			<option value="-2">JTRASHED</option>
+		</field>
+
+		<field name="language" type="contentlanguage" label="JFIELD_LANGUAGE_LABEL" description="COM_SPPAGEBUILDER_FIELD_LANGUAGE_DESC">
+			<option value="*">JALL</option>
+		</field>
+
+		<field name="access" type="accesslevel" label="JFIELD_ACCESS_LABEL" description="JFIELD_ACCESS_DESC" size="1" />
+		<field name="created_time" type="calendar" label="COM_SPPAGEBUILDER_FIELD_CREATED_LABEL" description="COM_SPPAGEBUILDER_FIELD_CREATED_DESC" size="22" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
+		<field name="created_user_id" type="user" label="COM_SPPAGEBUILDER_FIELD_CREATED_BY_LABEL" description="COM_SPPAGEBUILDER_FIELD_CREATED_BY_DESC" />
+		<field name="modified_user_id" type="user" label="JGLOBAL_FIELD_MODIFIED_BY_LABEL" class="readonly" readonly="true" filter="unset" />
+		<field name="modified" type="calendar" class="readonly" label="JGLOBAL_FIELD_MODIFIED_LABEL" description="COM_CONTENT_FIELD_MODIFIED_DESC" size="22" readonly="true" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
+	</fieldset>
+</form>

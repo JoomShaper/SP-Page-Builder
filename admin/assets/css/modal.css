@@ -1,0 +1,210 @@
+.sp-modal-open {
+  overflow: hidden;
+}
+.sp-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  overflow: auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+}
+.sp-modal.fade .sp-modal-dialog {
+  -webkit-transition: -webkit-transform .3s ease-out;
+     -moz-transition:    -moz-transform .3s ease-out;
+       -o-transition:      -o-transform .3s ease-out;
+          transition:         transform .3s ease-out;
+  -webkit-transform: translate(0, -25%);
+      -ms-transform: translate(0, -25%);
+          transform: translate(0, -25%);
+}
+.sp-modal.in .sp-modal-dialog {
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+.sp-modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+.sp-modal-content {
+  position: relative;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 6px;
+  outline: none;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+          box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+}
+.sp-modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000;
+}
+.sp-modal-backdrop.fade {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+.sp-modal-backdrop.fade.in {
+  filter: alpha(opacity=50);
+  opacity: .5;
+}
+.sp-modal-header {
+  min-height: 16.42857143px;
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.sp-modal-header .close {
+  margin-top: -2px;
+}
+.sp-modal-title {
+  margin: 0;
+  line-height: 1.42857143;
+}
+.sp-modal-body {
+  position: relative;
+  padding: 20px;
+}
+.sp-modal-footer {
+  padding: 19px 20px 20px;
+  margin-top: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+.sp-modal-footer .sppb-btn + .sppb-btn {
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+.sp-modal-footer .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+.sp-modal-footer .btn-block + .btn-block {
+  margin-left: 0;
+}
+@media (min-width: 768px) {
+  .sp-modal-dialog {
+    width: 600px;
+    margin: 30px auto;
+  }
+  .sp-modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  }
+  .sp-modal-sm {
+    width: 300px;
+  }
+}
+@media (min-width: 992px) {
+  .sp-modal-lg {
+    width: 900px;
+  }
+
+  .sp-modal-xlg {
+    width: 1270px;
+  }
+}
+
+.sp-modal-footer:before,
+.sp-modal-footer:after {
+  display: table;
+  content: " ";
+}
+
+/* Form */
+.form-group{
+  margin-bottom: 30px;
+}
+
+.form-group label{
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #666;
+}
+
+.form-group .form-control {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+}
+
+.form-group input.form-control{
+  min-height: 30px;
+}
+
+.form-group .help-block {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #A2A2A2;
+}
+
+.sp-modal .radio,
+.sp-modal .checkbox {
+  display: block;
+  min-height: 20px;
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.sp-modal .radio label,
+.sp-modal .checkbox label {
+  display: inline;
+  font-weight: normal;
+  cursor: pointer;
+}
+.sp-modal .radio input[type="radio"],
+.sp-modal .radio-inline input[type="radio"],
+.sp-modal .checkbox input[type="checkbox"],
+.sp-modal .checkbox-inline input[type="checkbox"] {
+  float: left;
+  margin-left: -20px;
+}
+.sp-modal .radio + .radio,
+.sp-modal .checkbox + .checkbox {
+  margin-top: -5px;
+}
+.sp-modal .radio-inline,
+.sp-modal .checkbox-inline {
+  display: inline-block;
+  padding-left: 20px;
+  margin-bottom: 0;
+  font-weight: normal;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.sp-modal .radio-inline + .radio-inline,
+.sp-modal .checkbox-inline + .checkbox-inline {
+  margin-top: 0;
+  margin-left: 10px;
+}
+.sp-modal input[type="radio"][disabled],
+.sp-modal input[type="checkbox"][disabled],
+.sp-modal .radio[disabled],
+.sp-modal .radio-inline[disabled],
+.sp-modal .checkbox[disabled],
+.sp-modal .checkbox-inline[disabled],
+.sp-modal fieldset[disabled] input[type="radio"],
+.sp-modal fieldset[disabled] input[type="checkbox"],
+.sp-modal fieldset[disabled] .radio,
+.sp-modal fieldset[disabled] .radio-inline,
+.sp-modal fieldset[disabled] .checkbox,
+.sp-modal fieldset[disabled] .checkbox-inline {
+  cursor: not-allowed;
+}

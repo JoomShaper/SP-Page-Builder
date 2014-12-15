@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.3" method="upgrade">
+	<name>SP Page Builder</name>
+	<author>JoomShaper</author>
+	<creationDate>Sep 2014</creationDate>
+	<authorEmail>support@joomshaper.com</authorEmail>
+	<authorUrl>http://www.joomshaper.com</authorUrl>
+	<copyright>Copyright @ 2010 - 2014 JoomShaper. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<version>1.0.0</version>
+	<description>Most powerful drag and drop page builder for Joomla 3.3 or later.</description>
+	<scriptfile>installer.script.php</scriptfile>
+
+	<updateservers> 
+        <server type="extension" priority="1" name="SP Page Builder">http://www.joomshaper.com/updates/com_sppagebuilder.xml</server>
+    </updateservers>
+	
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+
+	<files folder="site">
+		<filename>index.html</filename>
+		<filename>sppagebuilder.php</filename>
+		<filename>router.php</filename>
+		<filename>controller.php</filename>
+		<folder>addons</folder>
+		<folder>assets</folder>
+		<folder>helpers</folder>
+		<folder>models</folder>
+		<folder>parser</folder>
+		<folder>views</folder>
+		<folder>language</folder>
+	</files>
+
+	<administration>
+		<menu>COM_SPPAGEBUILDER</menu>
+
+		<files folder="admin">
+			<filename>access.xml</filename>
+			<filename>index.html</filename>
+			<filename>sppagebuilder.php</filename>
+			<filename>controller.php</filename>
+			<folder>assets</folder>
+			<folder>builder</folder>
+			<folder>controllers</folder>
+			<folder>models</folder>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+		</files>
+
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB/en-GB.com_sppagebuilder.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_sppagebuilder.sys.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.mod_sppagebuilder_icons.sys.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.mod_sppagebuilder_admin_menu.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.mod_sppagebuilder_admin_menu.sys.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.mod_sppagebuilder_icons.ini</language>
+		</languages>
+	</administration>
+
+	<modules>
+		<module module="mod_sppagebuilder_icons" client="administrator" />
+		<module module="mod_sppagebuilder_admin_menu" client="administrator" />
+	</modules>
+
+</extension>

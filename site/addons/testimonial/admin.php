@@ -1,0 +1,124 @@
+<?php
+
+defined ('_JEXEC') or die('resticted aceess');
+
+SpAddonsConfig::addonConfig(
+	array( 
+		'type'=>'content', 
+		'addon_name'=>'sp_testimonial',
+		'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TESTIMONIAL'),
+		'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TESTIMONIAL_DESC'),
+		'attr'=>array(
+			'title'=>array(
+				'type'=>'text', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_DESC'),
+				'std'=>  ''
+				),
+
+			'heading_selector'=>array(
+				'type'=>'select', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_HEADINGS'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_HEADINGS_DESC'),
+				'values'=>array(
+					'h1'=>JText::_('COM_SPPAGEBUILDER_ADDON_HEADINGS_H1'),
+					'h2'=>JText::_('COM_SPPAGEBUILDER_ADDON_HEADINGS_H2'),
+					'h3'=>JText::_('COM_SPPAGEBUILDER_ADDON_HEADINGS_H3'),
+					'h4'=>JText::_('COM_SPPAGEBUILDER_ADDON_HEADINGS_H4'),
+					'h5'=>JText::_('COM_SPPAGEBUILDER_ADDON_HEADINGS_H5'),
+					'h6'=>JText::_('COM_SPPAGEBUILDER_ADDON_HEADINGS_H6'),
+					),
+				'std'=>'h3',
+			),
+
+			'title_fontsize'=>array(
+				'type'=>'number', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_SIZE'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_SIZE_DESC'),
+				'std'=>''
+				),
+
+			'title_text_color'=>array(
+				'type'=>'color',
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_TEXT_COLOR'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_TEXT_COLOR_DESC'),
+				),	
+
+			'title_margin_top'=>array(
+				'type'=>'number',
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_MARGIN_TOP'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_MARGIN_TOP_DESC'),
+				'placeholder'=>'10',
+				),
+
+			'title_margin_bottom'=>array(
+				'type'=>'number',
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_MARGIN_BOTTOM'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_MARGIN_BOTTOM_DESC'),
+				'placeholder'=>'10',
+				),	
+			
+			'review'=>array(
+				'type'=>'editor',
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TESTIMONIAL_REVIEW'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TESTIMONIAL_REVIEW_DESC'),
+				'std'=>'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.'
+				),
+			'name'=>array(
+				'type'=>'text',
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TESTIMONIAL_CLIENT_NAME'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TESTIMONIAL_CLIENT_NAME_DESC'),
+				'std'=>'John Doe'
+				),  
+			'company'=>array(
+				'type'=>'text', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TESTIMONIAL_CLIENT_COMPANY'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TESTIMONIAL_CLIENT_COMPANY_DESC'),
+				'std'=>  'CEO, JoomShaper',
+				),  
+			'avatar'=>array(
+				'type'=>'media', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TESTIMONIAL_CLIENT_AVATAR'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TESTIMONIAL_CLIENT_AVATAR_DESC'),
+				),
+			'avatar_width'=>array(
+				'type'=>'number',
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TESTIMONIAL_CLIENT_AVATAR_WIDTH'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TESTIMONIAL_CLIENT_AVATAR_WIDTH_DESC'),
+				'placeholder'=>'64',
+				'std'=>'64',
+				),
+			'avatar_position'=>array(
+				'type'=>'select', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TESTIMONIAL_CLIENT_AVATAR_POSITION'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TESTIMONIAL_CLIENT_AVATAR_POSITION_DESC'),
+				'values' =>array(
+					'left'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_LEFT'),
+					'right'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_LEFT'),
+					),
+				'std' => 'left'
+				),
+			'link'=>array(
+				'type'=>'text', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_URL'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_URL_DESC'),
+				'std' => 'http://www.joomshaper.com'
+				),
+			'link_target'=>array(
+				'type'=>'select', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_TARGET'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_TARGET_DESC'),
+				'values'=>array(
+					''=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_TARGET_SAME_WINDOW'),
+					'_blank'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_TARGET_NEW_WINDOW'),
+					),
+				),
+			'class'=>array(
+				'type'=>'text', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_CLASS'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_CLASS_DESC'),
+				'std'=> ''
+				), 
+			)
+		)
+	);

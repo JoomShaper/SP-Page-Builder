@@ -1,0 +1,20 @@
+// Panels
+
+.panel-variant(@border; @heading-text-color; @heading-bg-color; @heading-border) {
+  border-color: @border;
+
+  & > .sppb-panel-heading {
+    color: @heading-text-color;
+    background-color: @heading-bg-color;
+    border-color: @heading-border;
+
+    + .sppb-panel-collapse > .sppb-panel-body {
+      border-top-color: @border;
+    }
+  }
+  & > .sppb-panel-footer {
+    + .sppb-panel-collapse > .sppb-panel-body {
+      border-bottom-color: @border;
+    }
+  }
+}

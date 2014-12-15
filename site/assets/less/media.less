@@ -1,0 +1,56 @@
+// Media objects
+// Source: http://stubbornella.org/content/?p=497
+// --------------------------------------------------
+
+
+// Common styles
+// -------------------------
+
+// Clear the floats
+.sppb-media,
+.sppb-media-body {
+  overflow: hidden;
+  zoom: 1;
+}
+
+// Proper spacing between instances of .sppb-media
+.sppb-media,
+.sppb-media .sppb-media {
+  margin-top: 15px;
+}
+.sppb-media:first-child {
+  margin-top: 0;
+}
+
+// For images and videos, set to block
+.sppb-media-object {
+  display: block;
+}
+
+// Reset margins on headings for tighter default spacing
+.sppb-media-heading {
+  margin: 0 0 5px;
+}
+
+
+// Media image alignment
+// -------------------------
+
+.sppb-media {
+  > .pull-left {
+    margin-right: 15px;
+  }
+  > .pull-right {
+    margin-left: 15px;
+  }
+}
+
+
+// Media list variation
+// -------------------------
+
+// Undo default ul/ol styles
+.sppb-media-list {
+  padding-left: 0;
+  list-style: none;
+}

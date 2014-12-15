@@ -1,0 +1,99 @@
+//
+// Panels
+// --------------------------------------------------
+
+
+// Base class
+.sppb-panel {
+  margin-bottom: @line-height-computed;
+  background-color: @panel-bg;
+  border: 1px solid transparent;
+  border-radius: @panel-border-radius;
+  .box-shadow(0 1px 1px rgba(0,0,0,.05));
+}
+
+// Panel contents
+.sppb-panel-body {
+  padding: @panel-body-padding;
+  &:extend(.clearfix all);
+}
+
+// Optional heading
+.sppb-panel-heading {
+  padding: @panel-heading-padding;
+  border-bottom: 1px solid transparent;
+  .border-top-radius((@panel-border-radius - 1));
+  cursor: pointer;
+}
+
+// Within heading, strip any `h*` tag of its default margins for spacing.
+.sppb-panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: ceil((@font-size-base * 1.125));
+  color: inherit;
+
+  > a {
+    color: inherit;
+  }
+}
+
+// Optional footer (stays gray in every modifier class)
+.sppb-panel-footer {
+  padding: @panel-footer-padding;
+  background-color: @panel-footer-bg;
+  border-top: 1px solid @panel-inner-border;
+  .border-bottom-radius((@panel-border-radius - 1));
+}
+
+// Collapsable panels (aka, accordion)
+//
+// Wrap a series of panels in `.sppb-panel-group` to turn them into an accordion with
+// the help of our collapse JavaScript plugin.
+
+.sppb-panel-group {
+  margin-bottom: @line-height-computed;
+
+  // Tighten up margin so it's only between panels
+  .sppb-panel {
+    margin-bottom: 0;
+    border-radius: @panel-border-radius;
+    + .sppb-panel {
+      margin-top: 5px;
+    }
+  }
+
+  .sppb-panel-heading {
+    border-bottom: 0;
+    + .sppb-panel-collapse > .sppb-panel-body {
+      border-top: 1px solid @panel-inner-border;
+    }
+  }
+  .sppb-panel-footer {
+    border-top: 0;
+    + .sppb-panel-collapse .sppb-panel-body {
+      border-bottom: 1px solid @panel-inner-border;
+    }
+  }
+}
+
+
+// Contextual variations
+.sppb-panel-default {
+  .panel-variant(@panel-default-border; @panel-default-text; @panel-default-heading-bg; @panel-default-border);
+}
+.sppb-panel-primary {
+  .panel-variant(@panel-primary-border; @panel-primary-text; @panel-primary-heading-bg; @panel-primary-border);
+}
+.sppb-panel-success {
+  .panel-variant(@panel-success-border; @panel-success-text; @panel-success-heading-bg; @panel-success-border);
+}
+.sppb-panel-info {
+  .panel-variant(@panel-info-border; @panel-info-text; @panel-info-heading-bg; @panel-info-border);
+}
+.sppb-panel-warning {
+  .panel-variant(@panel-warning-border; @panel-warning-text; @panel-warning-heading-bg; @panel-warning-border);
+}
+.sppb-panel-danger {
+  .panel-variant(@panel-danger-border; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
+}
