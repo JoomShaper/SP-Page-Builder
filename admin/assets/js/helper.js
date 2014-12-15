@@ -176,7 +176,7 @@
 
 	    	}
 
-		}).disableSelection();
+		});
 	}
 
 	//Random number
