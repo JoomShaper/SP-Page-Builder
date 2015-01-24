@@ -21,6 +21,18 @@ class SppagebuilderViewPage extends JViewLegacy
 		$this->form = $form;
 		$this->item = $item;
 
+		//Load Language
+		$db = JFactory::getDbo();
+		$query = "SELECT template FROM #__template_styles WHERE client_id = 0 AND home = 1";
+		$db->setQuery($query);
+		$defaultemplate = $db->loadResult();
+
+		$lang = JFactory::getLanguage();
+		$base_dir = JPATH_SITE;
+		$language_tag = $lang->getName();
+		$reload = true;
+		$lang->load('tpl_' . $defaultemplate, $base_dir, $language_tag, $reload);
+
 		$this->addToolBar();
 
 		parent::display($tpl);
