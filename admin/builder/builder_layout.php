@@ -57,7 +57,7 @@ function builder_layout( $layout_data = null )
 						}?>
 					</ul>
 				</li>
-				<li class="layout-options pull-right"><div class="checkbox"><label><input type="checkbox" name="jform[page_layout]" id="jform_page_layout" value="1" <?php if($pageLayout) echo 'checked'?>><?php echo JText::_('COM_SPPAGEBUILDER_PAGE_FULL_WIDTH'); ?></label></div></li>
+				<li class="layout-options pull-right"><div class="checkbox"><label class="hasTooltip" title="<?php echo JText::_('COM_SPPAGEBUILDER_PAGE_FULL_WIDTH_DESC'); ?>"><input type="checkbox" name="jform[page_layout]" id="jform_page_layout" value="1" <?php if($pageLayout) echo 'checked'?>><?php echo JText::_('COM_SPPAGEBUILDER_PAGE_FULL_WIDTH'); ?></label></div></li>
 				<?php if(!empty($pageId)){?>
 				<li><a class="sppb-btn sppb-btn-success" href="<?php echo JURI::root().'index.php?option=com_sppagebuilder&view=page&id='.$pageId.((isset($languages))?$languages:''); ?>" target="_blank"><?php echo JText::_('COM_SPPAGEBUILDER_VIEW_PAGE'); ?></a></li>
 				<?php } ?>

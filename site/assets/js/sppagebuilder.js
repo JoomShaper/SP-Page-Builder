@@ -1,11 +1,9 @@
-/* ========================================================================
- * Bootstrap: alert.js v3.2.0
- * http://getbootstrap.com/javascript/#alerts
- * ========================================================================
- * Copyright 2011-2014 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * ======================================================================== */
-
+/**
+ * @package SP Page Builder
+ * @author JoomShaper http://www.joomshaper.com
+ * @copyright Copyright (c) 2010 - 2015 JoomShaper
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or later
+*/
 
 +function ($) {
   'use strict';

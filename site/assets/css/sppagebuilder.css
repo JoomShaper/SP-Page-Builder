@@ -1,3 +1,10 @@
+/**
+ * @package SP Page Builder
+ * @author JoomShaper http://www.joomshaper.com
+ * @copyright Copyright (c) 2010 - 2015 JoomShaper
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or later
+*/
+
 #sp-page-builder .page-content .sppb-section {
   margin-top: 30px;
   z-index: 1;
@@ -2565,7 +2572,7 @@ button.sppb-close {
 .sppb-testimonial-pro .sppb-carousel-control {
   display: inline-block;
   font-size: 18px;
-  line-height: 28px;
+  line-height: 24px;
   width: 28px;
   height: 28px;
   border-radius: 4px;
