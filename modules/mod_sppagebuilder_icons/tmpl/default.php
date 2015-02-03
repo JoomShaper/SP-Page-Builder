@@ -1,13 +1,12 @@
 <?php
 /**
- * @package     SP Page Builder
- * @subpackage  mod_sppagebuilder_icons
- *
- * @copyright   Copyright (C) 2010 - 2014 JoomShaper, Inc. All rights reserved.
- * @license     
- */
-
-defined('_JEXEC') or die;
+ * @package SP Page Builder
+ * @author JoomShaper http://www.joomshaper.com
+ * @copyright Copyright (c) 2010 - 2015 JoomShaper
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or later
+*/
+//no direct accees
+defined ('_JEXEC') or die ('resticted aceess');
 ?>
 
 <div id="sppagebuilder-wrap" class="clearfix">

@@ -1,6 +1,12 @@
 <?php
-
-defined('_JEXEC') or die('Restricted access');
+/**
+ * @package SP Page Builder
+ * @author JoomShaper http://www.joomshaper.com
+ * @copyright Copyright (c) 2010 - 2015 JoomShaper
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or later
+*/
+//no direct accees
+defined ('_JEXEC') or die ('resticted aceess');
 
 jimport( 'joomla.filesystem.file' );
 jimport('joomla.filesystem.folder');
@@ -212,6 +218,10 @@ class AddonParser
                         $title_position = $settings->title_position;
                     }
 
+                    if($fullscreen) { // Add container to full width row
+                        $output .= '<div class="sppb-container">';
+                    }
+
                     $output .= '<div class="sppb-section-title ' . $title_position . '">';
 
                     if($settings->title) {
@@ -277,6 +287,10 @@ class AddonParser
                     }
 
                     $output .= '</div>';
+
+                    if($fullscreen) { // Add container to full width row
+                        $output .= '</div>';
+                    }
                 }
 
                 $output .= '<div class="sppb-row">';

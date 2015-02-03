@@ -3,11 +3,11 @@
 	<name>mod_sppagebuilder_admin_menu</name>
 	<author>JoomShaper</author>
 	<creationDate>August 2014</creationDate>
-	<copyright>Copyright (C) 2014 JoomShaper. All rights reserved.</copyright>
+	<copyright>Copyright (C) 2010 - 2015 JoomShaper. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>support@joomshaper.com</authorEmail>
 	<authorUrl>www.joomshaper.com</authorUrl>
-	<version>3.0.0</version>
+	<version>1.0.2</version>
 	<description>MOD_SPPAGEBUILDER_MENU_XML_DESCRIPTION</description>
 	<files>
 		<filename module="mod_sppagebuilder_admin_menu">mod_sppagebuilder_admin_menu.php</filename>

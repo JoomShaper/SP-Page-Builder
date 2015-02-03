@@ -1,6 +1,12 @@
 <?php
-// No direct access to this file
-defined('_JEXEC') or die('Restricted access');
+/**
+ * @package SP Page Builder
+ * @author JoomShaper http://www.joomshaper.com
+ * @copyright Copyright (c) 2010 - 2015 JoomShaper
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or later
+*/
+//no direct accees
+defined ('_JEXEC') or die ('resticted aceess');
  
 // import Joomla view library
 jimport('joomla.application.component.view');
@@ -28,10 +34,7 @@ class SppagebuilderViewPage extends JViewLegacy
 		$defaultemplate = $db->loadResult();
 
 		$lang = JFactory::getLanguage();
-		$base_dir = JPATH_SITE;
-		$language_tag = $lang->getName();
-		$reload = true;
-		$lang->load('tpl_' . $defaultemplate, $base_dir, $language_tag, $reload);
+		$lang->load('tpl_' . $defaultemplate, JPATH_SITE, $lang->getName(), true);
 
 		$this->addToolBar();
 
