@@ -146,7 +146,7 @@ jQuery(function($) {
 		});
 
 		//GMap remove
-		$(document).on('click', '#save-change, #sp-modal-footer .sppb-btn-danger', function(){
+		$(document).on('click', '#save-change, .sp-modal-footer .sppb-btn-danger', function(){
 			$('.addon-gmap-canvas').remove();
 			$('.active-generated').removeClass('active-generated');
 		});
