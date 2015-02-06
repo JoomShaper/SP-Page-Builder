@@ -22,6 +22,8 @@ function sp_module_addon($atts){
 		"title_margin_bottom" 	=> '',	
 		'class'					=>'',
 		), $atts));
+
+	if(!$id) return;
 	
 	//Query Module
 	$app		= JFactory::getApplication();
