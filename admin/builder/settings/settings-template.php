@@ -53,8 +53,8 @@ $addons_category = array_unique($addons_category);
 	<div class="col-sm">
 		<div class="column column-empty"></div>
 		<div class="col-settings">
-			<a class="add-addon" href="javascript:void(0)"><i class="fa fa-plus-circle"></i> Addon</a>
-			<a class="column-options" href="javascript:void(0)"><i class="fa fa-cog"></i> Options</a>
+			<a class="add-addon" href="javascript:void(0)"><i class="fa fa-plus-circle"></i> <?php echo JText::_('COM_SPPAGEBUILDER_ADDON'); ?></a>
+			<a class="column-options" href="javascript:void(0)"><i class="fa fa-cog"></i> <?php echo JText::_('COM_SPPAGEBUILDER_OPTIONS'); ?></a>
 		</div>
 	</div>
 </div>
@@ -111,6 +111,9 @@ $addons_category = array_unique($addons_category);
 						<?php } ?>
 					</ul>
 				</div>
+
+				<input type="text" id="search-addon" placeholder="<?php echo JText::_('COM_SPPAGEBUILDER_SEARCH_ADDON'); ?>">
+
 			</div>
 			<div class="sp-modal-body">
 
@@ -194,7 +197,7 @@ $addons_category = array_unique($addons_category);
 						}
 
 						$output .='<div class="repeatable-items">';
-						$output .= '<a href="javascript:void(0)" class="clone-repeatable sppb-btn sppb-btn-primary"><i class="fa fa-plus"></i> ' . JText::_('COM_SPPAGEBUILDER_ADD') . ' ' . $addon['title'] . '</a>';
+						$output .= '<a href="javascript:void(0)" class="clone-repeatable sppb-btn sppb-btn-primary"><i class="fa fa-plus"></i> ' . JText::_('COM_SPPAGEBUILDER_ADD_NEW') . '</a>';
 						$output .='<div class="accordion">';
 						$output .='<div class="accordion-group" data-inner_base="'.$rep_addon_name.'">';
 

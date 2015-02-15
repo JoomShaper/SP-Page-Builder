@@ -131,6 +131,11 @@ body{
   border-bottom: 2px solid transparent;
 }
 
+.addon-filter ul li a:focus,
+.addon-filter ul li a:hover {
+  text-decoration: none;
+}
+
 .addon-filter ul li.active a {
   border-bottom-color: #04c6f7;
 }

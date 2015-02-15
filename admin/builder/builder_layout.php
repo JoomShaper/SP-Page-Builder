@@ -162,7 +162,7 @@ function builder_layout( $layout_data = null )
 												if (count($addon->scontent))
 												{
 													$output .='<div class="repeatable-items">';
-													$output .= '<a href="javascript:void(0)" class="clone-repeatable sppb-btn sppb-btn-primary"><i class="fa fa-plus"></i> Add ' . $addon->name . '</a>';
+													$output .= '<a href="javascript:void(0)" class="clone-repeatable sppb-btn sppb-btn-primary"><i class="fa fa-plus"></i> ' . JText::_('COM_SPPAGEBUILDER_ADD_ROW') . '</a>';
 													$output .='<div class="accordion">';
 
 													foreach ($addon->scontent as $key => $newaddon)
@@ -344,7 +344,7 @@ function dataLayoutBuilder( $layout_data )
 							if (count($addon->scontent))
 							{
 								$output .='<div class="repeatable-items">';
-								$output .= '<a href="javascript:void(0)" class="clone-repeatable sppb-btn sppb-btn-primary"><i class="fa fa-plus"></i> Add ' . $addon->name . '</a>';
+								$output .= '<a href="javascript:void(0)" class="clone-repeatable sppb-btn sppb-btn-primary"><i class="fa fa-plus"></i> ' . JText::_('COM_SPPAGEBUILDER_ADD_ROW') . '</a>';
 								$output .='<div class="accordion">';
 
 								foreach ($addon->scontent as $key => $newaddon)

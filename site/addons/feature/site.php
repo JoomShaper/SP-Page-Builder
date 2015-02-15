@@ -13,13 +13,14 @@ AddonParser::addAddon('sp_feature','sp_feature_addon');
 function sp_feature_addon($atts){
 
 	extract(spAddonAtts(array(
-		"title"					=>'',
+		"title"					=> '',
 		"heading_selector" 		=> 'h3',
 		"title_fontsize" 		=> '',
+		"title_fontweight" 		=> '',
 		"title_text_color" 		=> '',			
-		"title_position"		=>'',
-		"feature_type"			=>'icon',
-		"feature_image"			=>'icon',
+		"title_position"		=> 'before',
+		"feature_type"			=> 'icon',
+		"feature_image"			=> '',
 		'icon_name' 			=> '',
 		'icon_color' 			=> '',
 		'icon_size' 			=> '',
@@ -31,31 +32,28 @@ function sp_feature_addon($atts){
 		'icon_margin_top' 		=> '',
 		'icon_margin_bottom' 	=> '',
 		'icon_padding' 			=> '',
-		'text'					=>'',
+		'text'					=> '',
 		'alignment' 			=> '',
-		'class'					=>'',
+		'class'					=> '',
 		), $atts));
 
-	$output  = '<div class="sppb-addon sppb-addon-feature ' . $alignment . ' ' . $class . '">';
-
-	$output .= '<div class="sppb-addon-content">';
-
-	if ($title_position == 'before') {
-		
-		if($title) {
-
-			$title_style = '';
-			if($title_text_color) $title_style .= 'color:' . $title_text_color  . ';';
-			if($title_fontsize) $title_style .= 'font-size:'.$title_fontsize.'px;line-height:'.$title_fontsize.'px;';
-
-			$output .= '<'.$heading_selector.' class="sppb-feature-box-title" style="' . $title_style . '">' . $title . '</'.$heading_selector.'>';
-		}
-
+	//Image or icon position
+	if($title_position == 'before') {
+		$icon_image_position = 'after';
+	} else if($title_position == 'after') {
+		$icon_image_position = 'before';
+	} else {
+		$icon_image_position = $title_position;
 	}
 
+	//Reset Alignment for left and right style
+	if( ($icon_image_position=='left') || ($icon_image_position=='right') ) {
+		$alignment = 'sppb-text-' . $icon_image_position;
+	}
 
+	//Icon or Image
+	$media = '';
 	if($feature_type == 'icon') {
-		//Icon
 		if($icon_name) {
 			$style = 'text-align:center;';
 			$font_size = '';
@@ -71,16 +69,13 @@ function sp_feature_addon($atts){
 
 			if($icon_size) $font_size .= 'font-size:' . (int) $icon_size . 'px;width:' . (int) $icon_size . 'px;height:' . (int) $icon_size . 'px;line-height:' . (int) $icon_size . 'px;';
 
-			$output  .= '<div class="sppb-icon">';
-			$output  .= '<span style="display:inline-block;' . $style . ';">';
-			$output  .= '<i class="fa ' . $icon_name . '" style="' . $font_size . ';"></i>';
-			$output  .= '</span>';
-			$output  .= '</div>';
+			$media  .= '<div class="sppb-icon">';
+			$media  .= '<span style="display:inline-block;' . $style . ';">';
+			$media  .= '<i class="fa ' . $icon_name . '" style="' . $font_size . ';"></i>';
+			$media  .= '</span>';
+			$media  .= '</div>';
 		}
-		//End Icon
-	} 
-
-	 else {
+	} else {
 
 		if($feature_image) { 
 
@@ -88,29 +83,70 @@ function sp_feature_addon($atts){
 
 			if($icon_margin_top) $img_style .= 'margin-top:' . (int) $icon_margin_top . 'px;';
 			if($icon_margin_bottom) $img_style .= 'margin-bottom:' . (int) $icon_margin_bottom . 'px;';
-			$output  .= '<span style="display:inline-block;' . $img_style . ';">';
-			$output  .= '<img class="sppb-img-responsive" src="' . $feature_image . '" alt="">';
-			$output  .= '</span>';
+			$media  .= '<span style="display:inline-block;' . $img_style . ';">';
+			$media  .= '<img class="sppb-img-responsive" src="' . $feature_image . '" alt="">';
+			$media  .= '</span>';
 		}
 	}
 
+	//Title
+	$feature_title = '';
+	if($title) {
 
+		$title_style = '';
+		if($title_text_color) $title_style .= 'color:' . $title_text_color  . ';';
+		if($title_fontsize) $title_style .= 'font-size:'.$title_fontsize.'px;line-height:'.$title_fontsize.'px;';
+		if($title_fontweight) $title_style .= 'font-weight:'.$title_fontweight.';';
 
-	if ($title_position == 'after') {
+		$heading_class = '';
+
+		if( ($icon_image_position=='left') || ($icon_image_position=='right') ) {
+			$heading_class = ' sppb-media-heading';
+		}
+
+		$feature_title .= '<'.$heading_selector.' class="sppb-feature-box-title'. $heading_class .'" style="' . $title_style . '">' . $title . '</'.$heading_selector.'>';
+	}
+
+	//Feature Text
+	$feature_text  = '<div class="sppb-addon-text">';
+	$feature_text .= $text;
+	$feature_text .= '</div>';
+
+	//Output
+	$output  = '<div class="sppb-addon sppb-addon-feature ' . $alignment . ' ' . $class . '">';
+	$output .= '<div class="sppb-addon-content">';
+
+	if ($icon_image_position == 'before') {
+
+		if($media) $output .= $media;
 		
-		if($title) {
+		if($title) $output .= $feature_title;
 
-			$title_style = '';
-			if($title_text_color) $title_style .= 'color:' . $title_text_color  . ';';
-			if($title_fontsize) $title_style .= 'font-size:'.$title_fontsize.'px;line-height:'.$title_fontsize.'px;';
+		$output .= $feature_text;
 
-			$output .= '<'.$heading_selector.' class="sppb-feature-box-title" style="' . $title_style . '">' . $title . '</'.$heading_selector.'>';
+	} else if ($icon_image_position == 'after') {
+		
+		if($title) $output .= $feature_title;
+
+		if($media) $output .= $media;
+
+		$output .= $feature_text;
+
+	} else {
+
+		if($media) {
+			$output .= '<div class="sppb-media">';
+			$output .= '<div class="pull-'. $icon_image_position .'">';
+			$output .= $media;
+			$output .= '</div>';
+			$output .= '<div class="sppb-media-body">';
+			if($title) $output .= $feature_title;
+			$output .= $feature_text;
+			$output .= '</div>';
+			$output .= '</div>';
 		}
-	}
 
-	$output .= '<div class="sppb-addon-text">';
-	$output .= $text;
-	$output .= '</div>';
+	}
 
 	$output .= '</div>';
 

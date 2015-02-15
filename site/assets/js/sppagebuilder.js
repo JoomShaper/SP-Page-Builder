@@ -2241,4 +2241,35 @@ jQuery(function($) {
 
 });
 
+//Ajax Contact Form
+jQuery(function($) {
+    $('.sppb-ajaxt-contact-form').on('submit', function(event) {
+
+        event.preventDefault();
+
+        var $self   = $(this);
+        var value   = $(this).serializeArray();
+        var request = {
+            'option' : 'com_sppagebuilder',
+            'task' : 'ajax',
+            'addon' : 'ajax_contact',
+            'data'   : value
+        };
+
+        $.ajax({
+            type   : 'POST',
+            data   : request,
+            beforeSend: function(){
+                $self.find('.fa').addClass('fa-spinner fa-spin');
+            },
+            success: function (response) {
+                $self.find('.fa-spin').removeClass('fa-spinner fa-spin');
+                $self.next('.sppb-ajax-contact-status').html($.parseJSON(response).data).fadeIn().delay(2000).fadeOut(500);;
+            }
+        });
+
+        return false;
+    });
+});
+
 

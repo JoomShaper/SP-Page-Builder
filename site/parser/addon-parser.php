@@ -21,8 +21,9 @@ class AddonParser
                 self::$sppagebuilderAddonTags[$tag] = $func;
     }
 
-    public static function spDoAddon($content)
+    public static function spDoAddon($content, $mm='')
     {
+
         if ( false === strpos( $content, '[' ) ) {
             return $content;
         }
@@ -180,11 +181,17 @@ class AddonParser
                 if (isset($settings->padding) && $settings->padding) $style .= 'padding:'.$settings->padding.';';
                 if (isset($settings->color) && $settings->color) $style .= 'color:'.$settings->color.';';
                 if (isset($settings->background_color) && $settings->background_color) $style .= 'background-color:'.$settings->background_color.';';
-                if (isset($settings->background_image) && $settings->background_image) $style .= 'background-image:url('. JURI::base(true) . '/' . $settings->background_image.');';
-                if (isset($settings->background_repeat) && $settings->background_repeat) $style .= 'background-repeat:'.$settings->background_repeat.';';
-                if (isset($settings->background_size) && $settings->background_size) $style .= 'background-size:'.$settings->background_size.';';
-                if (isset($settings->background_attachment) && $settings->background_attachment) $style .= 'background-attachment:'.$settings->background_attachment.';';
-                if (isset($settings->background_position) && $settings->background_position) $style .= 'background-position:'.$settings->background_position.';';
+                
+                if (isset($settings->background_image) && $settings->background_image) {
+                    $style .= 'background-image:url('. JURI::base(true) . '/' . $settings->background_image.');';
+
+                    if (isset($settings->background_repeat) && $settings->background_repeat) $style .= 'background-repeat:'.$settings->background_repeat.';';
+                    if (isset($settings->background_size) && $settings->background_size) $style .= 'background-size:'.$settings->background_size.';';
+                    if (isset($settings->background_attachment) && $settings->background_attachment) $style .= 'background-attachment:'.$settings->background_attachment.';';
+                    if (isset($settings->background_position) && $settings->background_position) $style .= 'background-position:'.$settings->background_position.';';
+
+                }
+                
                 $style .='"';
 
                 if ( isset( $settings->fullscreen ) ) $fullscreen = $settings->fullscreen;
@@ -242,6 +249,13 @@ class AddonParser
                         if(isset($settings->title_fontsize)) {
                             if($settings->title_fontsize != '') {
                                 $title_style .= 'font-size:'.$settings->title_fontsize.'px;line-height: '.$settings->title_fontsize.'px;';
+                            }
+                        }
+
+                        //Title Font Weight
+                        if(isset($settings->title_fontweight)) {
+                            if($settings->title_fontweight != '') {
+                                $title_style .= 'font-weight:'.$settings->title_fontweight.';';
                             }
                         }
 

@@ -11,7 +11,39 @@ defined ('_JEXEC') or die ('resticted aceess');
 //import Joomla controller library
 jimport('joomla.application.component.controller');
 
-class SppagebuilderController extends JControllerLegacy
-{
-	
+class SppagebuilderController extends JControllerLegacy{
+
+	//Ajax
+	public function ajax() {
+    	$app 		= JFactory::getApplication();
+		$input 		= $app->input;
+		$format 	= strtolower($input->getWord('format'));
+		$results 	= null;
+		
+		if ($input->get('addon')) {
+
+			$function = 'sp_'. $input->get('addon') .'_get_ajax';
+			$method = $input->get('method') ? $input->get('method') : 'get';
+
+			require_once JPATH_BASE . '/components/com_sppagebuilder/parser/addon-parser.php';
+			require_once JPATH_BASE . '/components/com_sppagebuilder/addons/' . $input->get('addon') . '/site.php';
+
+			if (function_exists($function)) {
+				try
+				{
+					$results = call_user_func($function);
+				}
+				catch (Exception $e)
+				{
+					$results = $e;
+				}
+			} else {
+				$results = new LogicException(JText::sprintf('Function %s does not exist', $function), 404);
+			}
+
+		}
+
+		echo new JResponseJson($results, null, false, $input->get('ignoreMessages', true, 'bool'));
+		die;
+    }
 }

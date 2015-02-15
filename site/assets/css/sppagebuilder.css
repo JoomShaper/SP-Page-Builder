@@ -4,7 +4,6 @@
  * @copyright Copyright (c) 2010 - 2015 JoomShaper
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or later
 */
-
 #sp-page-builder .page-content .sppb-section {
   margin-top: 30px;
   z-index: 1;
@@ -13,7 +12,7 @@
   margin-top: 0;
 }
 #sp-page-builder .sppb-section-title {
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 #sp-page-builder .sppb-section-title .sppb-title-heading {
   margin-top: 0;
@@ -217,26 +216,26 @@
   display: table-cell;
   vertical-align: middle;
 }
-#sp-page-builder * {
+* {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-#sp-page-builder *:before,
-#sp-page-builder *:after {
+*:before,
+*:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-#sp-page-builder input,
-#sp-page-builder button,
-#sp-page-builder select,
-#sp-page-builder textarea {
+input,
+button,
+select,
+textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
 }
-#sp-page-builder img {
+img {
   vertical-align: middle;
 }
 .sppb-img-responsive,
@@ -2163,6 +2162,53 @@ button.sppb-close {
   border: 0;
   -webkit-appearance: none;
 }
+.sppb-form-control {
+  display: block;
+  width: 100%;
+  height: 34px !important;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.sppb-form-control:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+.sppb-form-control::-moz-placeholder {
+  color: #777777;
+  opacity: 1;
+}
+.sppb-form-control:-ms-input-placeholder {
+  color: #777777;
+}
+.sppb-form-control::-webkit-input-placeholder {
+  color: #777777;
+}
+.sppb-form-control[disabled],
+.sppb-form-control[readonly],
+fieldset[disabled] .sppb-form-control {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+  opacity: 1;
+}
+textarea.sppb-form-control {
+  height: auto !important;
+}
+.sppb-form-group {
+  margin-bottom: 15px;
+}
 .sppb-modal-open {
   overflow: hidden;
 }
@@ -2543,7 +2589,6 @@ button.sppb-close {
 .sppb-item.sppb-item-has-bg .sppb-carousel-item-inner > div {
   height: 100%;
   display: table;
-  width: 100%;
 }
 .sppb-item.sppb-item-has-bg .sppb-carousel-item-inner > div > div {
   display: table-cell;
@@ -2572,7 +2617,7 @@ button.sppb-close {
 .sppb-testimonial-pro .sppb-carousel-control {
   display: inline-block;
   font-size: 18px;
-  line-height: 24px;
+  line-height: 28px;
   width: 28px;
   height: 28px;
   border-radius: 4px;
@@ -2611,7 +2656,7 @@ button.sppb-close {
 .sppb-addon-tweet .sppb-tweet-slider .sppb-carousel-control {
   display: inline-block;
   font-size: 18px;
-  line-height: 28px;
+  line-height: 24px;
   width: 28px;
   height: 28px;
   border-radius: 4px;

@@ -40,6 +40,13 @@ $spbuilder_row_settings = array(
 			'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_SIZE'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_SIZE_DESC'),
 			'std'=>''
+			),
+		
+		'title_fontweight'=>array(
+			'type'=>'text', 
+			'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_WEIGHT'),
+			'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_WEIGHT_DESC'),
+			'std'=>''
 			),	
 
 		'title_text_color'=>array(

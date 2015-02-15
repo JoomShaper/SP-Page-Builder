@@ -32,8 +32,11 @@
 		<folder>models</folder>
 		<folder>parser</folder>
 		<folder>views</folder>
-		<folder>language</folder>
 	</files>
+
+	<languages folder="language/site">
+		<language tag="en-GB">en-GB/en-GB.com_sppagebuilder.ini</language>
+	</languages>
 
 	<administration>
 		<menu>COM_SPPAGEBUILDER</menu>
@@ -52,14 +55,15 @@
 			<folder>views</folder>
 		</files>
 
-		<languages folder="admin">
-			<language tag="en-GB">language/en-GB/en-GB.com_sppagebuilder.ini</language>
-			<language tag="en-GB">language/en-GB/en-GB.com_sppagebuilder.sys.ini</language>
-			<language tag="en-GB">language/en-GB/en-GB.mod_sppagebuilder_icons.sys.ini</language>
-			<language tag="en-GB">language/en-GB/en-GB.mod_sppagebuilder_admin_menu.ini</language>
-			<language tag="en-GB">language/en-GB/en-GB.mod_sppagebuilder_admin_menu.sys.ini</language>
-			<language tag="en-GB">language/en-GB/en-GB.mod_sppagebuilder_icons.ini</language>
+		<languages folder="language/admin">
+			<language tag="en-GB">en-GB/en-GB.com_sppagebuilder.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_sppagebuilder.sys.ini</language>
+			<language tag="en-GB">en-GB/en-GB.mod_sppagebuilder_icons.sys.ini</language>
+			<language tag="en-GB">en-GB/en-GB.mod_sppagebuilder_admin_menu.ini</language>
+			<language tag="en-GB">en-GB/en-GB.mod_sppagebuilder_admin_menu.sys.ini</language>
+			<language tag="en-GB">en-GB/en-GB.mod_sppagebuilder_icons.ini</language>
 		</languages>
+
 	</administration>
 
 	<modules>

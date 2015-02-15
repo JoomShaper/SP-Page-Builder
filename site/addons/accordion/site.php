@@ -21,6 +21,7 @@ function sp_accordion_addon($atts, $content){
 		"title"					=>'',
 		"heading_selector" 		=> 'h3',
 		"title_fontsize" 		=> '',
+		"title_fontweight" 		=> '',
 		"title_text_color" 		=> '',
 		"title_margin_top" 		=> '',
 		"title_margin_bottom" 	=> '',		
@@ -35,10 +36,11 @@ function sp_accordion_addon($atts, $content){
 	if($title) {
 
 		$title_style = '';
-		if($title_margin_top) $title_style .= 'margin-top:' . (int) $title_margin_top . 'px;';
-		if($title_margin_bottom) $title_style .= 'margin-bottom:' . (int) $title_margin_bottom . 'px;';
+		if($title_margin_top !='') $title_style .= 'margin-top:' . (int) $title_margin_top . 'px;';
+		if($title_margin_bottom !='') $title_style .= 'margin-bottom:' . (int) $title_margin_bottom . 'px;';
 		if($title_text_color) $title_style .= 'color:' . $title_text_color  . ';';
 		if($title_fontsize) $title_style .= 'font-size:'.$title_fontsize.'px;line-height:'.$title_fontsize.'px;';
+		if($title_fontweight) $title_style .= 'font-weight:'.$title_fontweight.';';
 
 		$output .= '<'.$heading_selector.' class="sppb-addon-title" style="' . $title_style . '">' . $title . '</'.$heading_selector.'>';
 	}
@@ -74,9 +76,9 @@ function sp_accordion_item_addon( $atts ){
 	$output   = '<div class="sppb-panel sppb-'. $sppbAccordionStyle .'">';
 
 	$output  .= '<div class="sppb-panel-heading">';
-	$output  .= '<h4 class="sppb-panel-title">';
+	$output  .= '<span class="sppb-panel-title">';
 	$output  .= $title;
-	$output  .= '</h4>';
+	$output  .= '</span>';
 	$output  .= '</div>';
 
 	$output  .= '<div class="sppb-panel-collapse">';

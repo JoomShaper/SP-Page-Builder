@@ -10,13 +10,8 @@ defined ('_JEXEC') or die ('resticted aceess');
 
 require_once JPATH_COMPONENT.'/helpers/route.php';
 
-// import joomla controller library
 jimport('joomla.application.component.controller');
 
 $controller = JControllerLegacy::getInstance('Sppagebuilder');
-
-$input = JFactory::getApplication()->input;
-$controller->execute($input->getCmd('task'));
-
+$controller->execute(JFactory::getApplication()->input->get('task'));
 $controller->redirect();
-

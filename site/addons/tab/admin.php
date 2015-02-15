@@ -44,6 +44,13 @@ SpAddonsConfig::addonConfig(
 				'std'=>''
 				),
 
+			'title_fontweight'=>array(
+				'type'=>'text', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_WEIGHT'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_WEIGHT_DESC'),
+				'std'=>''
+				),
+
 			'title_text_color'=>array(
 				'type'=>'color',
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_TEXT_COLOR'),

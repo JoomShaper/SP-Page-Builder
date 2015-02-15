@@ -21,6 +21,40 @@ SpAddonsConfig::addonConfig(
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_EMPTY_SPACE_GAP_DESC'),
 				'std'=>'20'
 				),
+
+			'hidden_md'=>array(
+				'type'=>'select', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_GLOBAL_HIDDDEN_MD'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_GLOBAL_HIDDDEN_MD_DESC'),
+				'values'=>array(
+					'1'=>JText::_('COM_SPPAGEBUILDER_YES'),
+					'0'=>JText::_('COM_SPPAGEBUILDER_NO'),
+					),
+				'std'=>'0',
+				),
+
+			'hidden_sm'=>array(
+				'type'=>'select', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_GLOBAL_HIDDDEN_SM'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_GLOBAL_HIDDDEN_SM_DESC'),
+				'values'=>array(
+					'1'=>JText::_('COM_SPPAGEBUILDER_YES'),
+					'0'=>JText::_('COM_SPPAGEBUILDER_NO'),
+					),
+				'std'=>'0',
+				),
+
+			'hidden_xs'=>array(
+				'type'=>'select', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_GLOBAL_HIDDDEN_XS'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_GLOBAL_HIDDDEN_XS_DESC'),
+				'values'=>array(
+					'1'=>JText::_('COM_SPPAGEBUILDER_YES'),
+					'0'=>JText::_('COM_SPPAGEBUILDER_NO'),
+					),
+				'std'=>'0',
+				),
+
 			'class'=>array(
 				'type'=>'text', 
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_CLASS'),

@@ -34,6 +34,19 @@ jQuery(function($) {
 
 		});
 
+		//Search addon
+		$(document).on('keyup', '#modal-addons #search-addon', function(){
+			var value = $(this).val();
+			var exp = new RegExp('^' + value, 'i');
+
+			$('#modal-addons .addon-filter ul li').removeClass('active').first().addClass('active');
+
+			$('#modal-addons').find('.pagebuilder-addons').children().each(function() {
+				var isMatch = exp.test($('.element-title', this).text());
+				$(this).toggle(isMatch);
+			});
+		});
+
 		//Duplicate row
 		$(document).on('click', '.duplicate-row', function(event){
 			event.preventDefault();
