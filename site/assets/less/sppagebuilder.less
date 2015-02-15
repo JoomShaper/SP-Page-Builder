@@ -257,6 +257,52 @@
 }
 
 
+//Image content addon
+.sppb-addon-image-content {
+	position: relative;
+	.sppb-image-holder {
+		position: absolute;
+		top: 0;
+		width: 50%;
+		height: 100%;
+		background-position: 50%;
+		background-size: cover;
+	}
+
+	&.aligment-left {
+		.sppb-image-holder {
+			left: 0;
+		}
+
+		.sppb-content-holder {
+			padding: 120px 0 120px 50px;
+		}
+	}
+
+	&.aligment-right {
+		.sppb-image-holder {
+			right: 0;
+		}
+
+		.sppb-content-holder {
+			padding: 120px 50px 120px 0;
+		}
+	}
+
+}
+
+
+@media (max-width: @screen-sm-min) {
+	.sppb-addon-image-content {
+		.sppb-image-holder {
+			position: inherit;
+			width: 100% !important;
+			height: 300px;
+		}
+	}
+}
+
+
 // Core variables and mixins
 @import "variables.less";
 @import "mixins.less";
