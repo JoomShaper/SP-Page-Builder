@@ -135,6 +135,10 @@ jQuery(function($) {
 					$(this).minicolors('destroy');
 					$that.removeClass('minicolors');
 				});
+
+				var title = $original.find('.addon-title:first').val();
+				$original.find('.addon-input-title').text(title);
+
 				var $clone = $original.clone();
 				$clone.appendTo( $('.page-builder-area .column.active-column'));
 
@@ -148,6 +152,10 @@ jQuery(function($) {
 					$(this).minicolors('destroy');
 					$that.removeClass('minicolors');
 				});
+
+				var title = $original.find('.addon-title:first').val();
+				$original.find('.addon-input-title').text(title);
+
 				var $clone = $original.clone();
 				$('.active-generated').empty();
 				$clone.appendTo( '.active-generated' ).parent().hide().addClass('populating-content').fadeIn(500, function(){
