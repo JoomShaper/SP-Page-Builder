@@ -282,6 +282,14 @@ span.drag{
   text-transform: capitalize;
 }
 
+.pagebuilder-section .column > .generated .addon-input-title{
+  clear: both;
+  text-align: left;
+  margin-left: 30px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
 .generated-item .action a{
   font-size: 12px;
   color: #888;
@@ -484,6 +492,7 @@ span.drag{
 
 /*Single Addon view*/
 #modal-addon .generated-item > h3,
+#modal-addon .generated-item > .addon-input-title,
 #modal-addon .generated-item .action{
 	display: none;
 }
