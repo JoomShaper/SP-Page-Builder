@@ -179,6 +179,7 @@ $addons_category = array_unique($addons_category);
 			$output .= '<a class="remove-addon" href="javascript:void(0)"><i class="fa fa-times"></i></a>';
 			$output .= '</div>';
 
+			$output .= '<p class="addon-input-title">' . ((isset($addon['attr']['title']['std']))? $addon['attr']['title']['std'] :'') . '</p>';
 
 			$output .= '<div class="item-inner">';
 
