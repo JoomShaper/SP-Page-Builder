@@ -146,8 +146,11 @@ function builder_layout( $layout_data = null )
 												<a class="remove-addon" href="javascript:void(0)">
 													<i class="fa fa-times"></i>
 												</a>
-											</div>
-											<div class="item-inner">';
+											</div>';
+											
+											$output .= '<p class="addon-input-title">' . ((isset($addon->atts->title))? $addon->atts->title : '') . '</p>';
+
+											$output .= '<div class="item-inner">';
 
 												foreach ( $addon->atts as $field => $value )
 												{
