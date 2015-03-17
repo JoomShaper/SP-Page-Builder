@@ -7,7 +7,7 @@
 	<authorUrl>http://www.joomshaper.com</authorUrl>
 	<copyright>Copyright @ 2010 - 2015 JoomShaper. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later</license>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<description>Most powerful drag and drop page builder for Joomla 3.3 or later.</description>
 	<scriptfile>installer.script.php</scriptfile>
 
