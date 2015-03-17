@@ -43,6 +43,7 @@
 
 		<files folder="admin">
 			<filename>access.xml</filename>
+			<filename>config.xml</filename>
 			<filename>index.html</filename>
 			<filename>sppagebuilder.php</filename>
 			<filename>controller.php</filename>

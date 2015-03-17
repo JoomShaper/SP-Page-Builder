@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset name="component">
+		<field
+			name="fontawesome"
+			type="radio"
+			class="btn-group btn-group-yesno"
+			default="1"
+			label="COM_SPPAGEBUILDER_LOAD_FONTAWESOME"
+			description="COM_SPPAGEBUILDER_LOAD_FONTAWESOME_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+
+		<field
+			name="disableanimatecss"
+			type="radio"
+			class="btn-group btn-group-yesno"
+			default="0"
+			label="COM_SPPAGEBUILDER_DISABLE_ANIMATE_CSS"
+			description="COM_SPPAGEBUILDER_DISABLE_ANIMATE_CSS_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+
+		<field
+			name="disablecss"
+			type="radio"
+			class="btn-group btn-group-yesno"
+			default="0"
+			label="COM_SPPAGEBUILDER_DISABLE_CSS"
+			description="COM_SPPAGEBUILDER_DISABLE_CSS_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+	</fieldset>
+
+	<fieldset
+		name="permissions"
+		label="JCONFIG_PERMISSIONS_LABEL"
+		description="JCONFIG_PERMISSIONS_DESC"
+		>
+
+		<field
+			name="rules"
+			type="rules"
+			label="JCONFIG_PERMISSIONS_LABEL"
+			filter="rules"
+			validate="rules"
+			component="com_search"
+			section="component" />
+	</fieldset>
+</config>
