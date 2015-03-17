@@ -46,4 +46,17 @@ class SppagebuilderController extends JControllerLegacy{
 		echo new JResponseJson($results, null, false, $input->get('ignoreMessages', true, 'bool'));
 		die;
     }
+
+    function display( $cachable = false, $urlparams = false )
+	{
+		$input = JFactory::getApplication()->input;
+		
+		if ($input->getCmd('view','pages') === 'pages') {
+			JFactory::getApplication()->redirect(JURI::base());
+		}
+
+		$input->set('view', $input->getCmd('view','pages'));
+
+		parent::display($cachable);
+	}
 }
