@@ -15,6 +15,6 @@ if (file_exists($path)) {
 	$content = file_get_contents($path);
 	echo dataLayoutBuilder(json_decode( $content ));
 }else{
-	echo '<h1>There is no souch template</h1>';
+	echo '<h1>There is no such template</h1>';
 }
 die();
