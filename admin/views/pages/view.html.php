@@ -33,6 +33,7 @@ class SppagebuilderViewPages extends JViewLegacy
 
 		$this->addToolbar();
 		$this->sidebar = JHtmlSidebar::render();
+		JToolBarHelper::preferences('com_sppagebuilder');
 		parent::display($tpl);
 	}
 
