@@ -576,38 +576,6 @@ jQuery(function($) {
 		}
 	});
 
-	// Load esiting template
-	$('.form-horizontal').on('click', '.add-template', function(event) {
-		event.preventDefault();
-
-		var $data = $(this).data('template');
-
-		var request = $.ajax({
-			url: "index.php?option=com_sppagebuilder&view=ajax&format=raw",
-			type: "POST",
-			data: { template : $data },
-			dataType: "html",
-			beforeSend:function(){
-				$('#add-template i').removeClass('fa-plus').addClass('fa-spinner fa-spin');
-				$('#sp-page-builder').append('<div class="ajax-loader"></div>').fadeIn('fast');
-			},
-			complete:function(){
-				$('#add-template i').removeClass('fa-spinner fa-spin').addClass('fa-plus');
-				$('#pagebuilder-templates').slideToggle('fast');
-			}
-		});
-
-		request.done(function( msg ) {
-			$('#sp-page-builder').empty();
-			$('#sp-page-builder').append(msg).fadeIn('normal');
-			jqueryUiLayout();
-		});
-
-		request.fail(function( jqXHR, textStatus ) {
-			alert( "Failed to load template, Try again" );
-		});
-	});
-
 	function genJsonAddons(){
 
 		var item = [];
