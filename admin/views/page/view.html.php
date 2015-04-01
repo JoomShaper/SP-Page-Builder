@@ -36,6 +36,13 @@ class SppagebuilderViewPage extends JViewLegacy
 		$lang = JFactory::getLanguage();
 		$lang->load('tpl_' . $defaultemplate, JPATH_SITE, $lang->getName(), true);
 
+		//Load Plugin language
+		$plugin_path = JPATH_ROOT . '/plugins/sppagebuilder-addons';
+		$providers = JFolder::folders($plugin_path);
+		foreach ($providers as $provider) {
+			$lang->load('plg_sppagebuilder-addons_' . $provider, JPATH_ADMINISTRATOR, $language_tag, $reload);
+		}
+
 		$this->addToolBar();
 
 		parent::display($tpl);

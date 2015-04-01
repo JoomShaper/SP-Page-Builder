@@ -122,6 +122,20 @@ class AddonParser
 
         require_once JPATH_COMPONENT_SITE . '/addons/module/site.php';//include module manually
 
+        //From Plugin
+        $plugin_path = JPATH_ROOT . '/plugins/sppagebuilder-addons';
+
+        $plg_folders = JFolder::folders($plugin_path);
+
+        $plugin_addons = array();
+        $plugin_name_addons = array();
+
+        foreach ($plg_folders as $key => $folder) {
+            $plugin_addons = array_merge($plugin_addons, JFolder::folders( $plugin_path . '/' .$folder . '/addons'));
+            $plugin_name_addons[$folder] = JFolder::folders( $plugin_path . '/' .$folder . '/addons');
+        }
+
+        //Others Path
         $template_path = JPATH_ROOT . '/templates/' . $template;
 
         $tmpl_folders = array();
@@ -138,6 +152,8 @@ class AddonParser
             $folders = array_unique( $merge_folders );
         }
 
+        $plugin_addons = array_diff($plugin_addons, $folders);
+
         if (count($folders))
         {
             foreach ($folders as $folder)
@@ -152,6 +168,23 @@ class AddonParser
                     else if(file_exists( $com_file_path ))
                     {
                         require_once $com_file_path;
+                    }
+                }
+            }
+        }
+
+        //Plugin Addons
+        if(count($plugin_addons)) {
+            foreach ($plugin_name_addons as $provider => $addons) {
+                foreach ($addons as $addon) {
+
+                    if(in_array($addon, $plugin_addons)) {
+                        $plugin_file_path = $plugin_path . '/' . $provider . '/addons/' . $addon . '/site.php';
+
+                        if($folder!='module') {
+                            require_once $plugin_file_path; 
+                        }
+
                     }
                 }
             }
