@@ -86,20 +86,6 @@ class SpPgaeBuilder {
 
 		require_once JPATH_COMPONENT_SITE . '/addons/module/admin.php';//Include module manually
 
-		//From Plugin
-		$plugin_path = JPATH_ROOT . '/plugins/sppagebuilder-addons';
-
-		$plg_folders = JFolder::folders($plugin_path);
-
-		$plugin_addons = array();
-		$plugin_name_addons = array();
-
-		foreach ($plg_folders as $key => $folder) {
-			$plugin_addons = array_merge($plugin_addons, JFolder::folders( $plugin_path . '/' .$folder . '/addons'));
-			$plugin_name_addons[$folder] = JFolder::folders( $plugin_path . '/' .$folder . '/addons');
-		}
-
-		//Others Path
 		$template_path = JPATH_ROOT . '/templates/' . self::getTemplateName(); // current template path
 		$tmpl_folders = array();
 
@@ -115,8 +101,6 @@ class SpPgaeBuilder {
 			$merge_folders = array_merge( $folders, $tmpl_folders );
 			$folders = array_unique( $merge_folders );
 		}
-
-		$plugin_addons = array_diff($plugin_addons, $folders);
 
 		if (count($folders))
 		{
@@ -137,24 +121,6 @@ class SpPgaeBuilder {
 				}
 			}
 		}
-
-		//Plugin Addons
-		if(count($plugin_addons)) {
-			foreach ($plugin_name_addons as $provider => $addons) {
-				foreach ($addons as $addon) {
-
-					if(in_array($addon, $plugin_addons)) {
-						$plugin_file_path = $plugin_path . '/' . $provider . '/addons/' . $addon . '/admin.php';
-
-						if($folder!='module') {
-							require_once $plugin_file_path;	
-						}
-
-					}
-				}
-			}
-		}
-
 	}
 
 	public static function getIcon( $addon )
