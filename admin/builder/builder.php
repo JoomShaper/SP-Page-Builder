@@ -156,12 +156,12 @@ class SpPgaeBuilder {
 
 	public static function outputGenerate( $key, $attr )
 	{
-
-		if ($attr['type'] != 'repeatable') {
-			return call_user_func(array( 'SpType' . ucfirst( $attr['type'] ), 'getInput'), $key, $attr );
-		}else{
-			return '';
+		if (isset($attr['type'])) {
+			if ($attr['type'] != 'repeatable') {
+				return call_user_func(array( 'SpType' . ucfirst( $attr['type'] ), 'getInput'), $key, $attr );
+			}
 		}
+		return '';
 
 	}
 
