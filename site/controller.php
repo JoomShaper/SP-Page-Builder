@@ -26,7 +26,16 @@ class SppagebuilderController extends JControllerLegacy{
 			$method = $input->get('method') ? $input->get('method') : 'get';
 
 			require_once JPATH_BASE . '/components/com_sppagebuilder/parser/addon-parser.php';
-			require_once JPATH_BASE . '/components/com_sppagebuilder/addons/' . $input->get('addon') . '/site.php';
+			
+			$core_path 		= JPATH_BASE . '/components/com_sppagebuilder/addons/' . $input->get('addon') . '/site.php';
+			$template_path 	= JPATH_BASE . '/templates/' . $this->getTemplateName() . '/sppagebuilder/addons/' . $input->get('addon') . '/site.php';
+
+			if(file_exists($template_path)) {
+				require_once $template_path;
+			} else {
+				require_once $core_path;
+			}
+
 
 			if (function_exists($function)) {
 				try
@@ -58,5 +67,18 @@ class SppagebuilderController extends JControllerLegacy{
 		$input->set('view', $input->getCmd('view','pages'));
 
 		parent::display($cachable);
+	}
+
+	private function getTemplateName()
+	{
+		$db = JFactory::getDbo();
+		$query = $db->getQuery(true);
+		$query->select($db->quoteName(array('template')));
+		$query->from($db->quoteName('#__template_styles'));
+		$query->where($db->quoteName('client_id') . ' = 0');
+		$query->where($db->quoteName('home') . ' = 1');
+		$db->setQuery($query);
+
+		return $db->loadObject()->template;
 	}
 }

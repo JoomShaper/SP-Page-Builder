@@ -17,7 +17,8 @@ function sp_feature_addon($atts){
 		"heading_selector" 		=> 'h3',
 		"title_fontsize" 		=> '',
 		"title_fontweight" 		=> '',
-		"title_text_color" 		=> '',			
+		"title_text_color" 		=> '',
+		"title_url"				=> '',		
 		"title_position"		=> 'before',
 		"feature_type"			=> 'icon',
 		"feature_image"			=> '',
@@ -104,7 +105,12 @@ function sp_feature_addon($atts){
 			$heading_class = ' sppb-media-heading';
 		}
 
+		if($title_url) $feature_title .= '<a href="'. $title_url .'">';
+
 		$feature_title .= '<'.$heading_selector.' class="sppb-feature-box-title'. $heading_class .'" style="' . $title_style . '">' . $title . '</'.$heading_selector.'>';
+
+		if($title_url) $feature_title .= '</a>';
+
 	}
 
 	//Feature Text

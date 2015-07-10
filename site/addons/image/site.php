@@ -20,6 +20,7 @@ function sp_image_addon($atts) {
 		"title_margin_top" 		=> '',
 		"title_margin_bottom" 	=> '',		
 		'image' 				=> '',
+		'alt_text' 				=> '',
 		'position' 				=> '',
 		'link' 					=> '',
 		'target' 				=> '',
@@ -49,7 +50,7 @@ function sp_image_addon($atts) {
 			$output 	.= '<a target="' . $target . '" href="' . $link . '">';
 		}
 
-		$output  .= '<img class="sppb-img-responsive" src="' . $image . '" alt="">';
+		$output  .= '<img class="sppb-img-responsive" src="' . $image . '" alt="'. $alt_text .'">';
 
 		if($link!='http://') {
 			$output 	.= '</a>';

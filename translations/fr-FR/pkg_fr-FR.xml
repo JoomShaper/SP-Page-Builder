@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.3" method="upgrade">
+	<name>trad fr SP Page Builder</name>
+	<author>JoomShaper</author>
+	<creationDate>Sep 2014</creationDate>
+	<authorEmail>serge@web54.fr</authorEmail>
+	<authorUrl>http://www.web54.fr</authorUrl>
+	<copyright>Copyright @ 2010 - 2015 JoomShaper. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<version>1.0.3</version>
+	<description>Traduction française SP Page builder</description>
+	<languages folder="language/site">
+		<language tag="fr-FR">fr-FR/fr-FR.com_sppagebuilder.ini</language>
+	</languages>
+
+	<administration>
+		<languages folder="language/admin">
+			<language tag="fr-FR">fr-FR/fr-FR.com_sppagebuilder.ini</language>
+			<language tag="fr-FR">fr-FR/fr-FR.com_sppagebuilder.sys.ini</language>
+			<language tag="fr-FR">fr-FR/fr-FR.mod_sppagebuilder_icons.sys.ini</language>
+			<language tag="fr-FR">fr-FR/fr-FR.mod_sppagebuilder_admin_menu.ini</language>
+			<language tag="fr-FR">fr-FR/fr-FR.mod_sppagebuilder_admin_menu.sys.ini</language>
+			<language tag="fr-FR">fr-FR/fr-FR.mod_sppagebuilder_icons.ini</language>
+		</languages>
+	</administration>
+</extension>

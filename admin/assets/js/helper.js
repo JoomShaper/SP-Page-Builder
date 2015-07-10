@@ -294,6 +294,8 @@
 			toolbar_items_size: "small",
 			invalid_elements : "script,applet,iframe",
 
+			content_css : "administrator/components/com_sppagebuilder/assets/css/tinymce.css",
+
 			plugins: [
 			"advlist autolink lists link charmap preview image",
 			"searchreplace code fullscreen",
@@ -303,9 +305,8 @@
 			document_base_url : pagebuilder_base,
 			image_class_list: [
 				{title: 'None', value: ''},
-				{title: 'Left', value: 'floatleft'},
-				{title: 'Right', value: 'floatright'},
-				{title: 'Center', value: 'floatcenter'}
+				{title: 'Left', value: 'pull-left'},
+				{title: 'Right', value: 'pull-right'}
 			],
 
 			toolbar: "insertfile | styleselect | bold italic fontsizeselect | alignleft aligncenter alignright alignjustify | blockquote | bullist numlist | link image fullscreen"

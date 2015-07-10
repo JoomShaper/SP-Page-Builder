@@ -47,7 +47,7 @@
 			label="JCONFIG_PERMISSIONS_LABEL"
 			filter="rules"
 			validate="rules"
-			component="com_search"
+			component="com_sppagebuilder"
 			section="component" />
 	</fieldset>
 </config>

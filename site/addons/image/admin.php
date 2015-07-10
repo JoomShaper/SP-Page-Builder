@@ -76,6 +76,14 @@ SpAddonsConfig::addonConfig(
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_IMAGE_SELECT'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_IMAGE_SELECT_DESC'),
 				),
+
+			'alt_text'=>array(
+				'type'=>'text', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_GLOBAL_ALT_TEXT'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_GLOBAL_ALT_TEXT_DESC'),
+				'std'=>''
+				),
+
 			'position'=>array(
 				'type'=>'select',
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_IMAGE_ALIGNMENT'),

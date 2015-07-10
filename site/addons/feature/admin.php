@@ -57,6 +57,14 @@ SpAddonsConfig::addonConfig(
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_TEXT_COLOR_DESC'),
 				),
 
+			'title_url'=>array(
+				'type'=>'text',
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_FEATURE_BOX_TITLE_URL'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_FEATURE_BOX_TITLE_URL_DESC'),
+				'placeholder'=>'http://',
+				'std'=>''
+				),
+
 			'title_position'=>array(
 				'type'=>'select',
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_FEATURE_BOX_ICON_IMAGE_POSITION'),
