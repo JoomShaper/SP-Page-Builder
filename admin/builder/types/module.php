@@ -20,8 +20,8 @@ class SpTypeModule{
 		$depend_data = '';
 		if(isset($attr['depends'])) {
 			$depends = $attr['depends'];
-			foreach ($depends as $key => $value) {
-				$depend_data .= ' data-group_parent="' . $key . '" data-depend="' . $value . '"';
+			foreach ($depends as $selector => $value) {
+				$depend_data .= ' data-group_parent="' . $selector . '" data-depend="' . $value . '"';
 			}
 		}
 
