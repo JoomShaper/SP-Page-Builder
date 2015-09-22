@@ -63,7 +63,7 @@ class SppagebuilderViewPage extends JViewLegacy
 		$sitetitle = $title;
 		if($config->get('sitename_pagetitles')==2) {
 			$sitetitle = $title . ' | ' . $config->get('sitename');
-		} elseif ($config->get('sitename_pagetitles')===1) {
+		} elseif ($config->get('sitename_pagetitles')==1) {
 			$sitetitle = $config->get('sitename') . ' | ' . $title;
 		}
 
