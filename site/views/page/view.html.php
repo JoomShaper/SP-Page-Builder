@@ -37,27 +37,38 @@ class SppagebuilderViewPage extends JViewLegacy
 
 	protected function _prepareDocument()
 	{
-		$app = JFactory::getApplication();
-		$menus = $app->getMenu();
-		$title = null;
+		$config 	= JFactory::getConfig();
+		$app 		= JFactory::getApplication();
+		$doc 		= JFactory::getDocument();
+		$menus   	= $app->getMenu();
+		$menu 		= $menus->getActive();
+		$title 		= '';
 
 		$menu = $menus->getActive();
 
-		if ($menu) {
-			$title = $menu->params->get('page_title', '');
+		//Title
+		if (isset($meta['title']) && $meta['title']) {
+			$title = $meta['title'];
+		} else {
+			if ($menu) {
+				if($menu->params->get('page_title', '')) {
+					$title = $menu->params->get('page_title');
+				} else {
+					$title = $menu->title;
+				}
+			}
 		}
 
-		// check page title is empty
-
-		if (empty($title))
-		{
-			$title = $this->page->title;
+		//Include Site title
+		$sitetitle = $title;
+		if($config->get('sitename_pagetitles')==2) {
+			$sitetitle = $title . ' | ' . $config->get('sitename');
+		} elseif ($config->get('sitename_pagetitles')===1) {
+			$sitetitle = $config->get('sitename') . ' | ' . $title;
 		}
 
-		if (empty($title)) {
-			$title = $this->page->title;
-		}
-		$this->document->setTitle($title);
+		$doc->setTitle($sitetitle);
+		$doc->addCustomTag('<meta content="' . $title . '" property="og:title" />');
 
 		$this->document->addCustomTag('<meta content="website" property="og:type"/>');
 		$this->document->addCustomTag('<meta content="'.JURI::current().'" property="og:url" />');
