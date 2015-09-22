@@ -69,6 +69,8 @@ body{
 
 .image-preview img {
   max-height: 160px;
+  border: 10px solid #e5e5e5;
+  padding: 0;
 }
 
 .sp-modal a, .sp-modal a:hover{
