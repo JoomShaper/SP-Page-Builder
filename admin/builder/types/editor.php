@@ -18,7 +18,16 @@ class SpTypeEditor
 			$attr['std'] = '';
 		}
 
-		$output  = '<div class="form-group">';
+		// Depend
+		$depend_data = '';
+		if(isset($attr['depends'])) {
+			$depends = $attr['depends'];
+			foreach ($depends as $key => $value) {
+				$depend_data .= ' data-group_parent="' . $key . '" data-depend="' . $value . '"';
+			}
+		}
+
+		$output  = '<div class="form-group"' . $depend_data . '>';
 		$output .= '<label>'.$attr['title'].'</label>';
 		$output .= '<textarea class="form-control sppb-editor addon-input" data-attrname="'.$key.'">'.$attr['std'].'</textarea>';
 

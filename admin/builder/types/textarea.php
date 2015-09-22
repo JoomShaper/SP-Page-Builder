@@ -21,7 +21,16 @@ class SpTypeTextarea{
 			$attr['placeholder'] = '';
 		}
 
-		$output  = '<div class="form-group">';
+		// Depend
+		$depend_data = '';
+		if(isset($attr['depends'])) {
+			$depends = $attr['depends'];
+			foreach ($depends as $key => $value) {
+				$depend_data .= ' data-group_parent="' . $key . '" data-depend="' . $value . '"';
+			}
+		}
+
+		$output  = '<div class="form-group"' . $depend_data . '>';
 		$output .= '<label>'.$attr['title'].'</label>';		
 		$output	.= '<textarea class="form-control addon-input addon-'.$key.'" data-attrname="'.$key.'" placeholder="'.$attr['placeholder'].'">'.$attr['std'].'</textarea>';
 

@@ -29,6 +29,7 @@ $doc->addScript( JURI::root(true) . '/media/editors/tinymce/tinymce.min.js' );
 $doc->addScript( JURI::base(true) . SPASSET. 'js/transition.js' );
 $doc->addScript( JURI::base(true) . SPASSET. 'js/modal.js' );
 $doc->addScript( JURI::base(true) . SPASSET. 'js/helper.js' );
+$doc->addScript( JURI::base(true) . SPASSET. 'js/parentchild.js' );
 $doc->addScript( JURI::base(true) . SPASSET. 'js/main.js' );
 
 $app = JFactory::getApplication();
@@ -96,7 +97,7 @@ require_once ( JPATH_COMPONENT .'/builder/builder_layout.php' );
 
     </div>
     <div class="pagebuilder-beta clearfix" style="margin: 30px auto; text-align: center;">
-        <p><a href="http://www.joomshaper.com/page-builder/" target="_blank">SP Page Builder Free v1.0.4</a> | Copyright &copy; 2010-2015 <a href="http://www.joomshaper.com" target="_blank">JoomShaper</a></p>
+        <p><a href="http://www.joomshaper.com/page-builder/" target="_blank">SP Page Builder Free v1.0.5</a> | Copyright &copy; 2010-2015 <a href="http://www.joomshaper.com" target="_blank">JoomShaper</a></p>
     </div>
     <input type="hidden" name="task" value="page.edit" />
     <?php echo JHtml::_('form.token'); ?>

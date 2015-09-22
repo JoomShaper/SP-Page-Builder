@@ -16,6 +16,15 @@ class SpTypeModule{
 			$attr['std'] = '';
 		}
 
+		// Depend
+		$depend_data = '';
+		if(isset($attr['depends'])) {
+			$depends = $attr['depends'];
+			foreach ($depends as $key => $value) {
+				$depend_data .= ' data-group_parent="' . $key . '" data-depend="' . $value . '"';
+			}
+		}
+
 		// Get list of modules
 		$db     = JFactory::getDbo();
 		$query  = $db->getQuery(true);
@@ -25,15 +34,13 @@ class SpTypeModule{
 		$query->where('published = 1');
 		$query->order('ordering, title');
 		$db->setQuery($query);
-
 		$modules = $db->loadObjectList();
 
 
-
-		$output  = '<div class="form-group">';
+		$output  = '<div class="form-group"' . $depend_data . '>';
 		$output .= '<label>'.$attr['title'].'</label>';
 
-		$output .= '<select class="form-control addon-input" data-attrname="'.$key.'">';
+		$output .= '<select class="form-control addon-input" data-attrname="'.$key.'" id="field_'.$key.'">';
 
 		$output .= '<option value=""></option>';
 

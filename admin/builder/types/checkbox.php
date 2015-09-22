@@ -21,9 +21,18 @@ class SpTypeCheckbox{
 			}
 		}
 
-		$output   = '<div class="checkbox">';
+		// Depend
+		$depend_data = '';
+		if(isset($attr['depends'])) {
+			$depends = $attr['depends'];
+			foreach ($depends as $key => $value) {
+				$depend_data .= ' data-group_parent="' . $key . '" data-depend="' . $value . '"';
+			}
+		}
+
+		$output   = '<div class="checkbox"' . $depend_data . '>';
 		$output  .= '<label>';
-		$output  .= '<input class="addon-input" data-attrname="'.$key.'" type="checkbox" '.(($attr['std'] == 1)?'checked':'').'> ' .$attr['title'];
+		$output  .= '<input id="field_'.$key.'" class="addon-input" data-attrname="'.$key.'" type="checkbox" '.(($attr['std'] == 1)?'checked':'').'> ' .$attr['title'];
 		$output  .= '</label>';
 		$output  .= '</div>';
 

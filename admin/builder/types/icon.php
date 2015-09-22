@@ -16,10 +16,19 @@ class SpTypeIcon{
 			$attr['std'] = '';
 		}
 
-		$output  = '<div class="form-group">';
+		// Depend
+		$depend_data = '';
+		if(isset($attr['depends'])) {
+			$depends = $attr['depends'];
+			foreach ($depends as $key => $value) {
+				$depend_data .= ' data-group_parent="' . $key . '" data-depend="' . $value . '"';
+			}
+		}
+
+		$output  = '<div class="form-group"' . $depend_data . '>';
 		$output .= '<label>'.$attr['title'].'</label>';
 
-		$output .= '<select class="form-control addon-input chosen-select-deselect data-icon-select" data-attrname="'.$key.'">';
+		$output .= '<select class="form-control addon-input chosen-select-deselect data-icon-select" data-attrname="'.$key.'" id="field_'.$key.'">';
 
 		$fontawesome_icons = self::getIconsList();
 

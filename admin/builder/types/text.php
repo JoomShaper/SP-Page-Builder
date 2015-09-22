@@ -21,7 +21,16 @@ class SpTypeText{
 			$attr['placeholder'] = '';
 		}
 
-		$output  = '<div class="form-group">';
+		// Depend
+		$depend_data = '';
+		if(isset($attr['depends'])) {
+			$depends = $attr['depends'];
+			foreach ($depends as $key => $value) {
+				$depend_data .= ' data-group_parent="' . $key . '" data-depend="' . $value . '"';
+			}
+		}
+
+		$output  = '<div class="form-group"' . $depend_data . '>';
 		$output .= '<label>'.$attr['title'].'</label>';
 		$output	.= '<input class="form-control addon-input addon-'.$key.'" type="text" data-attrname="'.$key.'" value="'.$attr['std'].'" placeholder="'.$attr['placeholder'].'" />';
 		

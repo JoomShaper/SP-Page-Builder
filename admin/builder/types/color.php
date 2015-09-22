@@ -17,13 +17,22 @@ class SpTypeColor{
 			$attr['std'] = '';
 		}
 
+		// Depend
+		$depend_data = '';
+		if(isset($attr['depends'])) {
+			$depends = $attr['depends'];
+			foreach ($depends as $key => $value) {
+				$depend_data .= ' data-group_parent="' . $key . '" data-depend="' . $value . '"';
+			}
+		}
+
 		// Including fallback code for HTML5 non supported browsers.
 		JHtml::_('jquery.framework');
 		JHtml::_('script', 'system/html5fallback.js', false, true);
 
 		JHtml::_('behavior.colorpicker');
 
-		$output  = '<div class="form-group">';
+		$output  = '<div class="form-group"' . $depend_data . '>';
 		$output .= '<label>'.$attr['title'].'</label>';
 		$output .= '<input type="text" class="sppb-color addon-input" data-attrname="'.$key.'" placeholder="#rrggbb" value="'.$attr['std'].'">';
 

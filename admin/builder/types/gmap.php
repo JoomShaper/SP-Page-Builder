@@ -27,7 +27,16 @@ class SpTypeGmap{
 			$attr['placeholder'] = '';
 		}
 
-		$output  = '<div class="form-group form-group-gmap">';
+		// Depend
+		$depend_data = '';
+		if(isset($attr['depends'])) {
+			$depends = $attr['depends'];
+			foreach ($depends as $key => $value) {
+				$depend_data .= ' data-group_parent="' . $key . '" data-depend="' . $value . '"';
+			}
+		}
+
+		$output  = '<div class="form-group form-group-gmap"' . $depend_data . '>';
 		$output .= '<label>'.$attr['title'].'</label>';
 		$output	.= '<input class="addon-input gmap-latlng" type="hidden" data-attrname="'.$key.'" value="'.$attr['std'].'" />';
 		$output	.= '<input class="form-control addon-gmap-address" type="text" placeholder="'.$attr['placeholder'].'" data-latitude="' . trim($map[0]) . '" data-longitude="' . trim($map[1]) . '" />';
