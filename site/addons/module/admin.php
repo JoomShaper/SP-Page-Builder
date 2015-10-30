@@ -69,13 +69,35 @@ SpAddonsConfig::addonConfig(
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_MARGIN_BOTTOM'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_MARGIN_BOTTOM_DESC'),
 				'placeholder'=>'10',
-				),	
+				),
+
+			'module_type'=>array(
+				'type'=>'select', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_MODULE_TYPE'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_MODULE_TYPE_DESC'),
+				'values'=>array(
+					'module'=>JText::_('COM_SPPAGEBUILDER_ADDON_MODULE_TYPE_MODULE'),
+					'position'=>JText::_('COM_SPPAGEBUILDER_ADDON_MODULE_TYPE_POSITION')
+					),
+				'std'=>'module',
+			),
 
 			'id'=>array(
-				'type'=>'module', 
+				'type'=>'module',
+				'module'=>'module',
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_MODULE_SELECT'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_MODULE_SELECT_DESC'),
+				'depends'=>array('module_type'=>'module'),
 				),
+
+			'position'=>array(
+				'type'=>'module',
+				'module'=>'position',
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_MODULE_POSITION'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_MODULE_POSITION_DESC'),
+				'depends'=>array('module_type'=>'position')
+				),
+
 			'class'=>array(
 				'type'=>'text', 
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_CLASS'),

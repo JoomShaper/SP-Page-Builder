@@ -25,16 +25,46 @@ class SpTypeModule{
 			}
 		}
 
+		if(!isset($attr['module'])){
+			$attr['module'] = 'module';
+		}
+
 		// Get list of modules
-		$db     = JFactory::getDbo();
-		$query  = $db->getQuery(true);
-		$query->select('id, title');
-		$query->from('#__modules');
-		$query->where('client_id = 0');
-		$query->where('published = 1');
-		$query->order('ordering, title');
-		$db->setQuery($query);
-		$modules = $db->loadObjectList();
+		if($attr['module'] == 'position') {
+
+			$db     = JFactory::getDbo();
+			$query  = $db->getQuery(true);
+			$query->select(array('position'))
+				->from('#__modules')
+				->where('client_id = 0')
+				->where('published = 1')
+				->group('position')
+				->order('position ASC');
+
+          	$db->setQuery($query);
+            $positions = $db->loadColumn();
+
+            $template = self::getTemplate();
+            $templateXML = JPATH_SITE.'/templates/'.$template.'/templateDetails.xml';
+            $template = simplexml_load_file( $templateXML );
+
+            foreach($template->positions[0] as $position)  {
+            	$positions[] =  (string) $position;
+            }
+
+            $positions = array_unique($positions);
+
+		} else {
+			$db     = JFactory::getDbo();
+			$query  = $db->getQuery(true);
+			$query->select('id, title');
+			$query->from('#__modules');
+			$query->where('client_id = 0');
+			$query->where('published = 1');
+			$query->order('ordering, title');
+			$db->setQuery($query);
+			$modules = $db->loadObjectList();
+		}
 
 
 		$output  = '<div class="form-group"' . $depend_data . '>';
@@ -44,9 +74,16 @@ class SpTypeModule{
 
 		$output .= '<option value=""></option>';
 
-		foreach( $modules as $module )
-		{
-			$output .= '<option value="'.$module->id.'" '.(($attr['std'] == $module->id )?'selected':'').'>'. $module->title .'</option>';
+		if($attr['module'] == 'position') {
+			foreach( $positions as $position )
+			{
+				$output .= '<option value="'.$position.'" '.(($attr['std'] == $position )?'selected':'').'>'. $position .'</option>';
+			}
+		} else {
+			foreach( $modules as $module )
+			{
+				$output .= '<option value="'.$module->id.'" '.(($attr['std'] == $module->id )?'selected':'').'>'. $module->title .'</option>';
+			}	
 		}
 
 		$output .= '</select>';
@@ -60,5 +97,18 @@ class SpTypeModule{
 
 		return $output;
 	}
+
+	private static function getTemplate() {
+
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select($db->quoteName(array('template')));
+        $query->from($db->quoteName('#__template_styles'));
+        $query->where($db->quoteName('client_id') . ' = '. $db->quote(0));
+        $query->where($db->quoteName('home') . ' = '. $db->quote(1));
+        $db->setQuery($query);
+
+        return $db->loadResult();
+    }
 
 }

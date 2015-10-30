@@ -13,19 +13,23 @@ AddonParser::addAddon('sp_module','sp_module_addon');
 function sp_module_addon($atts){
 
 	extract(spAddonAtts(array(
-		'id'					=>'',
-		'title'					=>'',
+		'id'					=> '',
+		'module_type'			=> 'module',
+		'position'				=> '',
+		'title'					=> '',
 		"heading_selector" 		=> 'h3',
 		"title_fontsize" 		=> '',
 		"title_fontweight" 		=> '',
 		"title_text_color" 		=> '',
 		"title_margin_top" 		=> '',
 		"title_margin_bottom" 	=> '',	
-		'class'					=>'',
+		'class'					=> '',
 		), $atts));
 
-	if(!$id) return;
-	
+	if(!$id || !$position) {
+		return;
+	}
+
 	//Query Module
 	$app		= JFactory::getApplication();
 	$user		= JFactory::getUser();
@@ -38,7 +42,13 @@ function sp_module_addon($atts){
 	$query->select('m.id, m.title, m.module, m.position, m.ordering, m.content, m.showtitle, m.params');
 	$query->from('#__modules AS m');
 	$query->where('m.published = 1');
-	$query->where('m.id = ' . $id);
+
+	if($module_type == 'position') {
+		$query->where($db->quoteName('m.position') . ' = ' . $db->quote($position));
+		$query->order('m.ordering ASC');
+	} else {
+		$query->where('m.id = ' . $id);
+	}
 
 	$date = JFactory::getDate();
 	$now = $date->toSql();
@@ -56,37 +66,36 @@ function sp_module_addon($atts){
 
 	// Set the query
 	$db->setQuery($query);
-	$module = $db->loadObject();
+	$modules = $db->loadObjectList();
 
-	if (!$module) return null;
-	$file				= $module->module;
-	$custom				= substr($file, 0, 4) == 'mod_' ?  0 : 1;
-	$module->user		= $custom;
-	$module->name		= $custom ? $module->title : substr($file, 4);
-	$module->style		= null;
-	$module->position	= strtolower($module->position);
-	$clean[$module->id]	= $module;
+	$output = '';
 
-	$output  = '<div class="sppb-addon sppb-addon-module ' . $class . '">';
+	if(count($modules)) {
+		foreach ($modules as $module) {
+			$file				= $module->module;
+			$custom				= substr($file, 0, 4) == 'mod_' ?  0 : 1;
+			$module->user		= $custom;
+			$module->name		= $custom ? $module->title : substr($file, 4);
+			$module->style		= null;
+			$module->position	= strtolower($module->position);
+			$clean[$module->id]	= $module;
 
-	if($title) {
+			$output .= '<div class="sppb-addon sppb-addon-module ' . $class . '">';
+			$output .= '<div class="sppb-addon-content">';
 
-		$title_style = '';
-		if($title_margin_top !='') $title_style .= 'margin-top:' . (int) $title_margin_top . 'px;';
-		if($title_margin_bottom !='') $title_style .= 'margin-bottom:' . (int) $title_margin_bottom . 'px;';
-		if($title_text_color) $title_style .= 'color:' . $title_text_color  . ';';
-		if($title_fontsize) $title_style .= 'font-size:'.$title_fontsize.'px;line-height:'.$title_fontsize.'px;';
-		if($title_fontweight) $title_style .= 'font-weight:'.$title_fontweight.';';
+			if($module_type == 'position') {
+				$output .= JModuleHelper::renderModule(  $module, array('style' => 'sp_xhtml'));
+			} else {
+				$output .= JModuleHelper::renderModule(  $module, array('style' => 'none'));
+			}
 
-		$output .= '<'.$heading_selector.' class="sppb-addon-title" style="' . $title_style . '">' . $title . '</'.$heading_selector.'>';
+			$output .= '</div>';
+			$output .= '</div>';
+		}
+
+		return $output;
 	}
 
-	$output .= '<div class="sppb-addon-content">';
-	$output .= JModuleHelper::renderModule(  $module, array('style' => 'none'));
-	$output .= '</div>';
-
-	$output .= '</div>';
-
-	return $output;
+	return null;
 
 }
