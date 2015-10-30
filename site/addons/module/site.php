@@ -26,7 +26,7 @@ function sp_module_addon($atts){
 		'class'					=> '',
 		), $atts));
 
-	if(!$id || !$position) {
+	if((($module_type == 'position') && !$position) || (($module_type == 'module') && !$id)) {
 		return;
 	}
 
