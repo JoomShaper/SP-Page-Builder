@@ -6,7 +6,7 @@
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or later
 */
 //no direct accees
-defined ('_JEXEC') or die ('resticted aceess');
+defined ('_JEXEC') or die ('restricted aceess');
 
 $spbuilder_row_settings = array( 
 	'type'=>'general', 
