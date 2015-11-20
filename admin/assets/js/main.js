@@ -472,13 +472,10 @@ jQuery(function($) {
 		});
 
 		// Remove Media
-		$(document).on('click','.row-settings .remove-media',function(){
-			$that = $(this);
-			var $imgParent = $that.parent('.media');
-			$imgParent.find('img.media-preview').each(function() {
-				$(this).attr('src','');
-				$(this).closest('.image-preview').css('display', 'none');
-			});
+		$(document).on('click', 'a.remove-media', function(event){
+			event.preventDefault();
+			$(this).closest('.media').find('.input-media').val('');
+			$(this).closest('.media').find('.media-preview img').removeAttr('src');
 		});
 
 		//save

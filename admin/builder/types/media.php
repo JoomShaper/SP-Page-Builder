@@ -33,21 +33,23 @@ class SpTypeMedia
 			}
 		}
 
-		JHtml::_('behavior.modal');
 		JHtml::_('jquery.framework');
+
+		$doc = JFactory::getDocument();
+		$doc->addScript( JURI::base(true) . '/components/com_sppagebuilder/assets/js/media.js' );
 		
 		$output  = '<div class="form-group"' . $depend_data . '>';
 		$output .= '<label>' . $attr['title'] . '</label>';
 		$output .= '<div class="media">';
 
-		$output .= '<div class="media-preview add-on">';
+		$output .= '<div class="media-preview">';
 		$output .= '<div class="image-preview">';
-		$output .= '<img class="media-preview" ' . $src . ' alt="" height="100px">';
+		$output .= '<img ' . $src . ' alt="" height="100px">';
 		$output .= '</div>';
 		$output .= '</div>';
 
 		$output .= '<input type="hidden" data-attrname="'.$key.'" class="input-media addon-input" value="'.$attr['std'].'">';
-		$output .= '<a class="modal sppb-btn sppb-btn-primary" title="Select" rel="{handler: \'iframe\', size: {x: 800, y: 500}}">Select</a>';
+		$output .= '<a href="#" class="sppb-btn sppb-btn-primary sppb-btn-media">'. JText::_('COM_SPPAGEBUILDER_TYPE_MEDIA_SELECT') .'</a>';
 		$output .= ' <a class="sppb-btn sppb-btn-danger remove-media" href="#"><i class="icon-remove"></i></a>';
 		$output .= '</div>';
 
