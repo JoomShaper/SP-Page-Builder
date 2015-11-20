@@ -7,19 +7,30 @@
 	<authorUrl>http://www.joomshaper.com</authorUrl>
 	<copyright>Copyright @ 2010 - 2015 JoomShaper. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later</license>
-	<version>1.0.5</version>
+	<version>1.0.7</version>
 	<description>Most powerful drag and drop page builder for Joomla 3.4 or later.</description>
 	<scriptfile>installer.script.php</scriptfile>
 
 	<updateservers> 
         <server type="extension" priority="1" name="SP Page Builder">http://www.joomshaper.com/updates/com-sp-page-builder-free.xml</server>
     </updateservers>
-	
+
 	<install>
 		<sql>
-			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+			<file driver="mysql" charset="utf8">install/sql/install.mysql.utf8.sql</file>
+			<file driver="mysql">install/sql/install.mysql.utf8.sql</file>
+
+			<file driver="mysqli" charset="utf8">sql/install/mysql/install.sql</file>
+			<file driver="mysqli">sql/install/mysql/install.sql</file>
 		</sql>
 	</install>
+
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+			<schemapath type="mysqli">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
 
 	<files folder="site">
 		<filename>index.html</filename>

@@ -205,12 +205,8 @@
 
 		//Media
 		$(this).find('.media').each(function(){
-			$(this).find('.input-media').removeAttr('id');
-		});
-
-		//Re-initialize modal
-		SqueezeBox.assign( $(this).find('a.modal') , {
-			parse: 'rel'
+			var $id = random_number();
+			$(this).find('.input-media').attr('id', 'media-' + $id);
 		});
 
 		//Editor
@@ -246,11 +242,6 @@
 		//Media
 		$(this).find('.media').each(function(){
 			$(this).find('.input-media').removeAttr('id');
-			//Preview
-			$(this).find('.image-preview').removeAttr('id');
-			$(this).find('.image-preview').find('img').removeAttr('id');
-			$(this).find('a.modal').removeAttr('href');
-			$(this).find('a.remove-media').removeAttr('onClick');
 		});
 
 		//Editor
@@ -274,8 +265,39 @@
 			force_p_newlines : false,
 			forced_root_block : '',
 			file_browser_callback: function(field_name, url, type, win) {
-				SqueezeBox.fromElement('index.php?option=com_media&view=images&tmpl=component&asset=com_sppagebuilder&fieldid=' + field_name, {size:{x:800,y:600}, handler:'iframe'});
-				return false;
+				var modal_html = '';
+				modal_html += '<div class="sppb-media-modal-overlay"></div>';
+				modal_html += $('<div>').append($('.sppb-media-modal').clone().removeClass('sppb-media-modal').attr('id', 'sppb-media-modal').attr('data-target_id', field_name)).html();
+
+				$(modal_html).hide().appendTo($('body')).fadeIn('fast');
+
+				var request = {
+					'option' : 'com_sppagebuilder',
+					'task' : 'media.browse'
+				};
+
+				$.ajax({
+					type   : 'POST',
+					data   : request,
+					success: function (response) {
+						$('#sppb-media-modal .spinner').remove();
+
+						try {
+							var data = $.parseJSON(response);
+
+							if(data.loadmore) {
+								$('#sppb-media-modal .btn-loadmore').removeAttr('style');
+							} else {
+								$('#sppb-media-modal .btn-loadmore').hide();
+							}
+
+							$('#sppb-media-modal .sppb-media-modal-body').prepend(data.output);
+							$('#sppb-media-modal .sppb-media-modal-filter').html(data.date_filter);
+						} catch (e) {
+							$('#sppb-media-modal .sppb-media-modal-body').html(response);
+						}
+					}
+				});
 			},
 
 			toolbar_items_size: "small",
