@@ -55,9 +55,7 @@ $sortFields = $this->getSortFields();
 			</div>
 			<div class="btn-group hidden-phone">
 				<button type="submit" class="btn hasTooltip" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_SUBMIT'); ?>"><i class="icon-search"></i></button>
-				<button type="button" class="btn hasTooltip" onclick="document.getElementById('filter_search').value='';this.form.submit();">
-					<span class="icon-remove"></span><?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?>
-				</button>
+				<button type="button" class="btn hasTooltip" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_CLEAR'); ?>" onclick="document.getElementById('filter_search').value='';this.form.submit();"><i class="icon-remove"></i></button>
 			</div> <!-- Seach Options -->
 
 			<div class="btn-group pull-right hidden-phone">
