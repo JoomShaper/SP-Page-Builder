@@ -9,7 +9,7 @@
 defined ('_JEXEC') or die ('restricted aceess');
 
 JHtml::_('bootstrap.tooltip');
-JHtml::_('behavior.framework', true);
+JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', 'select');
 
 require_once JPATH_ROOT . '/components/com_sppagebuilder/helpers/route.php';
@@ -52,7 +52,7 @@ $sortFields = $this->getSortFields();
 			</div>
 			<div class="btn-group hidden-phone">
 				<button type="submit" class="btn hasTooltip" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_SUBMIT'); ?>"><i class="icon-search"></i></button>
-				<button type="button" class="btn hasTooltip" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_CLEAR'); ?>" onclick="document.id('filter_search').value='';this.form.submit();"><i class="icon-remove"></i></button>
+				<button type="button" class="btn hasTooltip" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_CLEAR'); ?>" onclick="document.getElementById('filter_search').value='';this.form.submit();"><i class="icon-remove"></i></button>
 			</div> <!-- Seach Options -->
 		</div>
 

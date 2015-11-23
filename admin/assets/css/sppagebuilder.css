@@ -1137,7 +1137,7 @@ li.layout-options {
 }
 
 #sppb-media-modal {
-  position: absolute;
+  position: fixed;
   top: 30px;
   left: 30px;
   right: 30px;
