@@ -1313,6 +1313,17 @@ li.layout-options {
 #sppb-media-modal .sppb-media-images > li {
   display: inline-block;
   width: 16.66%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -ms-user-select: none;
+}
+
+#sppb-media-modal .sppb-media-images > li > div > div * {
+  -webkit-user-select: initial;
+  -moz-user-select: initial;
+  -khtml-user-select: initial;
+  -ms-user-select: initial;
 }
 
 @media only screen and (max-width : 992px) {
@@ -1353,13 +1364,50 @@ li.layout-options {
   overflow: hidden;
 }
 
-#sppb-media-modal .sppb-media-images>li>div>div>div.sppb-media-image>img {
+#sppb-media-modal .sppb-media-images>li>div>div>div.sppb-media-image>img,
+#sppb-media-modal .sppb-media-images>li>div>div>div.sppb-media-image .media-folder-warpper {
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   margin-top: -12px;
+}
+
+#sppb-media-modal .sppb-media-images>li>div>div>div.sppb-media-image .media-folder-warpper .fa-folder {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 96px;
+  line-height: 96px;
+  color: #82d7f9;
+  cursor: pointer;
+  background: #fff;
+  -webkit-transition: background-color 300ms, color 300ms;
+  transition: background-color 300ms, color 300ms;
+  border-radius: 10px;
+}
+
+#sppb-media-modal .sppb-media-images>li:hover>div>div>div.sppb-media-image .media-folder-warpper .fa-folder {
+  color: #55bde6;
+}
+
+#sppb-media-modal .sppb-media-images>li.folder-selected>div>div>div.sppb-media-image .media-folder-warpper .fa-folder {
+  background: #DADADA;
+}
+
+#sppb-media-modal .sppb-media-images>li>div>div>div.sppb-media-image .no-margin {
+  margin-top: 0;
+}
+
+#sppb-media-modal .sppb-media-images>li>div>div>div.sppb-media-image .media-folder-warpper .fa-arrow-left {
+  cursor: pointer;
+  color: #333;
+  -webkit-transition: color 300ms;
+  transition: color 300ms;
+}
+
+#sppb-media-modal .sppb-media-images>li:hover>div>div>div.sppb-media-image .media-folder-warpper .fa-arrow-left {
+  color: #666;
 }
 
 #sppb-media-modal .sppb-image-loader .fa-spinner {
@@ -1417,6 +1465,7 @@ li.layout-options {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
 }
 
 #sppb-media-modal .sppb-media-images > li .remove-media-item {

@@ -133,8 +133,9 @@ class SppagebuilderControllerMedia extends JControllerForm
 
 	// Upload File
 	public function upload() {
-		$input = JFactory::getApplication()->input;
-        $image = $input->files->get('image');
+		$input 	= JFactory::getApplication()->input;
+        $image 	= $input->files->get('image');
+        $dir 	= $input->post->get('folder', '', 'PATH');
         $report = array();
 
         // User is not authorised
@@ -176,10 +177,15 @@ class SppagebuilderControllerMedia extends JControllerForm
                 // Upload if no error found
                 if(!$error) {
                     $date = JFactory::getDate();
-                    $folder = JHtml::_('date', $date, 'Y') . '/' . JHtml::_('date', $date, 'm') . '/' . JHtml::_('date', $date, 'd');
 
-                    if(!file_exists( JPATH_ROOT . '/images/' . $folder )) {
-                        JFolder::create(JPATH_ROOT . '/images/' . $folder, 0755);
+                    $folder = 'images/' . JHtml::_('date', $date, 'Y') . '/' . JHtml::_('date', $date, 'm') . '/' . JHtml::_('date', $date, 'd');
+                    
+                    if($dir != '') {
+                    	$folder = ltrim($dir, '/');
+                    }
+
+                    if(!file_exists( JPATH_ROOT . '/' . $folder )) {
+                        JFolder::create(JPATH_ROOT . '/' . $folder, 0755);
                     }
 
                     $name = $image['name'];
@@ -193,8 +199,8 @@ class SppagebuilderControllerMedia extends JControllerForm
                         $ext        = $file['extension'];
                         $image_name = $base_name . "." . $ext;
                         $i++;
-                        $dest 		= JPATH_ROOT . '/images/' . $folder . '/' . $image_name;
-                        $src 		= 'images/' . $folder . '/'  . $image_name;
+                        $dest 		= JPATH_ROOT . '/' . $folder . '/' . $image_name;
+                        $src 		= $folder . '/'  . $image_name;
                     } while(file_exists($dest));
                     // End Do not override
 
@@ -278,21 +284,22 @@ class SppagebuilderControllerMedia extends JControllerForm
         	if(!JFile::delete($src)) {
         		$report['status'] = false;
                 $report['output'] = JText::_('Delete failed');
-        	} else {
-
-        		$db = JFactory::getDbo();
-				$query = $db->getQuery(true);
-				$conditions = array(
-				    $db->quoteName('id') . ' = ' . $db->quote($id)
-				);
-				$query->delete($db->quoteName('#__sppagebuilder_media'));
-				$query->where($conditions);
-				$db->setQuery($query);
-				$db->execute();
-
-        		$report['status'] = true;
+                echo json_encode($report);
+        		die;
         	}
+        } else {
+        	$report['status'] = true;
         }
+
+        // Remove from database
+        $db = JFactory::getDbo();
+		$query = $db->getQuery(true);
+		$conditions = array($db->quoteName('id') . ' = ' . $db->quote($id));
+		$query->delete($db->quoteName('#__sppagebuilder_media'));
+		$query->where($conditions);
+		$db->setQuery($query);
+		$db->execute();
+		$report['status'] = true;
 
         echo json_encode($report);
         die;
@@ -305,7 +312,8 @@ class SppagebuilderControllerMedia extends JControllerForm
         $path 	= $input->post->get('path', '/images', 'PATH');
 
 		$images = JFolder::files(JPATH_ROOT . $path, '.png|.jpg|.gif', false, true);
-		$folders = JFolder::listFolderTree(JPATH_ROOT . '/images');
+		$folders_list = JFolder::folders(JPATH_ROOT . $path, '.');
+		$folders = JFolder::listFolderTree(JPATH_ROOT . '/images', '.');
 
 		$tree = '<select class="folder-filter">';
 		$tree .= '<option value="/images">/images</option>';
@@ -319,13 +327,46 @@ class SppagebuilderControllerMedia extends JControllerForm
 		$report['output'] 		= '';
 
 		$report['output'] .= '<ul class="sppb-media-images">';
+
+		// Folders List
+		if(dirname($path) != '/') {
+			$report['output'] .= '<li class="sppb-media-folder">';
+			$report['output'] .= '<div>';
+			$report['output'] .= '<div>';
+			$report['output'] .= '<div class="sppb-media-image">';
+			$report['output'] .= '<div class="media-folder-warpper no-margin">';
+			$report['output'] .= '<i class="fa fa-arrow-left to-folder-back fa-4x" data-path="'. dirname($path) .'"></i>';
+			$report['output'] .= '</div>';
+			$report['output'] .= '</div>';
+			$report['output'] .= '</div>';
+			$report['output'] .= '</div>';
+			$report['output'] .= '</li>';
+		}
+
+		if(count($folders_list)) {
+			foreach ($folders_list as $single_folder) {
+				$report['output'] .= '<li class="sppb-media-folder">';
+				$report['output'] .= '<div>';
+				$report['output'] .= '<div>';
+				$report['output'] .= '<div class="sppb-media-image">';
+				$report['output'] .= '<span class="sppb-media-title">' . $single_folder .'</span>';
+				$report['output'] .= '<div class="media-folder-warpper">';
+				$report['output'] .= '<i class="fa fa-folder to-folder fa-4x" data-path="'. $path . '/' . $single_folder .'"></i>';
+				$report['output'] .= '</div>';
+				$report['output'] .= '</div>';
+				$report['output'] .= '</div>';
+				$report['output'] .= '</div>';
+				$report['output'] .= '</li>';
+			}
+		}
+
 		if(count($images)) {
 			foreach ($images as $image) {
 
 				$image = str_replace(JPATH_ROOT . '/', '', $image);
 				$title = JFile::stripExt(basename($image));
 
-				$report['output'] .= '<li>';
+				$report['output'] .= '<li class="sppb-media-item">';
 					$report['output'] .= '<div>';
 						$report['output'] .= '<div>';
 							$report['output'] .= '<div class="sppb-media-image">';
@@ -354,10 +395,8 @@ class SppagebuilderControllerMedia extends JControllerForm
 		}
 
 		$report['output'] .= '</ul>';
-
 		echo json_encode($report);
 
 	    die;
 	}
-
 }

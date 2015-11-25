@@ -276,7 +276,7 @@ $addons_category = array_unique($addons_category);
 				<div class="bounce2"></div>
 				<div class="bounce3"></div>
 			</div>
-			<a class="btn btn-primary btn-large btn-loadmore" href="#"><i class="fa fa-refresh"></i> <?php echo JText::_('COM_SPPAGEBUILDER_TYPE_MEDIA_LOAD_MORE'); ?></a>
+			<a class="btn btn-primary btn-large btn-loadmore" href="#" style="display: none;"><i class="fa fa-refresh"></i> <?php echo JText::_('COM_SPPAGEBUILDER_TYPE_MEDIA_LOAD_MORE'); ?></a>
 		</div>
 	</div>
 </div>
