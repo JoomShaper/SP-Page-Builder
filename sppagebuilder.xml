@@ -17,11 +17,11 @@
 
 	<install>
 		<sql>
-			<file driver="mysql" charset="utf8">install/sql/install.mysql.utf8.sql</file>
-			<file driver="mysql">install/sql/install.mysql.utf8.sql</file>
-
-			<file driver="mysqli" charset="utf8">sql/install/mysql/install.sql</file>
-			<file driver="mysqli">sql/install/mysql/install.sql</file>
+			<file driver="mysql" charset="utf8">sql/install/mysql/install.mysql.utf8.sql</file>
+			<file driver="mysql">sql/install/mysql/install.mysql.utf8.sql</file>
+			
+			<file driver="mysqli" charset="utf8">sql/install/mysql/install.mysql.utf8.sql</file>
+			<file driver="mysqli">sql/install/mysql/install.mysql.utf8.sql</file>
 		</sql>
 	</install>
 
