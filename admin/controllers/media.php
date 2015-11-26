@@ -27,7 +27,7 @@ class SppagebuilderControllerMedia extends JControllerForm
 		$dates = $db->loadObjectList();
 
 		$output = '<select class="date-filter">';
-		$output .= '<option value="">All Items</option>';
+		$output .= '<option value="">'. JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_ALL') .'</option>';
 		foreach ( $dates as $date ) {
 			$output .= '<option value="'. $date->year . '-' . $date->month .'">'. JHtml::_('date', $date->year . '-' . $date->month, 'F Y') .'</option>';
 		}
@@ -107,12 +107,12 @@ class SppagebuilderControllerMedia extends JControllerForm
 							$media_file = JPATH_ROOT . '/' . $item->path;
 
 							if(JFile::exists($media_file)) {
-								$report['output'] .= '<span class="sppb-media-fileszie">Size: '. (round(filesize($media_file)/(1024))) .' kb</span>';
+								$report['output'] .= '<span class="sppb-media-fileszie">'. JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_SIZE') .': '. (round(filesize($media_file)/(1024))) .' kb</span>';
 								$properties = JImage::getImageFileProperties($media_file);
-								$report['output'] .= '<span class="sppb-media-resolution">Resolution: '. $properties->width . 'X'. $properties->height .'</span>';
+								$report['output'] .= '<span class="sppb-media-resolution">' . JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_RESOLUTION') . ': '. $properties->width . 'x'. $properties->height .' px</span>';
 							} else {
-								$report['output'] .= '<span class="sppb-media-fileszie">Size: 0 kb</span>';
-								$report['output'] .= '<span class="sppb-media-resolution">Resolution: 0X0</span>';
+								$report['output'] .= '<span class="sppb-media-fileszie">' . JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_SIZE') . ': 0 kb</span>';
+								$report['output'] .= '<span class="sppb-media-resolution">' . JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_RESOLUTION') . ': 0x0 px</span>';
 							}
 							$report['output'] .= '<a class="remove-media-item" href="#" data-id="'. $item->id .'"><i class="fa fa-times"></i></a>';
 							$report['output'] .= '<a class="btn btn-success btn-insert-media" href="#" data-path="'. $item->path .'" data-src="'. JURI::root(true) . '/' . $item->path .'"><i class="fa fa-check"></i> Select</a>';
@@ -137,15 +137,6 @@ class SppagebuilderControllerMedia extends JControllerForm
         $image 	= $input->files->get('image');
         $dir 	= $input->post->get('folder', '', 'PATH');
         $report = array();
-
-        // User is not authorised
-        if (!JFactory::getUser()->authorise('core.create', 'com_media'))
-        {
-            $report['status'] = false;
-            $report['output'] = JText::_('You are not authorised to upload file.');
-            echo json_encode($report);
-            die;
-        }
         
         if(count($image)) {
             if ($image['error'] == UPLOAD_ERR_OK) {
@@ -159,7 +150,7 @@ class SppagebuilderControllerMedia extends JControllerForm
                 // Check for the total size of post back data.
                 if (($postMaxSize > 0 && $contentLength > $postMaxSize) || ($memoryLimit != -1 && $contentLength > $memoryLimit)) {
                     $report['status'] = false;
-                    $report['output'] = JText::_('Total size of upload exceeds the limit.');
+                    $report['output'] = JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_TOTAL_SIZE_EXCEEDS');
                     $error = true;
                     echo json_encode($report);
                     die;
@@ -170,7 +161,7 @@ class SppagebuilderControllerMedia extends JControllerForm
 
                 if (($image['error'] == 1) || ($uploadMaxSize > 0 && $image['size'] > $uploadMaxSize) || ($uploadMaxFileSize > 0 && $image['size'] > $uploadMaxFileSize)) {
                     $report['status'] = false;
-                    $report['output'] = JText::_('This file is too large to upload.');
+                    $report['output'] = JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_LARGE');
                     $error = true;
                 }
                 
@@ -235,12 +226,12 @@ class SppagebuilderControllerMedia extends JControllerForm
 									$media_file = JPATH_ROOT . '/' . $src;
 
 									if(JFile::exists($media_file)) {
-										$output .= '<span class="sppb-media-fileszie">Size: '. (round(filesize($media_file)/(1024))) .' kb</span>';
+										$output .= '<span class="sppb-media-fileszie">'. JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_SIZE') .': '. (round(filesize($media_file)/(1024))) .' kb</span>';
 										$properties = JImage::getImageFileProperties($media_file);
-										$output .= '<span class="sppb-media-resolution">Resolution: '. $properties->width . 'X'. $properties->height .'</span>';
+										$output .= '<span class="sppb-media-resolution">'. JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_RESOLUTION') .': '. $properties->width . 'x'. $properties->height .' px</span>';
 									} else {
-										$output .= '<span class="sppb-media-fileszie">Size: 0 kb</span>';
-										$output .= '<span class="sppb-media-resolution">Resolution: 0X0</span>';
+										$output .= '<span class="sppb-media-fileszie">'. JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_SIZE') .': 0 kb</span>';
+										$output .= '<span class="sppb-media-resolution">'. JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_RESOLUTION') .': 0x0 px</span>';
 									}
 									$output .= '<a class="remove-media-item" href="#" data-id="'. $insertid .'"><i class="fa fa-times"></i></a>';
 									$output .= '<a class="btn btn-success btn-insert-media" href="#" data-path="'. $src .'" data-src="'. JURI::root(true) . '/' . $src .'"><i class="fa fa-check"></i> Select</a>';
@@ -378,12 +369,12 @@ class SppagebuilderControllerMedia extends JControllerForm
 							$media_file = JPATH_ROOT . '/' . $image;
 
 							if(JFile::exists($media_file)) {
-								$report['output'] .= '<span class="sppb-media-fileszie">Size: '. (round(filesize($media_file)/(1024))) .' kb</span>';
+								$report['output'] .= '<span class="sppb-media-fileszie">'. JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_SIZE') .': '. (round(filesize($media_file)/(1024))) .' kb</span>';
 								$properties = JImage::getImageFileProperties($media_file);
-								$report['output'] .= '<span class="sppb-media-resolution">Resolution: '. $properties->width . 'X'. $properties->height .'</span>';
+								$report['output'] .= '<span class="sppb-media-resolution">'. JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_RESOLUTION') .': '. $properties->width . 'x'. $properties->height .' px</span>';
 							} else {
-								$report['output'] .= '<span class="sppb-media-fileszie">Size: 0 kb</span>';
-								$report['output'] .= '<span class="sppb-media-resolution">Resolution: 0X0</span>';
+								$report['output'] .= '<span class="sppb-media-fileszie">'. JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_SIZE') .': 0 kb</span>';
+								$report['output'] .= '<span class="sppb-media-resolution">'. JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_RESOLUTION') .': 0x0 px</span>';
 							}
 							$report['output'] .= '<a class="btn btn-success btn-insert-media" href="#" data-path="'. $image .'" data-src="'. JURI::root(true) . '/' . $image .'"><i class="fa fa-check"></i> Select</a>';
 						$report['output'] .= '</div>';
