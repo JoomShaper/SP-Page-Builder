@@ -125,6 +125,8 @@ jQuery(function($) {
 		//Add addon to elements
 		$(document).on('click', '#modal-addon #save-change', function(){
 			
+			var title;
+
 			if ( $(this).hasClass('addnew') )
 			{
 				var $original = $('#modal-addon').find('.generated');
@@ -136,7 +138,14 @@ jQuery(function($) {
 					$that.removeClass('minicolors');
 				});
 
-				var title = $original.find('.addon-title:first').val();
+				var $admin_label = $original.find('.addon-admin_label:first').not('.repeatable-items .addon-admin_label:first');
+
+				if ($admin_label.length) {
+					title = $admin_label.val();
+				}else{
+					title = $original.find('.addon-title:first').not('.repeatable-items .addon-title:first').val();
+				}
+				
 				$original.find('.addon-input-title').text(title);
 
 				var $clone = $original.clone();
@@ -153,7 +162,14 @@ jQuery(function($) {
 					$that.removeClass('minicolors');
 				});
 
-				var title = $original.find('.addon-title:first').val();
+				var $admin_label = $original.find('.addon-admin_label:first').not('.repeatable-items .addon-admin_label:first');
+
+				if ($admin_label.length) {
+					title = $admin_label.val();
+				}else{
+					title = $original.find('.addon-title:first').not('.repeatable-items .addon-title:first').val();
+				}
+
 				$original.find('.addon-input-title').text(title);
 
 				var $clone = $original.clone();
