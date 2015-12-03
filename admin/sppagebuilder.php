@@ -10,11 +10,15 @@ defined ('_JEXEC') or die ('restricted aceess');
 
 JHtml::_('behavior.tabstate');
 
+if (!JFactory::getUser()->authorise('core.manage', 'com_sppagebuilder'))
+{
+	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+}
+
+JLoader::register('SppagebuilderHelper', __DIR__ . '/helpers/sppagebuilder.php');
+
 jimport('joomla.application.component.controller');
 
-$input = JFactory::getApplication()->input;
-$task = $input->get('task');
-
 $controller = JControllerLegacy::getInstance('sppagebuilder');
-$controller->execute($input->getCmd('task'));
+$controller->execute(JFactory::getApplication()->input->get('task'));
 $controller->redirect();
