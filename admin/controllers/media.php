@@ -302,14 +302,14 @@ class SppagebuilderControllerMedia extends JControllerForm
 		$input 	= JFactory::getApplication()->input;
         $path 	= $input->post->get('path', '/images', 'PATH');
 
-		$images = JFolder::files(JPATH_ROOT . $path, '.png|.jpg|.gif', false, true);
+		$images = JFolder::files(JPATH_ROOT . $path, '.png|.jpg|.gif', false);
 		$folders_list = JFolder::folders(JPATH_ROOT . $path, '.');
 		$folders = JFolder::listFolderTree(JPATH_ROOT . '/images', '.');
 
 		$tree = '<select class="folder-filter">';
 		$tree .= '<option value="/images">/images</option>';
 		foreach ( $folders as $folder ) {
-			$tree .= '<option value="'. $folder['relname'] .'">'. $folder['relname'] .'</option>';
+			$tree .= '<option value="'. str_replace('\\', '/', $folder['relname']) .'">'. str_replace('\\', '/', $folder['relname']) .'</option>';
 		}
 		$tree .= '</select>';
 
@@ -353,6 +353,10 @@ class SppagebuilderControllerMedia extends JControllerForm
 
 		if(count($images)) {
 			foreach ($images as $image) {
+
+				$image = $path . '/' . $image;
+
+				//die($image);
 
 				$image = str_replace(JPATH_ROOT . '/', '', $image);
 				$title = JFile::stripExt(basename($image));
