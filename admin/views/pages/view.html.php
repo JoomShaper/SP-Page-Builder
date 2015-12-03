@@ -85,6 +85,12 @@ class SppagebuilderViewPages extends JViewLegacy
 		);
 
 		JHtmlSidebar::addFilter(
+			JText::_('JOPTION_SELECT_CATEGORY'),
+			'filter_category_id',
+			JHtml::_('select.options', JHtml::_('category.options', 'com_sppagebuilder'), 'value', 'text', $this->state->get('filter.category_id'))
+		);
+
+		JHtmlSidebar::addFilter(
 			JText::_('JOPTION_SELECT_ACCESS'),
 			'filter_access',
 			JHtml::_('select.options', JHtml::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'))
@@ -100,11 +106,12 @@ class SppagebuilderViewPages extends JViewLegacy
 	protected function getSortFields()
 	{
 		return array(
-			'a.published' => JText::_('JSTATUS'),
-			'a.title' => JText::_('JGLOBAL_TITLE'),
-			'a.access' => JText::_('JGRID_HEADING_ACCESS'),
-			'language' => JText::_('JGRID_HEADING_LANGUAGE'),
-			'a.id' => JText::_('JGRID_HEADING_ID')
+			'a.ordering'  	=> JText::_('JGRID_HEADING_ORDERING'),
+			'a.published' 	=> JText::_('JSTATUS'),
+			'a.title' 		=> JText::_('JGLOBAL_TITLE'),
+			'a.access' 		=> JText::_('JGRID_HEADING_ACCESS'),
+			'a.language' 	=> JText::_('JGRID_HEADING_LANGUAGE'),
+			'a.id' 			=> JText::_('JGRID_HEADING_ID')
 		);
 	}
 }

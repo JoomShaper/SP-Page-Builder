@@ -62,6 +62,7 @@
 			<folder>builder</folder>
 			<folder>controllers</folder>
 			<folder>models</folder>
+			<folder>helpers</folder>
 			<folder>sql</folder>
 			<folder>tables</folder>
 			<folder>views</folder>

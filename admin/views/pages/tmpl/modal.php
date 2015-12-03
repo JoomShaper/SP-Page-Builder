@@ -57,17 +57,21 @@ $sortFields = $this->getSortFields();
 		</div>
 
 		<div class="filters well">
-			<select name="filter_access" class="input-medium" onchange="this.form.submit()">
-				<option value=""><?php echo JText::_('JOPTION_SELECT_ACCESS');?></option>
-				<?php echo JHtml::_('select.options', JHtml::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'));?>
-			</select>
 			<select name="filter_published" class="input-medium" onchange="this.form.submit()">
 				<option value=""><?php echo JText::_('JOPTION_SELECT_PUBLISHED');?></option>
 				<?php echo JHtml::_('select.options', JHtml::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true);?>
 			</select>
+			<select name="filter_category_id" class="input-medium" onchange="this.form.submit()">
+				<option value=""><?php echo JText::_('JOPTION_SELECT_CATEGORY');?></option>
+				<?php echo JHtml::_('select.options', JHtml::_('category.options', 'com_sppagebuilder'), 'value', 'text', $this->state->get('filter.category_id'), true);?>
+			</select>
 			<select name="filter_language" class="input-medium" onchange="this.form.submit()">
 				<option value=""><?php echo JText::_('JOPTION_SELECT_LANGUAGE');?></option>
 				<?php echo JHtml::_('select.options', JHtml::_('contentlanguage.existing', true, true), 'value', 'text', $this->state->get('filter.language'));?>
+			</select>
+			<select name="filter_access" class="input-medium" onchange="this.form.submit()">
+				<option value=""><?php echo JText::_('JOPTION_SELECT_ACCESS');?></option>
+				<?php echo JHtml::_('select.options', JHtml::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'));?>
 			</select>
 			<div class="btn-group pull-right hidden-phone">
 				<label for="limit" class="element-invisible"><?php echo JText::_('JFIELD_PLG_SEARCH_SEARCHLIMIT_DESC');?></label>
@@ -101,12 +105,6 @@ $sortFields = $this->getSortFields();
 		<table  class="table table-striped table-condensed" id="pageList">
 			<thead>
 				<tr>
-					<th width="1%" class="hidden-phone">
-						<?php echo JHtml::_('grid.checkall'); ?>
-					</th>
-					<th width="1%" class="nowrap center">
-						<?php echo JHtml::_('grid.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
-					</th>
 					<th>
 						<?php echo JHtml::_('grid.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
 					</th>
@@ -135,12 +133,6 @@ $sortFields = $this->getSortFields();
 					$canChange  = $user->authorise('core.edit.state', 'com_sppagebuilder');
 					?>
 					<tr>
-						<td class="center hidden-phone">
-							<?php echo JHtml::_('grid.id', $i, $item->id); ?>
-						</td>
-						<td class="center">
-							<?php echo JHtml::_('jgrid.published', $item->published, $i, 'pages.', $canChange);?>
-						</td>
 						<td>
 							<?php if ( $canEdit ) : ?>
 								<a href="javascript:void(0)" onclick="if (window.parent) window.parent.<?php echo $this->escape($function);?>('<?php echo $item->id; ?>', '<?php echo $this->escape(addslashes($item->title)); ?>','<?php echo $this->escape(SppagebuilderHelperRoute::getPageRoute($item->id, $item->language)); ?>', null);">

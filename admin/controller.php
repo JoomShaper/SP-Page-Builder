@@ -15,8 +15,8 @@ class SppagebuilderController extends JControllerLegacy
 	function display( $cachable = false, $urlparams = false )
 	{
 		$input = JFactory::getApplication()->input;
-		$input->set('view', $input->getCmd('view','pages'));
-
-		parent::display($cachable);
+		$input->set('view', $this->input->get('view', 'pages'));
+		SppagebuilderHelper::addSubmenu('pages');
+		parent::display($cachable, $urlparams);
 	}
 }

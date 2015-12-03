@@ -16,15 +16,20 @@ $app		= JFactory::getApplication();
 $user		= JFactory::getUser();
 $userId		= $user->get('id');
 
-$listOrder	= $this->escape($this->state->get('list.ordering'));
-$listDirn	= $this->escape($this->state->get('list.direction'));
+$listOrder = $this->escape($this->state->get('list.ordering'));
+$listDirn  = $this->escape($this->state->get('list.direction'));
+$saveOrder = $listOrder == 'a.ordering';
+
+if ($saveOrder) {
+	$saveOrderingUrl = 'index.php?option=com_sppagebuilder&task=pages.saveOrderAjax&tmpl=component';
+	JHtml::_('sortablelist.sortable', 'pageList', 'adminForm', strtolower($listDirn), $saveOrderingUrl, false, true);
+}
 
 $sortFields = $this->getSortFields();
 ?>
 
 <script type="text/javascript">
 	Joomla.orderTable = function() {
-
 		table = document.getElementById("sortTable");
 		direction = document.getElementById("directionTable");
 		order = table.options[table.selectedIndex].value;
@@ -34,7 +39,6 @@ $sortFields = $this->getSortFields();
 		} else {
 			dirn = direction.options[direction.selectedIndex].value;
 		}
-		console.log(order);
 		Joomla.tableOrdering(order, dirn, '');
 	}
 </script>
@@ -89,6 +93,9 @@ $sortFields = $this->getSortFields();
 			<table  class="table table-striped" id="pageList">
 				<thead>
 					<tr>
+						<th width="1%" class="nowrap center hidden-phone">
+							<?php echo JHtml::_('grid.sort', '<i class="icon-menu-2"></i>', 'a.ordering', $listDirn, $listOrder); ?>
+						</th>
 						<th width="1%" class="hidden-phone">
 							<?php echo JHtml::_('grid.checkall'); ?>
 						</th>
@@ -102,7 +109,7 @@ $sortFields = $this->getSortFields();
 							<?php echo JHtml::_('grid.sort',  'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
 						</th>
 						<th width="5%" class="nowrap hidden-phone">
-							<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_LANGUAGE', 'language', $this->state->get('list.direction'), $this->state->get('list.ordering')); ?>
+							<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_LANGUAGE', 'language', $listDirn, $listOrder); ?>
 						</th>
 						<th width="1%" class="nowrap hidden-phone">
 							<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
@@ -119,10 +126,31 @@ $sortFields = $this->getSortFields();
 				<tbody>
 					<?php foreach ($this->items as $i => $item): ?>
 						<?php
+							$item->max_ordering = 0;
+							$ordering   = ($listOrder == 'a.ordering');
 							$canEdit    = $user->authorise('core.edit',       'com_sppagebuilder');
 							$canChange  = $user->authorise('core.edit.state', 'com_sppagebuilder');
 						?>
 						<tr>
+							<td class="order nowrap center hidden-phone">
+							<?php
+								$iconClass = '';
+								if (!$canChange)
+								{
+									$iconClass = ' inactive';
+								}
+								elseif (!$saveOrder)
+								{
+									$iconClass = ' inactive tip-top hasTooltip" title="' . JHtml::tooltipText('JORDERINGDISABLED');
+								}
+								?>
+								<span class="sortable-handler<?php echo $iconClass ?>">
+									<span class="icon-menu"></span>
+								</span>
+								<?php if ($canChange && $saveOrder) : ?>
+									<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering; ?>" class="width-20 text-area-order " />
+								<?php endif; ?>
+							</td>
 							<td class="center hidden-phone">
 								<?php echo JHtml::_('grid.id', $i, $item->id); ?>
 							</td>
@@ -143,6 +171,12 @@ $sortFields = $this->getSortFields();
 										<?php echo JText::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->alias));?>
 									</span>
 								<?php endif; ?>
+								
+								<?php if(isset($item->category_title) && $item->category_title): ?>
+									<div class="small">
+										<?php echo JText::_('JCATEGORY') . ": " . $this->escape($item->category_title); ?>
+									</div>
+								<?php endif; ?>
 							</td>
 							<td class="small hidden-phone">
 								<?php echo $this->escape($item->access_title); ?>
@@ -162,8 +196,6 @@ $sortFields = $this->getSortFields();
 						</tr>
 					<?php endforeach; ?>
 				</tbody>
-				
-				
 			</table>
 		<?php endif; ?>
 		<div>

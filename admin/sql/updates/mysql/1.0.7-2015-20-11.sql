@@ -1,3 +1,6 @@
+ALTER TABLE `#__sppagebuilder` ADD `catid` int(10) NOT NULL AFTER `published`;
+ALTER TABLE `#__sppagebuilder` ADD `ordering` int(11) NOT NULL AFTER `access`;
+
 CREATE TABLE IF NOT EXISTS `#__sppagebuilder_media` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
