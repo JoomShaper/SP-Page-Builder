@@ -69,8 +69,6 @@
 			});
 		});
 
-		//End Goggle Map		
-
 		$clone.randomIds();
 
 		//Modal Title
@@ -90,26 +88,6 @@
 			var $id = $(this).attr('id');
 			tinymce.execCommand('mceAddEditor', false, $id);
 		});
-
-		//Google Map
-		$clone.find('.form-group-gmap').append($('<div class="addon-gmap-canvas"></div>'));
-		$clone.find('.form-group-gmap').each(function(){
-			var $self = $(this);
-
-			$self.find('.addon-gmap-canvas').locationpicker({
-				location: {latitude: $self.find('.addon-gmap-address').data('latitude'), longitude: $self.find('.addon-gmap-address').data('longitude')},
-				radius: 300,
-				inputBinding: {
-					locationNameInput: $self.find('.addon-gmap-address')
-				},
-				enableAutocomplete: true,
-				onchanged: function(currentLocation, radius, isMarkerDropped) {
-					$self.find('.gmap-latlng').val( currentLocation.latitude + ", " + currentLocation.longitude );
-				}			
-			});
-
-		});
-
 	}
 
 	$.fn.cloneRepeatable = function()

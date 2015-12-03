@@ -1030,15 +1030,6 @@ fieldset[disabled] .sppb-btn-link:focus {
   margin-top: 5px;
 }
 
-/*Map Finder*/
-.addon-gmap-canvas {
-  height: 300px;
-  margin-top: 10px;
-}
-.pac-container {
-  z-index: 99999;
-}
-
 /*Separator*/
 .sppb-admin-separtor {
   display: block;
