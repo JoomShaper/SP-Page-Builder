@@ -354,9 +354,7 @@ class SppagebuilderControllerMedia extends JControllerForm
 		if(count($images)) {
 			foreach ($images as $image) {
 
-				$image = $path . '/' . $image;
-
-				//die($image);
+				$image = ltrim($path . '/' . $image, '/');
 
 				$image = str_replace(JPATH_ROOT . '/', '', $image);
 				$title = JFile::stripExt(basename($image));
