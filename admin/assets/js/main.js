@@ -689,6 +689,7 @@ jQuery(function($) {
 	}
 
 	document.adminForm.onsubmit = function(event){
+		event.stopImmediatePropagation();
 		$('#jform_sptext').val( JSON.stringify(genJsonAddons()) );
 	}
 
