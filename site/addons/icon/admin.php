@@ -16,6 +16,13 @@ SpAddonsConfig::addonConfig(
 		'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_ICON_DESC'),
 		'attr'=>array(
 
+			'admin_label'=>array(
+				'type'=>'text', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_ADMIN_LABEL'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_ADMIN_LABEL_DESC'),
+				'std'=> ''
+				),
+
 			'name'=>array(
 				'type'=>'icon', 
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_ICON_NAME'),

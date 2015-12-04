@@ -15,6 +15,14 @@ SpAddonsConfig::addonConfig(
 		'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_VIDEO'),
 		'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_VIDEO_DESC'),
 		'attr'=>array(
+
+			'admin_label'=>array(
+				'type'=>'text', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_ADMIN_LABEL'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_ADMIN_LABEL_DESC'),
+				'std'=> ''
+				),
+
 			'title'=>array(
 				'type'=>'text', 
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE'),

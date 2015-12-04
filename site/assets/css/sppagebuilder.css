@@ -246,26 +246,26 @@
     height: 300px;
   }
 }
-* {
+#sp-page-builder * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-*:before,
-*:after {
+#sp-page-builder *:before,
+#sp-page-builder *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-input,
-button,
-select,
-textarea {
+#sp-page-builder input,
+#sp-page-builder button,
+#sp-page-builder select,
+#sp-page-builder textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
 }
-img {
+#sp-page-builder img {
   vertical-align: middle;
 }
 .sppb-img-responsive,
@@ -296,7 +296,7 @@ img {
 .sppb-img-circle {
   border-radius: 50%;
 }
-hr {
+#sp-page-builder hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;

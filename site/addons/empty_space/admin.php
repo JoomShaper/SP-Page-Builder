@@ -15,6 +15,14 @@ SpAddonsConfig::addonConfig(
 		'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_EMPTY_SPACE'),
 		'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_EMPTY_SPACE_DESC'),
 		'attr'=>array(
+
+			'admin_label'=>array(
+				'type'=>'text', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_ADMIN_LABEL'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_ADMIN_LABEL_DESC'),
+				'std'=> ''
+				),
+
 			'gap'=>array(
 				'type'=>'number', 
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_EMPTY_SPACE_GAP'),

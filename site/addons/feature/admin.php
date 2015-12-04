@@ -15,6 +15,14 @@ SpAddonsConfig::addonConfig(
 		'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_FEATURE_BOX'),
 		'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_FEATURE_BOX_DESC'),
 		'attr'=>array(
+
+			'admin_label'=>array(
+				'type'=>'text', 
+				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_ADMIN_LABEL'),
+				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_ADMIN_LABEL_DESC'),
+				'std'=> ''
+				),
+
 			'title'=>array(
 				'type'=>'text', 
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE'),
@@ -93,14 +101,16 @@ SpAddonsConfig::addonConfig(
 				'type' => 'media',
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_FEATURE_IMAGE'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_FEATURE_IMAGE_DESC'),
-				'std' => ''
+				'std' => '',
+				'depends'=>array('feature_type'=>'image')
 				),
 
 			'icon_name'=>array(
 				'type'=>'icon', 
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_ICON_NAME'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_ICON_NAME_DESC'),
-				'std'=> ''
+				'std'=> '',
+				'depends'=>array('feature_type'=>'icon')
 				),
 
 			'icon_size'=>array(
@@ -109,30 +119,35 @@ SpAddonsConfig::addonConfig(
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_ICON_SIZE_DESC'),
 				'placeholder'=>36,
 				'std'=>36,
+				'depends'=>array('feature_type'=>'icon')
 				),
 
 			'icon_color'=>array(
 				'type'=>'color',
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_COLOR'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_COLOR_DESC'),
+				'depends'=>array('feature_type'=>'icon')
 				),
 
 			'icon_background'=>array(
 				'type'=>'color',
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_BACKGROUND'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_BACKGROUND_DESC'),
+				'depends'=>array('feature_type'=>'icon')
 				),
 
 			'icon_border_color'=>array(
 				'type'=>'color',
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_BORDER_COLOR'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_BORDER_COLOR_DESC'),
+				'depends'=>array('feature_type'=>'icon')
 				),
 
 			'icon_border_width'=>array(
 				'type'=>'number',
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_BORDER_WIDTH_SIZE'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_BORDER_WIDTH_SIZE_DESC'),
+				'depends'=>array('feature_type'=>'icon'),
 				'placeholder'=>'3',
 				),
 
@@ -140,6 +155,7 @@ SpAddonsConfig::addonConfig(
 				'type'=>'number',
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_BORDER_RADIUS'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_BORDER_RADIUS_DESC'),
+				'depends'=>array('feature_type'=>'icon'),
 				'placeholder'=>'5',
 				),
 
@@ -148,6 +164,7 @@ SpAddonsConfig::addonConfig(
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_MARGIN_TOP'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_MARGIN_TOP_DESC'),
 				'placeholder'=>'10',
+				'depends'=>array('feature_type'=>'icon')
 				),
 
 			'icon_margin_bottom'=>array(
@@ -155,6 +172,7 @@ SpAddonsConfig::addonConfig(
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_MARGIN_BOTTOM'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_MARGIN_BOTTOM_DESC'),
 				'placeholder'=>'10',
+				'depends'=>array('feature_type'=>'icon')
 				),				
 
 			'icon_padding'=>array(
@@ -162,6 +180,7 @@ SpAddonsConfig::addonConfig(
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_PADDING'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_PADDING_DESC'),
 				'placeholder'=>'20',
+				'depends'=>array('feature_type'=>'icon')
 				),
 
 			'text'=>array(
