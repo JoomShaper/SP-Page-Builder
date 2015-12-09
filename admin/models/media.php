@@ -9,6 +9,9 @@
 defined ('_JEXEC') or die ('restricted aceess');
 
 jimport('joomla.application.component.modellist');
+jimport('joomla.filesystem.folder');
+jimport('joomla.filesystem.file');
+jimport('joomla.image.image');
 
 class SppagebuilderModelMedia extends JModelList
 {
