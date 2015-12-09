@@ -182,9 +182,9 @@
 		});
 
 		//Media
-		$(this).find('.media').each(function(){
+		$(this).find('.sppb-media-input').each(function(){
 			var $id = random_number();
-			$(this).find('.input-media').attr('id', 'media-' + $id);
+			$(this).attr('id', 'media-' + $id);
 		});
 
 		//Editor
