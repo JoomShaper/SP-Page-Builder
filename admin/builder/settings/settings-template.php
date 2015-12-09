@@ -60,7 +60,7 @@ $addons_category = array_unique($addons_category);
 </div>
 
 <!-- Row Options Modal -->
-<div class="sp-modal fade" id="modal-row" tabindex="-1" role="dialog" aria-labelledby="modal-row-label" aria-hidden="true">
+<div class="sp-modal fade" id="modal-row" role="dialog" aria-labelledby="modal-row-label" aria-hidden="true">
 	<div class="sp-modal-dialog">
 		<div class="sp-modal-content">
 			<div class="sp-modal-header">
@@ -79,7 +79,7 @@ $addons_category = array_unique($addons_category);
 </div>
 
 <!-- Column Options Modal -->
-<div class="sp-modal fade" id="modal-column" tabindex="-1" role="dialog" aria-labelledby="modal-column-label" aria-hidden="true">
+<div class="sp-modal fade" id="modal-column" role="dialog" aria-labelledby="modal-column-label" aria-hidden="true">
 	<div class="sp-modal-dialog">
 		<div class="sp-modal-content">
 			<div class="sp-modal-header">
@@ -98,7 +98,7 @@ $addons_category = array_unique($addons_category);
 </div>
 
 <!-- Modal -->
-<div class="sp-modal fade" id="modal-addons" tabindex="-1" role="dialog" aria-labelledby="modal-addons-label" aria-hidden="true">
+<div class="sp-modal fade" id="modal-addons" role="dialog" aria-labelledby="modal-addons-label" aria-hidden="true">
 	<div class="sp-modal-dialog sp-modal-xlg">
 		<div class="sp-modal-content">
 			<div class="sp-modal-header">
@@ -124,7 +124,7 @@ $addons_category = array_unique($addons_category);
 
 
 <!-- Modal -->
-<div class="sp-modal fade" id="modal-addon" tabindex="-1" role="dialog" aria-labelledby="modal-addon-label" aria-hidden="true">
+<div class="sp-modal fade" id="modal-addon" role="dialog" aria-labelledby="modal-addon-label" aria-hidden="true">
 	<div class="sp-modal-dialog sp-modal-lg">
 		<div class="sp-modal-content">
 			<div class="sp-modal-header">
@@ -255,35 +255,4 @@ $addons_category = array_unique($addons_category);
 		?>
 
 	</ul>
-</div>
-
-
-<!--Media Modal-->
-<div class="sppb-media-modal" style="display:none">
-	<div class="sppb-media-modal-inner">
-		<div class="sppb-media-modal-header">
-			<h3 class="sppb-media-modal-title"><i class="fa fa-toggle-right"></i> <span class="hidden-phone"><?php echo JText::_('COM_SPPAGEBUILDER_TYPE_MEDIA_MANAGER'); ?></span></h3>
-			<input type="file" accept="image/*" style="display:none;" />
-			<a href="#" class="btn btn-success btn-large btn-upload-file"><i class="fa fa-upload"></i> <span class="hidden-phone"><?php echo JText::_('COM_SPPAGEBUILDER_TYPE_MEDIA_UPLOAD'); ?></span></a>
-			<a href="#" class="btn-close-modal"><i class="fa fa-times"></i></a>
-		</div>
-		<div class="sppb-media-modal-subheader">
-			<ul class="sppb-media-modal-tab">
-				<li class="active"><a class="tab-browse-media" href="#"><i class="fa fa-image"></i> <span class="hidden-phone"><?php echo JText::_('COM_SPPAGEBUILDER_TYPE_MEDIA_BROWSE_MEDIA'); ?></span></a></li>
-				<li><a class="tab-browse-folder" href="#"><i class="fa fa-folder-open-o"></i> <span class="hidden-phone"><?php echo JText::_('COM_SPPAGEBUILDER_TYPE_MEDIA_BROWSE_FOLDER'); ?></span></a></li>
-			</ul>
-
-			<div class="pull-right sppb-media-modal-filter">
-			</div>
-		</div>
-
-		<div class="sppb-media-modal-body">
-			<div class="spinner">
-				<div class="bounce1"></div>
-				<div class="bounce2"></div>
-				<div class="bounce3"></div>
-			</div>
-			<a class="btn btn-primary btn-large btn-loadmore" href="#" style="display: none;"><i class="fa fa-refresh"></i> <?php echo JText::_('COM_SPPAGEBUILDER_TYPE_MEDIA_LOAD_MORE'); ?></a>
-		</div>
-	</div>
 </div>

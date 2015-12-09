@@ -1,0 +1,36 @@
+<?php
+/**
+ * @package SP Page Builder
+ * @author JoomShaper http://www.joomshaper.com
+ * @copyright Copyright (c) 2010 - 2015 JoomShaper
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or later
+*/
+//no direct accees
+defined ('_JEXEC') or die ('restricted aceess');
+
+jimport('joomla.application.component.view');
+
+
+class SppagebuilderViewMedia extends JViewLegacy
+{
+	public function display( $tpl = null ) {
+		$input 			= JFactory::getApplication()->input;
+        $layout         = $input->get('layout', 'browse', 'STRING');
+        $this->date 	= $input->post->get('date', NULL, 'STRING');
+        $this->start 	= $input->post->get('start', 0, 'INT');
+        $this->search   = $input->post->get('search', NULL, 'STRING');
+        $this->limit 	= 18;
+
+    	$model 			= $this->getModel();
+        
+        if($layout == 'browse') {
+            $this->items    = $model->getItems();
+            $this->filters  = $model->getDateFilters($this->date, $this->search);
+            $this->total    = $model->getTotalMedia($this->date, $this->search);
+        } else {
+            $this->media = $model->getFolders();
+        }
+
+		parent::display($tpl);
+	}
+}

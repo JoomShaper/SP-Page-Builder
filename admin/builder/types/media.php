@@ -14,6 +14,17 @@ class SpTypeMedia
 	static function getInput($key, $attr)
 	{
 
+		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER');
+		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_UPLOAD_FILE');
+		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_CLOSE');
+		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_INSERT');
+		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_SEARCH');
+		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_CANCEL');
+		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_DELETE');
+		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_CONFIRM_DELETE');
+		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_LOAD_MORE');
+		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_UNSUPPORTED_FORMAT');
+
 		if(!isset($attr['std'])){
 			$attr['std'] = '';
 		}
@@ -40,18 +51,16 @@ class SpTypeMedia
 		
 		$output  = '<div class="form-group"' . $depend_data . '>';
 		$output .= '<label>' . $attr['title'] . '</label>';
-		$output .= '<div class="media">';
+		
+		if($attr['std']) {
+			$output .= '<img class="sppb-media-preview" src="' . JURI::root(true) . '/' . $attr['std'] . '" alt="" />';
+		} else {
+			$output .= '<img class="sppb-media-preview no-image" alt="" />';
+		}
 
-		$output .= '<div class="media-preview">';
-		$output .= '<div class="image-preview">';
-		$output .= '<img ' . $src . ' alt="" height="100px">';
-		$output .= '</div>';
-		$output .= '</div>';
-
-		$output .= '<input type="hidden" data-attrname="'.$key.'" class="input-media addon-input" value="'.$attr['std'].'">';
-		$output .= '<a href="#" class="sppb-btn sppb-btn-primary sppb-btn-media">'. JText::_('COM_SPPAGEBUILDER_TYPE_MEDIA_SELECT') .'</a>';
-		$output .= ' <a class="sppb-btn sppb-btn-danger remove-media" href="#"><i class="icon-remove"></i></a>';
-		$output .= '</div>';
+		$output .= '<input type="hidden" data-attrname="'.$key.'" class="input-media sppb-media-input addon-input" value="'.$attr['std'].'">';
+		$output .= '<a href="#" class="sppb-btn sppb-btn-primary sppb-btn-media-manager">'. JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_SELECT') .'</a>';
+		$output .= ' <a class="sppb-btn sppb-btn-danger btn-clear-image" href="#"><i class="icon-remove"></i></a>';
 
 		if( ( isset($attr['desc']) ) && ( isset($attr['desc']) != '' ) )
 		{
