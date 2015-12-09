@@ -243,39 +243,52 @@
 			force_p_newlines : false,
 			forced_root_block : '',
 			file_browser_callback: function(field_name, url, type, win) {
-				var modal_html = '';
-				modal_html += '<div class="sppb-media-modal-overlay"></div>';
-				modal_html += $('<div>').append($('.sppb-media-modal').clone().removeClass('sppb-media-modal').attr('id', 'sppb-media-modal').attr('data-target_id', field_name)).html();
+				var media_modal = '<div class="sppb-media-modal-overlay" tabindex="-1">'
+			    media_modal += '<div id="sppb-media-modal">'
+			    media_modal += '<div class="sppb-media-modal-inner">'
+			    media_modal += '<div class="sppb-media-modal-header clearfix">'
+			    media_modal += '<h3 class="pull-left"><i class="fa fa-toggle-right"></i> ' + Joomla.JText._('COM_SPPAGEBUILDER_MEDIA_MANAGER') + '</h3>'
+			    media_modal += '<div class="pull-right"><input type="file" accept="image/*" style="display:none"><a href="#" class="btn btn-success btn-large btn-upload-media"><i class="fa fa-upload"></i> ' + Joomla.JText._('COM_SPPAGEBUILDER_MEDIA_MANAGER_UPLOAD_FILE') + '</a><a href="#" class="btn btn-danger btn-large btn-close-modal"><i class="fa fa-times"></i> ' + Joomla.JText._('COM_SPPAGEBUILDER_MEDIA_MANAGER_CLOSE') + '</a></div>'
+			    media_modal += '</div>'
 
-				$(modal_html).hide().appendTo($('body')).fadeIn('fast');
+			    media_modal += '<div class="sppb-media-modal-subheader clearfix">'
 
-				var request = {
-					'option' : 'com_sppagebuilder',
-					'task' : 'media.browse'
-				};
+			    media_modal += '<ul class="sppb-media-modal-tab">'
+			    media_modal += '<li class="active"><a class="tab-browse-media" href="#"><i class="fa fa-image"></i> <span class="hidden-phone">Browse Media</span></a></li>'
+			    media_modal += '<li><a class="tab-browse-folder" href="#"><i class="fa fa-folder-open-o"></i> <span class="hidden-phone">Browse Folder</span></a></li>'
+			    media_modal += '</ul>'
 
-				$.ajax({
-					type   : 'POST',
-					data   : request,
-					success: function (response) {
-						$('#sppb-media-modal .spinner').remove();
+			    media_modal += '<div class="sppb-media-modal-filter-tools">'
+			    media_modal += '<div class="sppb-media-search"><i class="fa fa-search"></i><input type="text" class="input-search-media" placeholder="' + Joomla.JText._('COM_SPPAGEBUILDER_MEDIA_MANAGER_SEARCH') + '"><a href="#" class="sppb-clear-search" style="display: none;"><i class="fa fa-times-circle"></i></a></div>'
+			    media_modal += '<div class="sppb-media-modal-filter"></div>'
+			    media_modal += '</div>'
 
-						try {
-							var data = $.parseJSON(response);
+			    media_modal += '</div>'
 
-							if(data.loadmore) {
-								$('#sppb-media-modal .btn-loadmore').removeAttr('style');
-							} else {
-								$('#sppb-media-modal .btn-loadmore').hide();
-							}
+			    media_modal += '<div class="sppb-media-modal-btn-tools clearfix" style="display:none;">'
+			    media_modal += '<a href="#" class="btn btn-primary btn-insert-media" data-target="'+ field_name +'"><i class="fa fa-check"></i> ' + Joomla.JText._('COM_SPPAGEBUILDER_MEDIA_MANAGER_INSERT') + '</a> <a href="#" class="btn btn-warning btn-cancel-media"><i class="fa fa-times"></i> ' + Joomla.JText._('COM_SPPAGEBUILDER_MEDIA_MANAGER_CANCEL') + '</a> <a href="#" class="btn btn-danger btn-delete-media"><i class="fa fa-minus-circle"></i> ' + Joomla.JText._('COM_SPPAGEBUILDER_MEDIA_MANAGER_DELETE') + '</a>'
+			    media_modal += '</div>'
 
-							$('#sppb-media-modal .sppb-media-modal-body').prepend(data.output);
-							$('#sppb-media-modal .sppb-media-modal-filter').html(data.date_filter);
-						} catch (e) {
-							$('#sppb-media-modal .sppb-media-modal-body').html(response);
-						}
-					}
-				});
+			    media_modal += '<div class="sppb-media-modal-body">'
+			    media_modal += '<div class="sppb-media-modal-body-inner">'
+
+			    media_modal += '<div class="spinner">'
+			    media_modal += '<div class="bounce1"></div>'
+			    media_modal += '<div class="bounce2"></div>'
+			    media_modal += '<div class="bounce3"></div>'
+			    media_modal += '</div>'
+
+			    media_modal += '<a class="btn btn-default btn-large btn-loadmore" href="#" style="display: none;"><i class="fa fa-refresh"></i> ' + Joomla.JText._('COM_SPPAGEBUILDER_MEDIA_MANAGER_LOAD_MORE') + '</a>';
+
+			    media_modal += '</div>'
+			    media_modal += '</div>'
+
+			    media_modal += '</div>'
+			    media_modal += '</div>'
+
+			    $(media_modal).hide().appendTo($('body').addClass('sppb-media-modal-open')).fadeIn(300, function() {
+			      $(this).browseMedia()
+			    })
 			},
 
 			toolbar_items_size: "small",
