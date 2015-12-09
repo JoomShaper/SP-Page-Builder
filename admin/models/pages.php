@@ -54,7 +54,7 @@ class SppagebuilderModelPages extends JModelList
 		$this->setState('filter.language', $language);
 
 		// List state information.
-		parent::populateState('a.id', 'desc');
+		parent::populateState('a.ordering', 'asc');
 	}
 
 	protected function getStoreId($id = '')
