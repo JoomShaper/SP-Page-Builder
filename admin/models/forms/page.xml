@@ -13,7 +13,7 @@
 
 	<fieldset name="seosettings" label="COM_SPPAGEBUILDER_FIELDSET_SEOSETTINGS">
 		<field name="og_title" type="text" label="COM_SPPAGEBUILDER_FIELD_OG_TITLE" hint="COM_SPPAGEBUILDER_FIELD_OG_TITLE_PLACEHOLDER" />
-		<field name="og_image" type="media" label="COM_SPPAGEBUILDER_FIELD_OG_IMAGE" />
+		<field name="og_image" type="spmedia" label="COM_SPPAGEBUILDER_FIELD_OG_IMAGE" />
 		<field name="og_description" type="textarea" label="COM_SPPAGEBUILDER_FIELD_OG_DESC" description="COM_SPPAGEBUILDER_FIELD_OG_DESC_DESC" rows="5" cols="5" />
 	</fieldset>
 
