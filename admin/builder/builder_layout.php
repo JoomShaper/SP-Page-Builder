@@ -117,6 +117,13 @@ function builder_layout( $layout_data = null )
 											$title = $addon->name;
 										}
 
+										$admin_label = '';
+										if ( isset($addon->atts->admin_label) && $addon->atts->admin_label ) {
+											$admin_label = $addon->atts->admin_label;
+										} else if( isset($addon->atts->title) && $addon->atts->title ) {
+											$admin_label = $addon->atts->title;
+										}
+
 										$output .= '<div class="generated">
 										<div class="generated-items">
 											<div class="generated-item clearfix">
@@ -134,7 +141,7 @@ function builder_layout( $layout_data = null )
 												</a>
 											</div>';
 											
-											$output .= '<p class="addon-input-title">' . ((isset($addon->atts->title))? $addon->atts->title : '') . '</p>';
+											$output .= '<p class="addon-input-title">' . $admin_label . '</p>';
 
 											$output .= '<div class="item-inner">';
 
