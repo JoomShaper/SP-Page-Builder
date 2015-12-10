@@ -1389,6 +1389,12 @@ body.sppb-media-modal-open {
   #sppb-media-modal .sppb-media > li {
     width: 50%;
   }
+
+  #sppb-media-modal .sppb-media>li>div>div>div.sppb-media-image .media-folder-warpper .fa-folder {
+    font-size: 76px;
+    line-height: 76px;
+    border-radius: 5px;
+  }
 }
 
 #sppb-media-modal .sppb-media>li>div {

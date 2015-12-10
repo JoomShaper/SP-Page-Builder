@@ -18,12 +18,12 @@ require_once JPATH_COMPONENT . '/helpers/image.php';
 class SppagebuilderControllerMedia extends JControllerForm
 {
 
-	// Upload File
-	public function upload_media() {
-		$model 	= $this->getModel();
-		$input 	= JFactory::getApplication()->input;
-        $image 	= $input->files->get('image');
-        $dir 	= $input->post->get('folder', '', 'PATH');
+    // Upload File
+    public function upload_media() {
+        $model  = $this->getModel();
+        $input  = JFactory::getApplication()->input;
+        $image  = $input->files->get('image');
+        $dir    = $input->post->get('folder', '', 'PATH');
         $report = array();
         
         if(count($image)) {
@@ -56,7 +56,7 @@ class SppagebuilderControllerMedia extends JControllerForm
                     $folder = 'images/' . JHtml::_('date', $date, 'Y') . '/' . JHtml::_('date', $date, 'm') . '/' . JHtml::_('date', $date, 'd');
 
                     if($dir != '') {
-                    	$folder = ltrim($dir, '/');
+                        $folder = ltrim($dir, '/');
                     }
 
                     if(!JFolder::exists( JPATH_ROOT . '/' . $folder )) {
@@ -78,13 +78,13 @@ class SppagebuilderControllerMedia extends JControllerForm
                         $ext        = JFile::getExt($file);
                         $image_name = $base_name . '.' . $ext;
                         $i++;
-                        $dest 		= JPATH_ROOT . '/' . $folder . '/' . $image_name;
-                        $src 		= $folder . '/'  . $image_name;
+                        $dest       = JPATH_ROOT . '/' . $folder . '/' . $image_name;
+                        $src        = $folder . '/'  . $image_name;
                     } while(file_exists($dest));
                     // End Do not override
 
                     if(JFile::upload($path, $dest)) {
-                    	$thumb = '';
+                        $thumb = '';
                         
                         if(strtolower($ext) == 'svg') {
                             $report['src'] = JURI::root(true) . '/' . $src;
@@ -99,11 +99,11 @@ class SppagebuilderControllerMedia extends JControllerForm
                             }
                         }
 
-                    	$insertid = $model->insertMedia($base_name, $src, $thumb, 'image');
-                    	$report['status'] = true;
-						$report['title'] = $base_name;
-						$report['id'] = $insertid;
-						$report['path'] = $src;
+                        $insertid = $model->insertMedia($base_name, $src, $thumb, 'image');
+                        $report['status'] = true;
+                        $report['title'] = $base_name;
+                        $report['id'] = $insertid;
+                        $report['path'] = $src;
                     }
                 }
             }
@@ -113,10 +113,10 @@ class SppagebuilderControllerMedia extends JControllerForm
         }
         echo json_encode($report);
         die();
-	}
+    }
 
 
-	// Delete File
+    // Delete File
     public function delete_media() {
         $model  = $this->getModel();
         $input  = JFactory::getApplication()->input;
@@ -136,14 +136,14 @@ class SppagebuilderControllerMedia extends JControllerForm
         $report['status'] = false;
 
         if(isset($media->thumb) && $media->thumb) {
-        	if(JFile::exists(JPATH_ROOT . '/' . $media->thumb)) {
-        		JFile::delete(JPATH_ROOT . '/' . $media->thumb); // Delete thumb
-        	}
+            if(JFile::exists(JPATH_ROOT . '/' . $media->thumb)) {
+                JFile::delete(JPATH_ROOT . '/' . $media->thumb); // Delete thumb
+            }
         }
 
         if(JFile::exists($src)) {
             if(!JFile::delete($src)) {
-            	$report['status'] = false;
+                $report['status'] = false;
                 $report['output'] = JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_DELETE_FAILED');
                 echo json_encode($report);
                 die;

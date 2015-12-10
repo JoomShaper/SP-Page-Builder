@@ -27,7 +27,7 @@ class SppagebuilderModelMedia extends JModelList
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true);
 		$query->select( array('id', 'title', 'path', 'thumb', 'created_on'));
-		$query->from($db->quoteName('#__sppagebuilder_media'));
+		$query->from($db->quoteName('#__spmedia'));
 
 		if($search) {
 			$search = preg_replace('#\xE3\x80\x80#s', " ", trim($search));
@@ -53,7 +53,7 @@ class SppagebuilderModelMedia extends JModelList
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true);
 		$query->select('DISTINCT YEAR( created_on ) AS year, MONTH( created_on ) AS month');
-		$query->from($db->quoteName('#__sppagebuilder_media'));
+		$query->from($db->quoteName('#__spmedia'));
 
 		if($search) {
 			$search = preg_replace('#\xE3\x80\x80#s', " ", trim($search));
@@ -77,7 +77,7 @@ class SppagebuilderModelMedia extends JModelList
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true);
 		$query->select( 'COUNT(id)' );
-		$query->from($db->quoteName('#__sppagebuilder_media'));
+		$query->from($db->quoteName('#__spmedia'));
 
 		if($search) {
 			$search = preg_replace('#\xE3\x80\x80#s', " ", trim($search));
@@ -99,10 +99,10 @@ class SppagebuilderModelMedia extends JModelList
 	public function insertMedia($title, $path, $thumb='', $type='image') {
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true);
-		$columns = array('title', 'path', 'thumb', 'type', 'created_on', 'created_by');
-		$values = array($db->quote($title), $db->quote($path), $db->quote($thumb), $db->quote($type), $db->quote( JFactory::getDate('now') ), JFactory::getUser()->id);
+		$columns = array('title', 'path', 'thumb', 'type', 'alt', 'extension', 'created_on', 'created_by');
+		$values = array($db->quote($title), $db->quote($path), $db->quote($thumb), $db->quote($type), $db->quote($title), $db->quote('com_sppagebuilder'), $db->quote( JFactory::getDate('now') ), JFactory::getUser()->id);
 		$query
-		    ->insert($db->quoteName('#__sppagebuilder_media'))
+		    ->insert($db->quoteName('#__spmedia'))
 		    ->columns($db->quoteName($columns))
 		    ->values(implode(',', $values));
 		 
@@ -117,7 +117,7 @@ class SppagebuilderModelMedia extends JModelList
 		$db = JFactory::getDbo();
         $query = $db->getQuery(true);
         $query->select($db->quoteName(array('title', 'path', 'thumb')));
-        $query->from($db->quoteName('#__sppagebuilder_media'));
+        $query->from($db->quoteName('#__spmedia'));
         $query->where($db->quoteName('id') . ' = ' . $db->quote($id));
         $db->setQuery($query);
 
@@ -128,7 +128,7 @@ class SppagebuilderModelMedia extends JModelList
 		$db = JFactory::getDbo();
         $query = $db->getQuery(true);
         $conditions = array($db->quoteName('id') . ' = ' . $db->quote($id));
-        $query->delete($db->quoteName('#__sppagebuilder_media'));
+        $query->delete($db->quoteName('#__spmedia'));
         $query->where($conditions);
         $db->setQuery($query);
         $db->execute();
