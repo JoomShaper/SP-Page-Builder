@@ -19,7 +19,7 @@ $report['output'] 	= '';
 $tree = '<select class="sppb-folder-filter">';
 $tree .= '<option value="/images">/images</option>';
 foreach ( $media['folders'] as $folder ) {
-	$tree .= '<option value="'. $folder['relname'] .'">'. $folder['relname'] .'</option>';
+	$tree .= '<option value="'. str_replace('\\', '/', $folder['relname']) .'">'. str_replace('\\', '/', $folder['relname']) .'</option>';
 }
 $tree .= '</select>';
 $report['folders_tree'] = $tree; // End folders tree
@@ -61,7 +61,10 @@ if(isset($media['folders_list']) && count($media['folders_list'])) {
 if(isset($media['images']) && count($media['images'])) {
 	foreach ($media['images'] as $image) {
 
-		$path = str_replace(JPATH_ROOT . '/', '', $image);
+		$image = str_replace('\\', '/',$image);
+		$root_path = str_replace('\\', '/', JPATH_ROOT);
+		$path = str_replace($root_path . '/', '', $image);
+		
 		$title = JFile::stripExt(basename($image));
 		$report['output'] .= '<li class="sppb-media-item" data-src="'. JURI::root(true) . '/' . $path .'" data-path="'. $path .'">';
 		$report['output'] .= '<div>';
