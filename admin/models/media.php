@@ -144,7 +144,7 @@ class SppagebuilderModelMedia extends JModelList
 
         $output = array();
 		$images = JFolder::files(JPATH_ROOT . $path, '.png|.jpg|.gif|.svg', false, true);
-		$folders_list = JFolder::folders(JPATH_ROOT . $path, '.', false, false, array('.svn', 'CVS', '.DS_Store', '__MACOSX', '_spmedia_thumbs'));
+		$folders_list = JFolder::folders(JPATH_ROOT . $path, '.', false, false, array('.svn', 'CVS', '.DS_Store', '__MACOSX', '_sppb_thumbs'));
 		$folders = self::listFolderTree(JPATH_ROOT . '/images', '.');
 
 		$output['images'] = $images;
@@ -165,7 +165,7 @@ class SppagebuilderModelMedia extends JModelList
 
 		if ($level < $maxLevel)
 		{
-			$folders    = JFolder::folders($path, $filter, false, false, array('.svn', 'CVS', '.DS_Store', '__MACOSX', '_spmedia_thumbs'));
+			$folders    = JFolder::folders($path, $filter, false, false, array('.svn', 'CVS', '.DS_Store', '__MACOSX', '_sppb_thumbs'));
 			$pathObject = new JFilesystemWrapperPath;
 
 			// First path, index foldernames

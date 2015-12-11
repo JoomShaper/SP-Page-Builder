@@ -63,8 +63,8 @@ class SppagebuilderControllerMedia extends JControllerForm
                         JFolder::create(JPATH_ROOT . '/' . $folder, 0755);
                     }
 
-                    if(!JFolder::exists( JPATH_ROOT . '/' . $folder . '/_spmedia_thumbs' )) {
-                        JFolder::create(JPATH_ROOT . '/' . $folder . '/_spmedia_thumbs', 0755);
+                    if(!JFolder::exists( JPATH_ROOT . '/' . $folder . '/_sppb_thumbs' )) {
+                        JFolder::create(JPATH_ROOT . '/' . $folder . '/_sppb_thumbs', 0755);
                     }
 
                     $name = $image['name'];
@@ -91,9 +91,9 @@ class SppagebuilderControllerMedia extends JControllerForm
                         } else {
                             $image = new SppagebuilderHelperImage($dest);
                             if( ($image->getWidth() >300) || ($image->getWidth() >225) ) {
-                                $image->createThumbs(array('spmedia_thumb'=>'300x225'), 5, '_spmedia_thumbs');
-                                $report['src'] = JURI::root(true) . '/' . $folder . '/_spmedia_thumbs/' . $base_name . '.' . $ext;
-                                $thumb      = $folder . '/_spmedia_thumbs/'  . $base_name . '.' . $ext;
+                                $image->createThumbs(array('sppb_thumb'=>'300x225'), 5, '_sppb_thumbs');
+                                $report['src'] = JURI::root(true) . '/' . $folder . '/_sppb_thumbs/' . $base_name . '.' . $ext;
+                                $thumb      = $folder . '/_sppb_thumbs/'  . $base_name . '.' . $ext;
                             } else {
                                 $report['src'] = JURI::root(true) . '/' . $src;
                             }
