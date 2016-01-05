@@ -58,13 +58,17 @@ class SppagebuilderController extends JControllerLegacy{
 
     function display( $cachable = false, $urlparams = false )
 	{
-		$input = JFactory::getApplication()->input;
-		
-		if ($input->getCmd('view','pages') === 'pages') {
-			JFactory::getApplication()->redirect(JURI::base());
+		$apps = JFactory::getApplication();
+
+		$id    		= $this->input->getInt('id');
+		$vName 		= $this->input->getCmd('view', 'page');
+
+		if (!$id  || $vName !== 'page')
+		{
+			return JError::raiseError(404, 'Page not found');
 		}
 
-		$input->set('view', $input->getCmd('view','pages'));
+		$this->input->set('view', $vName);
 
 		parent::display($cachable);
 	}
