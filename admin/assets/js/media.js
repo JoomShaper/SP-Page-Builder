@@ -418,11 +418,14 @@
   /* ========================================================================
   * Remove Media
   * ======================================================================== */
-  $(document).on('click', '.btn-clear-image', function(event) {
-    event.preventDefault()
+   $(document).on('click', '.btn-clear-image', function(event) {
+    event.preventDefault();
 
-    $(this).parent().find('.sppb-media-preview').addClass('no-image').removeAttr('src')
-    $(this).parent().find('.sppb-media-input').val('')
+    var $this = $(this);
+
+    $this.siblings('.sppb-media-preview').addClass('no-image').removeAttr('src');
+    $this.siblings('.sp-media-input').val('');
+    $this.siblings('.sppb-media-input').val('');
   })
 
   /* ========================================================================
