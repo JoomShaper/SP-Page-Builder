@@ -457,11 +457,8 @@ jQuery(function($) {
 					}
 				}else if($that.hasClass('input-media')){
 					if($attr_value){
-						var $that = $(this),
-					 		$imgParent = $that.parent('.media');
-						$imgParent.find('img.media-preview').each(function() {
-							$imgSrc = $(this).attr('src',pagebuilder_base+$attr_value);
-						});
+						$that.prev('.sppb-media-preview').removeClass('no-image')
+							.attr('src',pagebuilder_base+$attr_value);
 					}
 					$that.val( $attr_value );
 				}else{
