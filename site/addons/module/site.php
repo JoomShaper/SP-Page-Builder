@@ -71,6 +71,22 @@ function sp_module_addon($atts){
 	$output = '';
 
 	if(count($modules)) {
+
+		$output .= '<div class="sppb-addon sppb-addon-module ' . $class . '">';
+		$output .= '<div class="sppb-addon-content">';
+
+		if($title) {
+
+			$title_style = '';
+			if($title_margin_top !='') $title_style .= 'margin-top:' . (int) $title_margin_top . 'px;';
+			if($title_margin_bottom !='') $title_style .= 'margin-bottom:' . (int) $title_margin_bottom . 'px;';
+			if($title_text_color) $title_style .= 'color:' . $title_text_color  . ';';
+			if($title_fontsize) $title_style .= 'font-size:'.$title_fontsize.'px;line-height:'.$title_fontsize.'px;';
+			if($title_fontweight) $title_style .= 'font-weight:'.$title_fontweight.';';
+
+			$output .= '<'.$heading_selector.' class="sppb-addon-title" style="' . $title_style . '">' . $title . '</'.$heading_selector.'>';
+		}
+
 		foreach ($modules as $module) {
 			$file				= $module->module;
 			$custom				= substr($file, 0, 4) == 'mod_' ?  0 : 1;
@@ -78,20 +94,18 @@ function sp_module_addon($atts){
 			$module->name		= $custom ? $module->title : substr($file, 4);
 			$module->style		= null;
 			$module->position	= strtolower($module->position);
-			$clean[$module->id]	= $module;
-
-			$output .= '<div class="sppb-addon sppb-addon-module ' . $class . '">';
-			$output .= '<div class="sppb-addon-content">';
+			$clean[$module->id]	= $module;	
 
 			if($module_type == 'position') {
-				$output .= JModuleHelper::renderModule(  $module, array('style' => 'sp_xhtml'));
+				$output .= JModuleHelper::renderModule($module, array('style' => 'sp_xhtml'));
 			} else {
-				$output .= JModuleHelper::renderModule(  $module, array('style' => 'none'));
+				$output .= JModuleHelper::renderModule($module, array('style' => 'none'));
 			}
 
-			$output .= '</div>';
-			$output .= '</div>';
 		}
+
+		$output .= '</div>';
+		$output .= '</div>';
 
 		return $output;
 	}
