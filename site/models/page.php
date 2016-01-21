@@ -112,4 +112,21 @@ class SppagebuilderModelPage extends JModelItem
 
 		return $this->_item[$pageId];
 	}
+
+	/**
+	 * Increment the hit counter for the page.
+	 *
+	 * @param   integer  $pk  Optional primary key of the page to increment.
+	 *
+	 * @return  boolean  True if successful; false otherwise and internal error set.
+	 */
+	public function hit($pk = 0)
+	{
+		$pk = (!empty($pk)) ? $pk : (int) $this->getState('page.id');
+		$table = JTable::getInstance('Page', 'SppagebuilderTable');
+		$table->load($pk);
+		$table->hit($pk);
+
+		return true;
+	}
 }

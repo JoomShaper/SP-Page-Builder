@@ -31,6 +31,9 @@ class SppagebuilderViewPage extends JViewLegacy
 			return;
 		}
 
+		$model = $this->getModel();
+		$model->hit();
+
 		$this->_prepareDocument();
 		parent::display($tpl);
 	}

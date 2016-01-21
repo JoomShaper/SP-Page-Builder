@@ -114,6 +114,9 @@ $sortFields = $this->getSortFields();
 						<th width="1%" class="nowrap hidden-phone">
 							<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 						</th>
+						<th width="1%" class="nowrap hidden-phone">
+							<?php echo JHtml::_('grid.sort', 'JGLOBAL_HITS', 'a.hits', $listDirn, $listOrder); ?>
+						</th>
 					</tr>
 				</thead>
 				<tfoot>
@@ -191,6 +194,10 @@ $sortFields = $this->getSortFields();
 
 							<td class="center hidden-phone">
 								<?php echo (int) $item->id; ?>
+							</td>
+
+							<td class="center hidden-phone">
+								<?php echo (int) $item->hits; ?>
 							</td>
 
 						</tr>

@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS `#__sppagebuilder` (
   `og_description` varchar(255) NOT NULL,
   `page_layout` varchar(55) DEFAULT NULL,
   `language` char(7) NOT NULL,
+  `hits` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

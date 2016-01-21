@@ -26,6 +26,7 @@ class SppagebuilderModelPages extends JModelList
 				'access', 'a.access', 'access_level',
 				'created_time','a.created_time',
 				'ordering', 'a.ordering',
+				'hits', 'a.hits',
 				'language','a.language'
 			);
 		}
@@ -79,7 +80,7 @@ class SppagebuilderModelPages extends JModelList
 			$this->getState(
 				'list.select',
 				'a.id, a.title, a.alias, a.text, a.created_user_id,'.
-					'a.published, a.access, a.catid, a.ordering, a.created_time, a.created_user_id, a.language'
+					'a.published, a.access, a.catid, a.ordering, a.created_time, a.created_user_id, a.language, a.hits'
 			)
 		);
 
