@@ -37,7 +37,7 @@ jQuery(function($) {
 		//Search addon
 		$(document).on('keyup', '#modal-addons #search-addon', function(){
 			var value = $(this).val();
-			var exp = new RegExp('^' + value, 'i');
+			var exp = new RegExp('.*?' + value + '.*?', 'i');
 
 			$('#modal-addons .addon-filter ul li').removeClass('active').first().addClass('active');
 
