@@ -112,10 +112,10 @@ $sortFields = $this->getSortFields();
 							<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_LANGUAGE', 'language', $listDirn, $listOrder); ?>
 						</th>
 						<th width="1%" class="nowrap hidden-phone">
-							<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('grid.sort', 'JGLOBAL_HITS', 'a.hits', $listDirn, $listOrder); ?>
 						</th>
 						<th width="1%" class="nowrap hidden-phone">
-							<?php echo JHtml::_('grid.sort', 'JGLOBAL_HITS', 'a.hits', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 						</th>
 					</tr>
 				</thead>
@@ -193,11 +193,11 @@ $sortFields = $this->getSortFields();
 							</td>
 
 							<td class="center hidden-phone">
-								<?php echo (int) $item->id; ?>
+								<?php echo (int) $item->hits; ?>
 							</td>
 
 							<td class="center hidden-phone">
-								<?php echo (int) $item->hits; ?>
+								<?php echo (int) $item->id; ?>
 							</td>
 
 						</tr>
