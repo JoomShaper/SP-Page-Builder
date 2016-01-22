@@ -13,6 +13,8 @@ class SpTypeIcon{
 	static function getInput($key, $attr)
 	{
 
+		JText::script('COM_SPPAGEBUILDER_ADDON_ICON_SELECT');
+
 		JHtml::_('jquery.framework');
 
 		$doc = JFactory::getDocument();
@@ -45,7 +47,7 @@ class SpTypeIcon{
 		if($attr['std']) {
 			$output .= '<span><i class="fa '. $attr['std'] .'"></i> '. str_replace('fa-', '', $attr['std']) .'</span>';
 		} else {
-			$output .= '<span>-- Select Icon --</span>';
+			$output .= '<span>--'. JText::_('COM_SPPAGEBUILDER_ADDON_ICON_SELECT') .'--</span>';
 		}
 
 		$output .= '<a class="remove-fa-icon" href="#"><i class="fa fa-times"></i></a><i class="fa fa-chevron-up"></i><i class="fa fa-chevron-down"></i>';
@@ -56,7 +58,7 @@ class SpTypeIcon{
 
 		$output .= '<div class="fontawesome-dropdown">';
 
-		$output	.= '<input class="form-control" type="text" placeholder="Search Icon" />';		
+		$output	.= '<input class="form-control" type="text" placeholder="'. JText::_('COM_SPPAGEBUILDER_ADDON_ICON_SEARCH') .'" />';		
 
 		$output .= '<ul class="fontawesome-icons">';
 

@@ -51,7 +51,7 @@ jQuery(function($) {
     var parent = $this.closest('.fontawesome-icon-chooser');
 
     parent.removeClass('has-fa-icon');
-    parent.find('.fontawesome-icon-input>span').html('-- Select Icon --');
+    parent.find('.fontawesome-icon-input>span').html('--' + Joomla.JText._('COM_SPPAGEBUILDER_ADDON_ICON_SELECT') + '--');
     parent.find('.fontawesome-icons>li').removeClass('active');
     parent.find('.addon-input-fa').val('');
   });
