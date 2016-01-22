@@ -1645,3 +1645,147 @@ body.sppb-media-modal-open {
       transform: scale(1.0);
     }
   }
+
+/*Fontawesome Icon*/
+.fontawesome-icon-chooser {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  width: 100%;
+  height: 30px;
+  border-radius: 3px;
+  position: relative;
+  z-index: 999;
+}
+
+.fontawesome-icon-chooser.open {
+  border-radius: 3px 3px 0 0;
+  border-bottom-color: transparent;
+  box-shadow: 0 3px 5px rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 3px 5px rgba(0,0,0,.5);
+}
+
+.fontawesome-icon-chooser .fontawesome-icon-input {
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.fontawesome-icon-chooser > .fontawesome-icon-input span { 
+  padding: 0 10px;
+}
+
+.fontawesome-icon-chooser > .fontawesome-icon-input .fa-chevron-up,
+.fontawesome-icon-chooser > .fontawesome-icon-input .fa-chevron-down {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+}
+
+.fontawesome-icon-chooser > .fontawesome-icon-input .fa-times {
+  position: absolute;
+  top: 8px;
+  right: 30px;
+  color: #e61010;
+  display: none;
+  z-index: 9999;
+}
+
+.fontawesome-icon-chooser.has-fa-icon > .fontawesome-icon-input .fa-times {
+  display: inline;
+}
+
+.fontawesome-icon-chooser > .fontawesome-icon-input .fa-chevron-up {
+  display: none;
+}
+
+.fontawesome-icon-chooser.open > .fontawesome-icon-input .fa-chevron-up {
+  display: inline;
+}
+
+.fontawesome-icon-chooser.open > .fontawesome-icon-input .fa-chevron-down {
+  display: none;
+}
+
+.fontawesome-icon-chooser.open > .fontawesome-dropdown {
+  display: block;
+}
+
+.fontawesome-dropdown {
+  display: none;
+  position: absolute;
+  top: 29px;
+  left: -1px;
+  right: -1px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-top: 0;
+  box-shadow: 0 3px 5px rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 3px 5px rgba(0,0,0,.5);
+  border-radius: 0 0 3px 3px;
+}
+
+.fontawesome-dropdown input[type="text"] {
+  margin-bottom: 10px;
+}
+
+ul.fontawesome-icons {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 328px;
+  overflow-y: auto;
+}
+
+ul.fontawesome-icons > li {
+  float: left;
+  display: block;
+  width: 10%;
+  text-align: center;
+}
+
+ul.fontawesome-icons > li > div {
+  display: block;
+  margin: 1px;
+  padding: 5px;
+  height: 80px;
+  border-radius: 3px;
+  background: #eee;
+  cursor: pointer;
+  -webkit-transition: all 100ms;
+  transition: all 100ms;
+}
+
+ul.fontawesome-icons > li > div > div {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+ul.fontawesome-icons > li > div > div > div {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+ul.fontawesome-icons > li > div .fa {
+  display: block;
+  font-size: 24px;
+  line-height: 24px;
+  margin-bottom: 5px;
+}
+
+ul.fontawesome-icons > li > div span {
+  font-size: 12px;
+  line-height: 1.2;
+  display: block;
+}
+
+ul.fontawesome-icons > li:hover > div,
+ul.fontawesome-icons > li.active > div {
+  background-color: #428bca;
+  color: #fff;
+}

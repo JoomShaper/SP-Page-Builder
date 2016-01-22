@@ -12,6 +12,12 @@ class SpTypeIcon{
 
 	static function getInput($key, $attr)
 	{
+
+		JHtml::_('jquery.framework');
+
+		$doc = JFactory::getDocument();
+		$doc->addScript( JURI::base(true) . '/components/com_sppagebuilder/assets/js/fontawesome.js' );
+
 		if(!isset($attr['std'])){
 			$attr['std'] = '';
 		}
@@ -28,18 +34,50 @@ class SpTypeIcon{
 		$output  = '<div class="form-group"' . $depend_data . '>';
 		$output .= '<label>'.$attr['title'].'</label>';
 
-		$output .= '<select class="form-control addon-input chosen-select-deselect data-icon-select" data-attrname="'.$key.'" id="field_'.$key.'">';
+		if($attr['std']) {
+			$output .= '<div class="fontawesome-icon-chooser has-fa-icon">';
+		} else {
+			$output .= '<div class="fontawesome-icon-chooser">';
+		}
+
+		$output .= '<div class="fontawesome-icon-input">';
+
+		if($attr['std']) {
+			$output .= '<span><i class="fa '. $attr['std'] .'"></i> '. str_replace('fa-', '', $attr['std']) .'</span>';
+		} else {
+			$output .= '<span>-- Select Icon --</span>';
+		}
+
+		$output .= '<a class="remove-fa-icon" href="#"><i class="fa fa-times"></i></a><i class="fa fa-chevron-up"></i><i class="fa fa-chevron-down"></i>';
+
+		$output .= '</div>';
+
+		$output .= '<input type="hidden" class="addon-input addon-input-fa" value="'. $attr['std'] .'" data-attrname="'.$key.'">';
+
+		$output .= '<div class="fontawesome-dropdown">';
+
+		$output	.= '<input class="form-control" type="text" placeholder="Search Icon" />';		
+
+		$output .= '<ul class="fontawesome-icons">';
 
 		$fontawesome_icons = self::getIconsList();
 
-		$output .= '<option value=""></option>';
-
 		foreach( $fontawesome_icons as $icon )
 		{
-			$output .= '<option value="'.$icon.'" '.(($attr['std'] == $icon )?'selected':'').'>'. str_replace('fa-', '', $icon) .'</option>';
+			
+			if($attr['std'] == $icon) {
+				$active_cls = ' active';
+			} else {
+				$active_cls = '';
+			}
+
+			$output .= '<li class="fa-list-icon'. $active_cls .'" data-fontawesome_icon="'.$icon.'" data-fontawesome_icon_name="'.str_replace('fa-', '', $icon).'"><div><div><div><i class="fa '. $icon .'"></i><span>'. str_replace('fa-', '', $icon) .'</span></div></div></div></li>';
 		}
 
-		$output .= '</select>';
+		$output .= '</ul>';
+
+		$output .= '</div>';
+		$output .= '</div>';
 
 		if( ( isset($attr['desc']) ) && ( isset($attr['desc']) != '' ) )
 		{

@@ -97,7 +97,12 @@ require_once ( JPATH_COMPONENT .'/builder/builder_layout.php' );
 
     </div>
     <div class="pagebuilder clearfix" style="margin: 30px auto; text-align: center;">
-        <p><a href="http://www.joomshaper.com/page-builder/" target="_blank">SP Page Builder Free v1.0.7</a> | Copyright &copy; 2010-2015 <a href="http://www.joomshaper.com" target="_blank">JoomShaper</a></p>
+        <p>
+            <a href="https://www.joomshaper.com/page-builder/" target="_blank">SP Page Builder Free v1.0.8</a> | Copyright &copy; 2010-2015 <a href="http://www.joomshaper.com" target="_blank">JoomShaper</a>
+        </p>
+        <p>
+            Rate SP Page Builder on <a href="http://bit.ly/pbjed" target="_blank">JED</a>
+        </p>
     </div>
     <input type="hidden" name="task" value="page.edit" />
     <?php echo JHtml::_('form.token'); ?>
