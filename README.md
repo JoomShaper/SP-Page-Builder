@@ -45,4 +45,6 @@ Documentation: https://www.joomshaper.com/documentation/joomla-extensions/sp-pag
 
 Video Tutorial: https://www.joomshaper.com/page-builder/addons
 
+[Page Builder Community Discussion](https://www.facebook.com/groups/463387677186168/) Group on Facebook.
+
 You can open an issue on Github https://github.com/JoomShaper/SP-Page-Builder/issues to report bugs, fix or others. No forum support for free version. Please don't open any customization support issue. Contribution appretiate.
