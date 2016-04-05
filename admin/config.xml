@@ -33,6 +33,17 @@
 			<option value="1">JYES</option>
 			<option value="0">JNO</option>
 		</field>
+
+		<field
+			name="preparecontent"
+			type="radio"
+			class="btn-group btn-group-yesno"
+			default="0"
+			label="COM_SPPAGEBUILDER_PREPARE_CONTENT"
+			description="COM_SPPAGEBUILDER_PREPARE_CONTENT_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
 	</fieldset>
 
 	<fieldset
