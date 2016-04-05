@@ -393,13 +393,22 @@ class AddonParser
 
 
 function spAddonAtts( $pairs, $atts, $shortcode = '' ) {
+    $params = JComponentHelper::getParams('com_sppagebuilder');
+    $prepare = $params->get( 'preparecontent', 0 );
     $atts = (array)$atts;
     $out = array();
     foreach($pairs as $name => $default) {
-        if ( array_key_exists($name, $atts) )
-            $out[$name] = $atts[$name];
-        else
-            $out[$name] = $default;
+        if ( array_key_exists($name, $atts) ) {
+            $value = $atts[$name];
+        } else {
+            $value = $default;
+        }
+
+        if ( is_string( $value ) && $prepare ) {
+            $value = JHtml::_( 'content.prepare', $value );
+        }
+
+        $out[$name] = $value;
     }
 
     return $out;
