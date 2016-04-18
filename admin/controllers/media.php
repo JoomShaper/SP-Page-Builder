@@ -25,6 +25,14 @@ class SppagebuilderControllerMedia extends JControllerForm
         $image  = $input->files->get('image');
         $dir    = $input->post->get('folder', '', 'PATH');
         $report = array();
+
+        // User is not authorised
+        if (!JFactory::getUser()->authorise('core.create', 'com_sppagebuilder')) {
+            $report['status'] = false;
+            $report['output'] = JText::_('You are not authorised to upload file.');
+            echo json_encode($report);
+            die;
+        }
         
         if(count($image)) {
             if ($image['error'] == UPLOAD_ERR_OK) {
