@@ -201,6 +201,10 @@
             }
 
             $('#sppb-media-modal .btn-upload-media').removeAttr('disabled')
+          } else {
+            $('#sppb-media-modal .sppb-media').find('.sppb-media-image-loader').remove()
+            $('#sppb-media-modal .btn-upload-media').removeAttr('disabled')
+            alert(data.output);
           }
         } catch (e) {
           $('#sppb-media-modal .sppb-media-modal-body-inner').html(response)
