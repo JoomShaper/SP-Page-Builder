@@ -47,6 +47,7 @@ function builder_layout( $layout_data = null )
 			<?php if(!empty($pageId)){?>
 			<li><a class="sppb-btn sppb-btn-success" href="<?php echo JURI::root().'index.php?option=com_sppagebuilder&view=page&id='.$pageId.((isset($languages))?$languages:''); ?>" target="_blank"><?php echo JText::_('COM_SPPAGEBUILDER_VIEW_PAGE'); ?></a></li>
 			<?php } ?>
+			<li><a class="sppb-btn sppb-btn-danger" target="_blank" href="https://www.joomshaper.com/page-builder#compare"><?php echo JText::_('COM_SPPAGEBUILDER_UPGRADE_PRO'); ?></a></li>
 			</ul>
 		</div>
 		<div class="clearfix"></div>

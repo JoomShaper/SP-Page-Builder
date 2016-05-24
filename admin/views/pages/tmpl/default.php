@@ -62,6 +62,10 @@ $sortFields = $this->getSortFields();
 				<button type="button" class="btn hasTooltip" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_CLEAR'); ?>" onclick="document.getElementById('filter_search').value='';this.form.submit();"><i class="icon-remove"></i></button>
 			</div> <!-- Seach Options -->
 
+			<div class="btn-group">
+				<button type="button" class="btn hasTooltip btn-danger" title="<?php echo JHtml::tooltipText('COM_SPPAGEBUILDER_UPGRADE_PRO_TOOLTIPS'); ?>" onclick="window.open('https://www.joomshaper.com/page-builder#compare')"><?php echo JText::_('COM_SPPAGEBUILDER_UPGRADE_PRO');?></button>
+			</div>
+
 			<div class="btn-group pull-right hidden-phone">
 				<label for="limit" class="element-invisible"><?php echo JText::_('JFIELD_PLG_SEARCH_SEARCHLIMIT_DESC');?></label>
 				<?php echo $this->pagination->getLimitBox(); ?>
@@ -215,13 +219,27 @@ $sortFields = $this->getSortFields();
 		</div>	
 
 		</div>
+		<style type="text/css">
+	        .pagebuilder p{
+	            margin-bottom: 5px;
+	        }
+
+	        .upgrade{
+	        	background: green;
+				padding: 4px;
+				color: #fff;
+				border-radius: 5px;
+				font-size: 10px;
+				font-weight: bold;
+	        }
+	    </style>
 		<div class="clearfix"></div>
-		<div class="pagebuilder" style="margin: 30px auto; text-align: center;">
+		<div class="pagebuilder pagebuilder-free" style="margin: 30px auto; text-align: center; font-size:12px;">
 			<p>
 				<a href="https://www.joomshaper.com/page-builder/" target="_blank">SP Page Builder Free v1.0.8</a> | Copyright &copy; 2010-2016 <a href="http://www.joomshaper.com" target="_blank">JoomShaper</a>
 			</p>
 			<p>
-				Rate SP Page Builder on <a href="http://bit.ly/pbjed" target="_blank">JED</a>
+				<a href="https://www.joomshaper.com/documentation/joomla-extensions/sp-page-builder" target="_blank">Docs</a> | <a href="https://www.youtube.com/playlist?list=PL43bbfiC0wjhYCvEbl8B-fBVhHx4uh1zS" target="_blank">Videos</a> | <a href="https://www.facebook.com/groups/JoomlaPageBuilderCommunity/" target="_blank">Community</a> | <a href="http://extensions.joomla.org/write-review/review/add?extension_id=9077" target="_blank">Rate on JED</a>
 			</p>
 		</div>
 </form>

@@ -96,12 +96,26 @@ require_once ( JPATH_COMPONENT .'/builder/builder_layout.php' );
         ?>
 
     </div>
-    <div class="pagebuilder clearfix" style="margin: 30px auto; text-align: center;">
+    <style type="text/css">
+        .pagebuilder p{
+            margin-bottom: 5px;
+        }
+
+        .upgrade{
+            background: green;
+            padding: 4px;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+    </style>
+    <div class="pagebuilder pagebuilder-free" style="margin: 30px auto; text-align: center; font-size:12px;">
         <p>
             <a href="https://www.joomshaper.com/page-builder/" target="_blank">SP Page Builder Free v1.0.8</a> | Copyright &copy; 2010-2016 <a href="http://www.joomshaper.com" target="_blank">JoomShaper</a>
         </p>
         <p>
-            Rate SP Page Builder on <a href="http://bit.ly/pbjed" target="_blank">JED</a>
+            <a href="https://www.joomshaper.com/documentation/joomla-extensions/sp-page-builder" target="_blank">Docs</a> | <a href="https://www.youtube.com/playlist?list=PL43bbfiC0wjhYCvEbl8B-fBVhHx4uh1zS" target="_blank">Videos</a> | <a href="https://www.facebook.com/groups/JoomlaPageBuilderCommunity/" target="_blank">Community</a> | <a href="http://extensions.joomla.org/write-review/review/add?extension_id=9077" target="_blank">Rate on JED</a>
         </p>
     </div>
     <input type="hidden" name="task" value="page.edit" />
