@@ -219,6 +219,8 @@ $sortFields = $this->getSortFields();
 		</div>	
 
 		</div>
+		<div class="clearfix"></div>
+		<?php echo SppagebuilderHelper::render_banner(); ?>
 		<style type="text/css">
 	        .pagebuilder p{
 	            margin-bottom: 5px;

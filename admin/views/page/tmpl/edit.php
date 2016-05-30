@@ -96,6 +96,8 @@ require_once ( JPATH_COMPONENT .'/builder/builder_layout.php' );
         ?>
 
     </div>
+    <div class="clearfix" style="margin-top:50px"></div>
+    <?php echo SppagebuilderHelper::render_banner(); ?>
     <style type="text/css">
         .pagebuilder p{
             margin-bottom: 5px;
