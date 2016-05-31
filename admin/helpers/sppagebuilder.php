@@ -41,7 +41,7 @@ abstract class SppagebuilderHelper
 
 		$banner 	= $list[rand(0,4)];
 
-		$img_link 	= 'components/com_sppagebuilder/assets/img/ads/'. $banner['image'];
+		$img_link 	= 'components/com_sppagebuilder/assets/img/joomshaper-promotion/'. $banner['image'];
 		$output = '';
 		$output .='<div class="clearfix" style="text-align:center;">';
 		$output .='<a style="max-width:650px;display:inline-block;max-height:60px;" href="'.$banner['url'].'" target="_blank">';
