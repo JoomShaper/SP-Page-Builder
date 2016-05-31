@@ -2952,3 +2952,9 @@ textarea.sppb-form-control {
     display: none !important;
   }
 }
+
+/* video fullscreen issue fix */
+.no-animate-fill{
+  -webkit-animation-fill-mode: none!important;
+          animation-fill-mode: none!important;
+}

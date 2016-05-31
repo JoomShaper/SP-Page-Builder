@@ -330,7 +330,7 @@ class AddonParser
                     $column_name = str_replace('column-parent ', '', $column->class_name);
 
                     $output .= '<div class="sppb-'.str_replace('active-column-parent', '', $column_name). '">';
-                    $output .= '<div class="sppb-addon-container'.$col_class.'" '.$col_style.$data_attr.'>';
+                    $output .= '<div class="sppb-addon-container '.$col_class.'" '.$col_style.$data_attr.'>';
 
                     foreach ($column->attr as $key => $spcode)
                     {

@@ -2238,7 +2238,8 @@ jQuery(function($) {
         $this.unbind('inview');
       }
     });
-
+  
+  $('.sppb-addon-video').closest('.sppb-addon-container').addClass('no-animate-fill'); // video fullscreen issue fix
 });
 
 //Ajax Contact Form
