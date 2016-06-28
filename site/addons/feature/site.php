@@ -85,7 +85,7 @@ function sp_feature_addon($atts){
 			if($icon_margin_top) $img_style .= 'margin-top:' . (int) $icon_margin_top . 'px;';
 			if($icon_margin_bottom) $img_style .= 'margin-bottom:' . (int) $icon_margin_bottom . 'px;';
 			$media  .= '<span style="display:inline-block;' . $img_style . ';">';
-			$media  .= '<img class="sppb-img-responsive" src="' . $feature_image . '" alt="">';
+			$media  .= '<img class="sppb-img-responsive" src="' . $feature_image . '" alt="'.$title.'">';
 			$media  .= '</span>';
 		}
 	}
