@@ -238,7 +238,7 @@ $sortFields = $this->getSortFields();
 		<div class="clearfix"></div>
 		<div class="pagebuilder pagebuilder-free" style="margin: 30px auto; text-align: center; font-size:12px;">
 			<p>
-				<a href="https://www.joomshaper.com/page-builder/" target="_blank">SP Page Builder Free v1.2</a> | Copyright &copy; 2010-2016 <a href="http://www.joomshaper.com" target="_blank">JoomShaper</a>
+				<a href="https://www.joomshaper.com/page-builder/" target="_blank">SP Page Builder Free v1.3</a> | Copyright &copy; 2010-2016 <a href="http://www.joomshaper.com" target="_blank">JoomShaper</a>
 			</p>
 			<p>
 				<a href="https://www.joomshaper.com/documentation/joomla-extensions/sp-page-builder" target="_blank">Docs</a> | <a href="https://www.youtube.com/playlist?list=PL43bbfiC0wjhYCvEbl8B-fBVhHx4uh1zS" target="_blank">Videos</a> | <a href="https://www.facebook.com/groups/JoomlaPageBuilderCommunity/" target="_blank">Community</a> | <a href="http://extensions.joomla.org/write-review/review/add?extension_id=9077" target="_blank">Rate on JED</a>
