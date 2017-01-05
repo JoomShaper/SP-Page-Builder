@@ -1,6 +1,8 @@
 ##SP PAGE BUILDER##
 ####VISUAL PAGE COMPOSER FOR JOOMLA 3.3+###
 
+##Here is the new version [Page Builder 2](https://www.joomshaper.com/page-builder)##
+
 [![Join the chat at https://gitter.im/JoomShaper/SP-Page-Builder](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/JoomShaper/SP-Page-Builder?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [Community Discussion](https://www.facebook.com/groups/463387677186168/) Group on Facebook.
