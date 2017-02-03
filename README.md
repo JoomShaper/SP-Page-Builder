@@ -1,6 +1,6 @@
 #[Download Page Builder 2 from Here](https://www.joomshaper.com/page-builder)#
 
-######SP PAGE BUILDER Version 1 is Depricated. We are recommended to use SP Page Builder 2 ######
+######SP PAGE BUILDER Version 1 is Deprecated. We are recommended to use SP Page Builder 2 ######
 
 
 
