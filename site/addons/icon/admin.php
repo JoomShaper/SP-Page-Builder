@@ -9,25 +9,31 @@
 defined ('_JEXEC') or die ('restricted aceess');
 
 SpAddonsConfig::addonConfig(
-	array( 
-		'type'=>'content', 
+	array(
+		'type'=>'content',
 		'addon_name'=>'sp_icon',
 		'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_ICON'),
 		'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_ICON_DESC'),
 		'attr'=>array(
 
 			'admin_label'=>array(
-				'type'=>'text', 
+				'type'=>'text',
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_ADMIN_LABEL'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_ADMIN_LABEL_DESC'),
 				'std'=> ''
 				),
 
 			'name'=>array(
-				'type'=>'icon', 
+				'type'=>'icon',
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_ICON_NAME'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_ICON_NAME_DESC'),
 				'std'=> ''
+				),
+
+				'link'=>array(
+					'type'=>'text',
+					'title'=>JText::_('COM_SPPAGEBUILDER_GLOBAL_LINK'),
+					'std'=> ''
 				),
 
 			'size'=>array(
@@ -82,7 +88,7 @@ SpAddonsConfig::addonConfig(
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_MARGIN_BOTTOM'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GLOBAL_MARGIN_BOTTOM_DESC'),
 				'placeholder'=>'10',
-				),				
+				),
 
 			'padding'=>array(
 				'type'=>'number',
@@ -104,7 +110,7 @@ SpAddonsConfig::addonConfig(
 				),
 
 			'class'=>array(
-				'type'=>'text', 
+				'type'=>'text',
 				'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_CLASS'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_CLASS_DESC'),
 				'std'=> ''

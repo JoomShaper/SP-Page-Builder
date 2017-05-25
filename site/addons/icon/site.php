@@ -25,6 +25,7 @@ function sp_icon_addon($atts) {
 		'margin_bottom' => '',
 		'padding' => '',
 		'class' => '',
+		'link' => ''
 		), $atts));
 
 	$style = 'text-align:center;';
@@ -44,9 +45,15 @@ function sp_icon_addon($atts) {
 		if($size) $font_size .= 'font-size:' . (int) $size . 'px;width:' . (int) $size . 'px;height:' . (int) $size . 'px;line-height:' . (int) $size . 'px;';
 
 		$output   = '<div class="sppb-icon ' . $alignment . ' ' . $class . '">';
+		if ($link) {
+			$output .= '<a href="'.$link.'">';
+		}
 		$output  .= '<span style="display:inline-block;' . $style . ';">';
 		$output  .= '<i class="fa ' . $name . '" style="' . $font_size . ';"></i>';
 		$output  .= '</span>';
+		if ($link) {
+			$output .= '</a>';
+		}
 		$output  .= '</div>';
 
 		return $output;
