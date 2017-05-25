@@ -50,17 +50,22 @@ class SpTypeMedia
 
 		$doc = JFactory::getDocument();
 		$doc->addScript( JURI::base(true) . '/components/com_sppagebuilder/assets/js/media.js' );
-		
+
 		$output  = '<div class="form-group"' . $depend_data . '>';
 		$output .= '<label>' . $attr['title'] . '</label>';
-		
+
 		if($attr['std']) {
 			$output .= '<img class="sppb-media-preview" src="' . JURI::root(true) . '/' . $attr['std'] . '" alt="" />';
 		} else {
 			$output .= '<img class="sppb-media-preview no-image" alt="" />';
 		}
 
-		$output .= '<input type="hidden" data-attrname="'.$key.'" class="input-media sppb-media-input addon-input" value="'.$attr['std'].'">';
+		if (isset($attr['show_input']) && $attr['show_input'] == true) {
+			$output .= '<input type="text" data-attrname="'.$key.'" class="form-control input-media sppb-media-input addon-input" value="'.$attr['std'].'">';
+		} else {
+			$output .= '<input type="hidden" data-attrname="'.$key.'" class="input-media sppb-media-input addon-input" value="'.$attr['std'].'">';
+		}
+
 		$output .= '<a href="#" class="sppb-btn sppb-btn-primary sppb-btn-media-manager">'. JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_SELECT') .'</a>';
 		$output .= ' <a class="sppb-btn sppb-btn-danger btn-clear-image" href="#"><i class="icon-remove"></i></a>';
 

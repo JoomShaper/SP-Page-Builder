@@ -8,20 +8,20 @@
 //no direct accees
 defined ('_JEXEC') or die ('restricted aceess');
 
-$spbuilder_row_settings = array( 
-	'type'=>'general', 
-	'title'=>'', 
+$spbuilder_row_settings = array(
+	'type'=>'general',
+	'title'=>'',
 	'attr'=>array(
 
 		'title'=>array(
-			'type'=>'text', 
+			'type'=>'text',
 			'title'=>JText::_('COM_SPPAGEBUILDER_SECTION_TITLE'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_SECTION_TITLE_DESC'),
 			'std'=>''
 			),
 
 		'heading_selector'=>array(
-			'type'=>'select', 
+			'type'=>'select',
 			'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_HEADINGS'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_HEADINGS_DESC'),
 			'values'=>array(
@@ -36,24 +36,24 @@ $spbuilder_row_settings = array(
 		),
 
 		'title_fontsize'=>array(
-			'type'=>'number', 
+			'type'=>'number',
 			'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_SIZE'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_SIZE_DESC'),
 			'std'=>''
 			),
-		
+
 		'title_fontweight'=>array(
-			'type'=>'text', 
+			'type'=>'text',
 			'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_WEIGHT'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_FONT_WEIGHT_DESC'),
 			'std'=>''
-			),	
+			),
 
 		'title_text_color'=>array(
 			'type'=>'color',
 			'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_TEXT_COLOR'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_TEXT_COLOR_DESC'),
-			),	
+			),
 
 		'title_margin_top'=>array(
 			'type'=>'number',
@@ -67,23 +67,23 @@ $spbuilder_row_settings = array(
 			'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_MARGIN_BOTTOM'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_MARGIN_BOTTOM_DESC'),
 			'placeholder'=>'10',
-			),						
-		
+			),
+
 		'subtitle'=>array(
-			'type'=>'textarea', 
+			'type'=>'textarea',
 			'title'=>JText::_('COM_SPPAGEBUILDER_SECTION_SUBTITLE'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_SECTION_SUBTITLE_DESC')
 			),
 
 		'subtitle_fontsize'=>array(
-			'type'=>'number', 
+			'type'=>'number',
 			'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_SUB_TITLE_FONT_SIZE'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_SUB_TITLE_FONT_SIZE_DESC'),
 			'std'=>''
-			),			
+			),
 
 		'title_position'=>array(
-				'type'=>'select', 
+				'type'=>'select',
 				'title'=>JText::_('COM_SPPAGEBUILDER_TITLE_SUBTITLE_POSITION'),
 				'desc'=>JText::_('COM_SPPAGEBUILDER_TITLE_SUBTITLE_POSITION_DESC'),
 				'values'=>array(
@@ -95,26 +95,27 @@ $spbuilder_row_settings = array(
 			),
 
 		'background_color'=>array(
-			'type'=>'color', 
+			'type'=>'color',
 			'title'=>JText::_('COM_SPPAGEBUILDER_BGCOLOR'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_BGCOLOR_DESC')
 			),
 
 		'color'=>array(
-			'type'=>'color', 
+			'type'=>'color',
 			'title'=>JText::_('COM_SPPAGEBUILDER_FONTCOLOR'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_FONTCOLOR_DESC')
 			),
 
 		'background_image'=>array(
-			'type'=>'media', 
+			'type'=>'media',
 			'title'=>JText::_('COM_SPPAGEBUILDER_BGIMG'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_BGIMG_DESC'),
 			'std'=>'',
+			'show_input' => true
 			),
 
 		'background_repeat'=>array(
-			'type'=>'select', 
+			'type'=>'select',
 			'title'=>JText::_('COM_SPPAGEBUILDER_BG_REPEAT'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_BG_REPEAT_DESC'),
 			'values'=>array(
@@ -128,7 +129,7 @@ $spbuilder_row_settings = array(
 			),
 
 		'background_size'=>array(
-			'type'=>'select', 
+			'type'=>'select',
 			'title'=>JText::_('COM_SPPAGEBUILDER_BG_SIZE'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_BG_SIZE_DESC'),
 			'values'=>array(
@@ -140,7 +141,7 @@ $spbuilder_row_settings = array(
 			),
 
 		'background_attachment'=>array(
-			'type'=>'select', 
+			'type'=>'select',
 			'title'=>JText::_('COM_SPPAGEBUILDER_BG_ATTACHMENT'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_BG_ATTACHMENT_DESC'),
 			'values'=>array(
@@ -152,7 +153,7 @@ $spbuilder_row_settings = array(
 			),
 
 		'background_position'=>array(
-			'type'=>'select', 
+			'type'=>'select',
 			'title'=>JText::_('COM_SPPAGEBUILDER_BG_POSITION'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_BG_POSITION_DESC'),
 			'values'=>array(
@@ -170,77 +171,77 @@ $spbuilder_row_settings = array(
 			),
 
 		'background_video'=>array(
-			'type'=>'checkbox', 
+			'type'=>'checkbox',
 			'title'=>JText::_('COM_SPPAGEBUILDER_BG_VIDEO_PATH'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_BG_VIDEO_PATH_DESC'),
 			'std'=>'0',
 			),
 
 		'background_video_mp4'=>array(
-			'type'=>'text', 
+			'type'=>'text',
 			'title'=>JText::_('COM_SPPAGEBUILDER_BG_VIDEO_MP4'),
 			'placeholder'=>'http://yoursite.com/video/video.mp4',
 			),
 
 		'background_video_ogv'=>array(
-			'type'=>'text', 
+			'type'=>'text',
 			'title'=>JText::_('COM_SPPAGEBUILDER_BG_VIDEO_OGV'),
 			'placeholder'=>'http://yoursite.com/video/video.ogv',
 			),
 
 		'id'=>array(
-			'type'=>'text', 
+			'type'=>'text',
 			'title'=>JText::_('COM_SPPAGEBUILDER_SECTION_ID'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_SECTION_ID_DESC')
 			),
 
 		'class'=>array(
-			'type'=>'text', 
+			'type'=>'text',
 			'title'=>JText::_('COM_SPPAGEBUILDER_CSS_CLASS'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_CSS_CLASS_DESC')
 			),
 
 		'padding'=>array(
-			'type'=>'text', 
+			'type'=>'text',
 			'title'=>JText::_('COM_SPPAGEBUILDER_PADDING'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_PADDING_DESC'),
 			'placeholder'=>'10px 10px 10px 10px',
 			),
 
 		'margin'=>array(
-			'type'=>'text', 
+			'type'=>'text',
 			'title'=>JText::_('COM_SPPAGEBUILDER_MARGIN'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_MARGIN_DESC'),
 			'placeholder'=>'10px 10px 10px 10px',
 			),
 
 		'fullscreen'=>array(
-			'type'=>'checkbox', 
+			'type'=>'checkbox',
 			'title'=>JText::_('COM_SPPAGEBUILDER_FULLSCREEN'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_FULLSCREEN_DESC')
 			),
 		)
 );
 
-$spbuilder_column_settings = array( 
-	'type'=>'general', 
-	'title'=>'', 
+$spbuilder_column_settings = array(
+	'type'=>'general',
+	'title'=>'',
 	'attr'=>array(
 
 		'background'=>array(
-			'type'=>'color', 
+			'type'=>'color',
 			'title'=>JText::_('COM_SPPAGEBUILDER_BGCOLOR'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_BGCOLOR_DESC')
 			),
 
 		'color'=>array(
-			'type'=>'color', 
+			'type'=>'color',
 			'title'=>JText::_('COM_SPPAGEBUILDER_FONTCOLOR'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_FONTCOLOR_DESC')
 			),
 
 		'padding'=>array(
-			'type'=>'text', 
+			'type'=>'text',
 			'title'=>JText::_('COM_SPPAGEBUILDER_COLUMN_PADDING'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_COLUMN_PADDING_DESC'),
 			'desc'=> '',
@@ -248,13 +249,13 @@ $spbuilder_column_settings = array(
 			),
 
 		'animation'=>array(
-			'type'=>'animation', 
+			'type'=>'animation',
 			'title'=>JText::_('COM_SPPAGEBUILDER_COLUMN_ANIMATION'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_COLUMN_ANIMATION_DESC')
 			),
 
 		'animationduration'=>array(
-			'type'=>'number', 
+			'type'=>'number',
 			'title'=>JText::_('COM_SPPAGEBUILDER_ANIMATION_DURATION'),
 			'desc'=> JText::_('COM_SPPAGEBUILDER_ANIMATION_DURATION_DESC'),
 			'std'=>'300',
@@ -262,7 +263,7 @@ $spbuilder_column_settings = array(
 			),
 
 		'animationdelay'=>array(
-			'type'=>'number', 
+			'type'=>'number',
 			'title'=>JText::_('COM_SPPAGEBUILDER_ANIMATION_DELAY'),
 			'desc'=>JText::_('COM_SPPAGEBUILDER_ANIMATION_DELAY_DESC'),
 			'std'=>'0',
@@ -270,12 +271,12 @@ $spbuilder_column_settings = array(
 			),
 
 		'class'=>array(
-			'type' 		=> 'text', 
+			'type' 		=> 'text',
 			'title' 	=> JText::_('COM_SPPAGEBUILDER_CSS_CLASS'),
 			'desc' 		=> JText::_('COM_SPPAGEBUILDER_CSS_CLASS_DESC')
 			)
 
-		) 
+		)
 
 );
 
