@@ -7,53 +7,57 @@
 */
 //no direct accees
 defined ('_JEXEC') or die ('restricted aceess');
- 
+
 // import Joomla table library
 jimport('joomla.database.table');
-jimport( 'joomla.filter.filteroutput' );
 
-class SppagebuilderTablePage extends JTable
-{
-	 function __construct(&$db) 
-    {
-        parent::__construct('#__sppagebuilder', 'id', $db);
-    }
+class SppagebuilderTablePage extends JTable {
 
-    public function store($updateNulls = true)
-	{
-		$date = JFactory::getDate();
-		$user = JFactory::getUser();
+	function __construct(&$db) {
+		parent::__construct('#__sppagebuilder', 'id', $db);
+	}
 
-		if ($this->id) {
-			$this->modified_time		= $date->toSql();
-			$this->modified_user_id		= $user->get('id');
-
-		}
-		else
-		{
-			if (!(int) $this->created_time) {
-				$this->created_time = $date->toSql();
-			}
-			if (empty($this->created_user_id)) {
-				$this->created_user_id = $user->get('id');
+	public function bind($array, $ignore = ''){
+		if (isset($array['id'])) {
+			$date = JFactory::getDate();
+			$user = JFactory::getUser();
+			if ($array['id']) {
+				$array['modified'] = $date->toSql();
+				$array['modified_by'] = $user->get('id');
+			}else{
+				if (!(int) $array['created_on']) {
+					$array['created_on'] = $date->toSql();
+				}
+				if (empty($array['created_by'])) {
+					$array['created_by'] = $user->get('id');
+				}
 			}
 		}
-
-		$table = JTable::getInstance('Page', 'SppagebuilderTable');
-		$alias = JFilterOutput::stringURLSafe($this->alias);
-
-		if ($alias == '') {
-			$alias = JFilterOutput::stringURLSafe($this->title);
+		// Bind the rules.
+		if (isset($array['rules']) && is_array($array['rules'])) {
+			$rules = new JRules($array['rules']);
+			$this->setRules($rules);
 		}
-
-		$this->alias = $alias;
-		
-		if ($table->load(array('alias' => $alias)) && ($table->id != $this->id || $this->id == 0))
-		{
-			$this->setError(JText::_('COM_SPPAGEBUILDER_ERROR_UNIQUE_ALIAS'));
-			return false;
-		}
-
-		return parent::store($updateNulls);
+		return parent::bind($array, $ignore);
+	}
+	protected function _getAssetTitle(){
+		return $this->title;
+	}
+	/**
+	 * Redefined asset name, as we support action control
+	 */
+  protected function _getAssetName() {
+		$k = $this->_tbl_key;
+		return 'com_sppagebuilder.page.'.(int) $this->$k;
+  }
+	
+  /**
+   * We provide our global ACL as parent
+	 * @see JTable::_getAssetParentId()
+   */
+	protected function _getAssetParentId(JTable $table = NULL, $id = NULL){
+		$asset = JTable::getInstance('Asset');
+		$asset->loadByName('com_sppagebuilder');
+		return $asset->id;
 	}
 }

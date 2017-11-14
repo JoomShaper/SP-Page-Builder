@@ -1,9 +1,9 @@
 <?php
 /**
- * @package SP Page Builder
- * @author JoomShaper http://www.joomshaper.com
- * @copyright Copyright (c) 2010 - 2016 JoomShaper
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or later
+* @package SP Page Builder
+* @author JoomShaper http://www.joomshaper.com
+* @copyright Copyright (c) 2010 - 2015 JoomShaper
+* @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or later
 */
 //no direct accees
 defined ('_JEXEC') or die ('restricted aceess');
@@ -11,22 +11,24 @@ defined ('_JEXEC') or die ('restricted aceess');
 // import Joomla view library
 jimport('joomla.application.component.view');
 
-class SppagebuilderViewPage extends JViewLegacy
-{
-	protected $page;
-	
-	function display( $tpl = null )
-	{
-		$this->data = $this->get('Item');
-		$this->page = $this->get('Item');
+if(!class_exists('SppagebuilderHelperSite')) {
+	require_once JPATH_ROOT . '/components/com_sppagebuilder/helpers/helper.php';
+}
+
+class SppagebuilderViewPage extends JViewLegacy {
+
+	protected $item;
+
+	function display( $tpl = null ) {
+
+		$this->item = $this->get('Item');
 
 		if (count($errors = $this->get('Errors'))) {
 			JLog::add(implode('<br />',$errors),JLog::WARNING,'jerror');
 			return false;
 		}
 
-		if ($this->data->access_view == false)
-		{
+		if ($this->item->access_view == false) {
 			JError::raiseWarning(403, JText::_('JERROR_ALERTNOAUTHOR'));
 			return;
 		}
@@ -34,19 +36,16 @@ class SppagebuilderViewPage extends JViewLegacy
 		$model = $this->getModel();
 		$model->hit();
 
-		$this->_prepareDocument();
+		$this->_prepareDocument($this->item->title);
+		SppagebuilderHelperSite::loadLanguage();
 		parent::display($tpl);
 	}
 
-	protected function _prepareDocument()
-	{
-		$config 	= JFactory::getConfig();
-		$app 		= JFactory::getApplication();
-		$doc 		= JFactory::getDocument();
-		$menus   	= $app->getMenu();
-		$menu 		= $menus->getActive();
-		$title 		= '';
-
+	protected function _prepareDocument($title = '') {
+		$config = JFactory::getConfig();
+		$app = JFactory::getApplication();
+		$doc = JFactory::getDocument();
+		$menus = $app->getMenu();
 		$menu = $menus->getActive();
 
 		//Title
@@ -65,28 +64,30 @@ class SppagebuilderViewPage extends JViewLegacy
 		//Include Site title
 		$sitetitle = $title;
 		if($config->get('sitename_pagetitles')==2) {
-			$sitetitle = $title . ' | ' . $config->get('sitename');
+			$sitetitle = JText::sprintf('JPAGETITLE', $sitetitle, $app->get('sitename'));
 		} elseif ($config->get('sitename_pagetitles')==1) {
-			$sitetitle = $config->get('sitename') . ' | ' . $title;
+			$sitetitle = JText::sprintf('JPAGETITLE', $app->get('sitename'), $sitetitle);
 		}
-
 		$doc->setTitle($sitetitle);
-		$doc->addCustomTag('<meta content="' . $title . '" property="og:title" />');
+
+		$og_title = $this->item->og_title;
+		if ($og_title) {
+			$this->document->addCustomTag('<meta content="'.$og_title.'" property="og:title" />');
+		} else {
+			$doc->addCustomTag('<meta content="' . $title . '" property="og:title" />');
+		}
 
 		$this->document->addCustomTag('<meta content="website" property="og:type"/>');
 		$this->document->addCustomTag('<meta content="'.JURI::current().'" property="og:url" />');
 
-		$og_title = $this->page->og_title;
-		if ($og_title) {
-			$this->document->addCustomTag('<meta content="'.$og_title.'" property="og:title" />');
-		}
-
-		$og_image = $this->page->og_image;
+		$og_image = $this->item->og_image;
 		if ($og_image) {
 			$this->document->addCustomTag('<meta content="'.JURI::root().$og_image.'" property="og:image" />');
+			$this->document->addCustomTag('<meta content="1200" property="og:image:width" />');
+			$this->document->addCustomTag('<meta content="630" property="og:image:height" />');
 		}
 
-		$og_description = $this->page->og_description;
+		$og_description = $this->item->og_description;
 		if ($og_description) {
 			$this->document->addCustomTag('<meta content="'.$og_description.'" property="og:description" />');
 		}
@@ -105,7 +106,7 @@ class SppagebuilderViewPage extends JViewLegacy
 			{
 				$this->document->setMetadata('robots', $menu->params->get('robots'));
 			}
-	
+
 		}
 	}
 }

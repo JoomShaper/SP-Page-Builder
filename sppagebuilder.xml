@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="3.3" method="upgrade">
+<extension type="component" version="3.6" method="upgrade">
 	<name>SP Page Builder</name>
 	<author>JoomShaper</author>
 	<creationDate>Sep 2014</creationDate>
 	<authorEmail>support@joomshaper.com</authorEmail>
 	<authorUrl>http://www.joomshaper.com</authorUrl>
-	<copyright>Copyright @ 2010 - 2016 JoomShaper. All rights reserved.</copyright>
+	<copyright>Copyright @ 2010 - 2017 JoomShaper. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later</license>
-	<version>1.3</version>
-	<description>Most powerful drag and drop page builder for Joomla 3.4 or later.</description>
+	<version>3.0</version>
 	<scriptfile>installer.script.php</scriptfile>
-
-	<updateservers> 
-        <server type="extension" priority="1" name="SP Page Builder">http://www.joomshaper.com/updates/com-sp-page-builder-free.xml</server>
-    </updateservers>
 
 	<install>
 		<sql>
 			<file driver="mysql" charset="utf8">sql/install/mysql/install.mysql.utf8.sql</file>
 			<file driver="mysql">sql/install/mysql/install.mysql.utf8.sql</file>
-			
+
 			<file driver="mysqli" charset="utf8">sql/install/mysql/install.mysql.utf8.sql</file>
 			<file driver="mysqli">sql/install/mysql/install.mysql.utf8.sql</file>
 		</sql>
@@ -33,7 +28,6 @@
 	</update>
 
 	<files folder="site">
-		<filename>index.html</filename>
 		<filename>sppagebuilder.php</filename>
 		<filename>router.php</filename>
 		<filename>controller.php</filename>
@@ -41,13 +35,25 @@
 		<folder>assets</folder>
 		<folder>helpers</folder>
 		<folder>models</folder>
+		<folder>controllers</folder>
 		<folder>parser</folder>
 		<folder>views</folder>
+		<folder>layouts</folder>
 	</files>
 
 	<languages folder="language/site">
 		<language tag="en-GB">en-GB/en-GB.com_sppagebuilder.ini</language>
 	</languages>
+
+	<plugins>
+        <plugin name="sppagebuilder" group="system" />
+        <plugin name="sppagebuilderproupdater" group="system" />
+        <plugin name="sppagebuilder" group="search" />
+    </plugins>
+
+    <modules>
+		<module module="mod_sppagebuilder" client="site" />
+	</modules>
 
 	<administration>
 		<menu>COM_SPPAGEBUILDER</menu>
@@ -55,7 +61,6 @@
 		<files folder="admin">
 			<filename>access.xml</filename>
 			<filename>config.xml</filename>
-			<filename>index.html</filename>
 			<filename>sppagebuilder.php</filename>
 			<filename>controller.php</filename>
 			<folder>assets</folder>
@@ -66,6 +71,7 @@
 			<folder>sql</folder>
 			<folder>tables</folder>
 			<folder>views</folder>
+			<folder>layouts</folder>
 		</files>
 
 		<languages folder="language/admin">
@@ -80,8 +86,8 @@
 	</administration>
 
 	<modules>
-		<module module="mod_sppagebuilder_icons" client="administrator" />
-		<module module="mod_sppagebuilder_admin_menu" client="administrator" />
+		<module module="mod_sppagebuilder_icons" client="administrator" position="cpanel" />
+		<module module="mod_sppagebuilder_admin_menu" client="administrator" position="menu" ordering="1" />
 	</modules>
 
 </extension>

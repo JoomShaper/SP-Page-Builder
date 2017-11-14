@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
 	<fieldset>
-		<field name="title" type="text" label="JGLOBAL_TITLE" description="JFIELD_TITLE_DESC" size="40" class="input-xxlarge input-large-text" default="" required="true" />
-		<field name="alias" type="text" label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC" hint="JFIELD_ALIAS_PLACEHOLDER" class="input-xlarge input-large-text" default="" />
+		<field name="title" type="text" label="JGLOBAL_TITLE" description="JFIELD_TITLE_DESC" size="40" class="input-large-text" default="" required="true" />
 	</fieldset>
 
 	<fieldset name="basic" label="COM_SPPAGEBUILDER_FIELDSET_BASIC">
 		<field name="id" type="hidden" />
 		<field name="text" id="sptext" type="hidden" filter="raw" />
-		<field name="page_layout" type="checkbox" label="JGLOBAL_PAGE_LAYOUT" id="page_layout" value="1" default="0" />
+	</fieldset>
+
+	<fieldset name="pagecss" label="CSS">
+		<field name="css" type="textarea" label="COM_SPPAGEBUILDER_FIELD_CSS" description="COM_SPPAGEBUILDER_FIELD_CSS_DESC" rows="5" cols="5" />
 	</fieldset>
 
 	<fieldset name="seosettings" label="COM_SPPAGEBUILDER_FIELDSET_SEOSETTINGS">
 		<field name="og_title" type="text" label="COM_SPPAGEBUILDER_FIELD_OG_TITLE" hint="COM_SPPAGEBUILDER_FIELD_OG_TITLE_PLACEHOLDER" />
-		<field name="og_image" type="spmedia" label="COM_SPPAGEBUILDER_FIELD_OG_IMAGE" />
+		<field name="og_image" type="spmedia" media_format="image" label="COM_SPPAGEBUILDER_FIELD_OG_IMAGE" />
 		<field name="og_description" type="textarea" label="COM_SPPAGEBUILDER_FIELD_OG_DESC" description="COM_SPPAGEBUILDER_FIELD_OG_DESC_DESC" rows="5" cols="5" />
 	</fieldset>
 
@@ -34,10 +36,17 @@
 		</field>
 
 		<field name="access" type="accesslevel" label="JFIELD_ACCESS_LABEL" description="JFIELD_ACCESS_DESC" />
-		<field name="created_time" type="calendar" label="COM_SPPAGEBUILDER_FIELD_CREATED_LABEL" description="COM_SPPAGEBUILDER_FIELD_CREATED_DESC" size="22" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
-		<field name="created_user_id" type="user" label="COM_SPPAGEBUILDER_FIELD_CREATED_BY_LABEL" description="COM_SPPAGEBUILDER_FIELD_CREATED_BY_DESC" />
-		<field name="modified_user_id" type="user" label="JGLOBAL_FIELD_MODIFIED_BY_LABEL" class="readonly" readonly="true" filter="unset" />
-		<field name="modified" type="calendar" class="readonly" label="JGLOBAL_FIELD_MODIFIED_LABEL" description="COM_CONTENT_FIELD_MODIFIED_DESC" size="22" readonly="true" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
-		<field name="hits" type="text" class="readonly" label="JGLOBAL_HITS" description="COM_SPPAGEBUILDER_HITS_DESC" readonly="true" />
+		<field name="created_on" type="hidden" label="COM_SPPAGEBUILDER_FIELD_CREATED_LABEL" description="COM_SPPAGEBUILDER_FIELD_CREATED_DESC" size="22" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
+		<field name="created_by" type="hidden" label="COM_SPPAGEBUILDER_FIELD_CREATED_BY_LABEL" description="COM_SPPAGEBUILDER_FIELD_CREATED_BY_DESC" />
+		<field name="modified" type="hidden" label="JGLOBAL_FIELD_MODIFIED_BY_LABEL" readonly="true" filter="unset" />
+		<field name="modified_on" type="hidden" label="JGLOBAL_FIELD_MODIFIED_LABEL" description="COM_CONTENT_FIELD_MODIFIED_DESC" size="22" readonly="true" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
+		<field name="hits" type="hidden" label="JGLOBAL_HITS" description="COM_SPPAGEBUILDER_HITS_DESC" readonly="true" />
+	</fieldset>
+	<fieldset name="permissions" label="Permissions">
+		<field name="asset_id" type="hidden" filter="unset" />
+		<field name="rules" type="rules" label="JFIELD_RULES_LABEL"
+			translate_label="false" filter="rules"
+			component="com_sppagebuilder" section="page" validate="rules"
+		/>
 	</fieldset>
 </form>
