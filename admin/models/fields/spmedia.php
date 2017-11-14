@@ -16,32 +16,30 @@ class JFormFieldSpmedia extends JFormField
 
 	protected function getInput() {
 
-		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER');
-		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_UPLOAD_FILE');
-		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_CLOSE');
-		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_INSERT');
-		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_SEARCH');
-		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_CANCEL');
-		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_DELETE');
+		$media_format = $this->getAttribute('media_format', 'image');
+
 		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_CONFIRM_DELETE');
-		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_LOAD_MORE');
-		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_UNSUPPORTED_FORMAT');
-		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_BROWSE_MEDIA');
-		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_BROWSE_FOLDERS');
+		JText::script('COM_SPPAGEBUILDER_MEDIA_MANAGER_ENTER_DIRECTORY_NAME');
 
-		JHtml::_('jquery.framework');
-
-		$doc = JFactory::getDocument();
-		$doc->addScript( JURI::base(true) . '/components/com_sppagebuilder/assets/js/media.js' );
+		$html = '';
 
 		if($this->value) {
-			$html = '<img class="sppb-media-preview" src="' . JURI::root(true) . '/' . $this->value . '" alt="" />';
+			if($media_format == 'image') {
+				$html = '<img class="sp-pagebuilder-media-preview" src="' . JURI::root(true) . '/' . $this->value . '" alt="" />';
+			}
 		} else {
-			$html  = '<img class="sppb-media-preview no-image" alt="">';
+			if($media_format == 'image') {
+				$html  = '<img class="sp-pagebuilder-media-preview sp-pagebuilder-media-no-image" alt="">';
+			}
 		}
-		
-		$html .= '<input class="sp-media-input" type="hidden" name="'. $this->name .'" id="'. $this->id .'" value="'. $this->value .'">';
-		$html .= '<a href="#" class="btn btn-primary sppb-btn-media-manager" data-id="' . $this->id . '"><i class="fa fa-picture-o"></i> '. JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_SELECT') .'</a> <a href="#" class="btn btn-danger btn-clear-image"><i class="fa fa-times"></i></a>';		
+
+		if($media_format == 'image') {
+			$html .= '<input class="sp-media-input" type="hidden" name="'. $this->name .'" id="'. $this->id .'" value="'. $this->value .'">';
+		} else {
+			$html .= '<input class="sp-media-input" type="text" name="'. $this->name .'" id="'. $this->id .'" value="'. $this->value .'">';
+		}
+
+		$html .= '<a href="#" id="media-upload-button" class="sp-pagebuilder-btn sp-pagebuilder-btn-primary sp-pagebuilder-btn-media-manager" data-support="' . $media_format . '"><i class="fa fa-spinner fa-spin" style="margin-right: 5px; display: none;"></i>'. JText::_('COM_SPPAGEBUILDER_MEDIA_MANAGER_UPLOAD_' . strtoupper($media_format)) .'</a> <a href="#" class="sp-pagebuilder-btn sp-pagebuilder-btn-danger sp-pagebuilder-btn-clear-media"><i class="fa fa-times"></i></a>';
 
 		return $html;
 	}

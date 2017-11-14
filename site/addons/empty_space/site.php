@@ -8,22 +8,77 @@
 //no direct accees
 defined ('_JEXEC') or die ('restricted aceess');
 
-AddonParser::addAddon('sp_empty_space','sp_empty_space_addon');
+class SppagebuilderAddonEmpty_space extends SppagebuilderAddons{
 
-function sp_empty_space_addon($atts){
+	public function render() {
 
-	extract(spAddonAtts(array(
-		'gap'		=> '20',
-		'hidden_md'	=> '',
-		'hidden_sm'	=> '',
-		'hidden_xs'	=> '',
-		'class'		=> '',
-		), $atts));
+		$class  = (isset($this->addon->settings->class) && $this->addon->settings->class) ? $this->addon->settings->class : '';
 
-	//Responsive utilities
-	if($hidden_md) $class .= $class . ' sppb-hidden-md sppb-hidden-lg';
-	if($hidden_sm) $class .= $class . ' sppb-hidden-sm';
-	if($hidden_xs) $class .= $class . ' sppb-hidden-xs';
+		return '<div class="sppb-empty-space ' . $class . ' clearfix"></div>';
+	}
 
-	return '<div class="sppb-empty-space ' . $class . ' clearfix" style="margin-bottom:' . (int)$gap . 'px;"></div>';
+	public function css() {
+		$addon_id = '#sppb-addon-' . $this->addon->id;
+		$gap = (isset($this->addon->settings->gap) && $this->addon->settings->gap) ? 'height: ' . (int) $this->addon->settings->gap . 'px;': '';
+
+		$css = '';
+		if($gap) {
+			$css .= $addon_id . ' .sppb-empty-space {';
+			$css .= $gap;
+			$css .= '}';
+		}
+
+		$gap_sm = (isset($this->addon->settings->gap_sm) && $this->addon->settings->gap_sm) ? 'height: ' . (int) $this->addon->settings->gap_sm . 'px;': '';
+		if(!empty($gap_sm)){
+			$css .= '@media (min-width: 768px) and (max-width: 991px) {';
+			$css .= $addon_id . ' .sppb-empty-space {';
+				$css .= $gap_sm;
+			$css .= '}';
+			$css .= '}';
+		}
+
+		$gap_xs = (isset($this->addon->settings->gap_xs) && $this->addon->settings->gap_xs) ? 'height: ' . (int) $this->addon->settings->gap_xs . 'px;': '';
+		if(!empty($gap_xs)){
+			$css .= '@media (max-width: 767px) {';
+			$css .= $addon_id . ' .sppb-empty-space {';
+				$css .= $gap_xs;
+			$css .= '}';
+			$css .= '}';
+		}
+
+		return $css;
+	}
+
+	public static function getTemplate(){
+		$output = '
+		<style type="text/css">
+			#sppb-addon-{{ data.id }} .sppb-empty-space {
+				<# if(_.isObject(data.gap)){ #>
+					height: {{ data.gap.md }}px;
+				<# } else { #>
+					height: {{ data.gap }}px;
+				<# } #>
+			}
+
+			@media (min-width: 768px) and (max-width: 991px) {
+				#sppb-addon-{{ data.id }} .sppb-empty-space {
+					<# if(_.isObject(data.gap)){ #>
+						height: {{ data.gap.sm }}px;
+					<# } #>
+				}
+			}
+			@media (max-width: 767px) {
+				#sppb-addon-{{ data.id }} .sppb-empty-space {
+					<# if(_.isObject(data.gap)){ #>
+						height: {{ data.gap.xs }}px;
+					<# } #>
+				}
+			}
+		</style>
+		<div class="sppb-empty-space sppb-empty-space-edit {{ data.class }} clearfix"></div>
+		';
+
+		return $output;
+	}
+
 }

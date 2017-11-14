@@ -2,7 +2,7 @@
 /**
  * @package SP Page Builder
  * @author JoomShaper http://www.joomshaper.com
- * @copyright Copyright (c) 2010 - 2016 JoomShaper
+ * @copyright Copyright (c) 2010 - 2015 JoomShaper
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or later
 */
 //no direct accees
@@ -21,12 +21,12 @@ class sppbAddonHelperTweet
 		$cachetime           = 60*15;
 
 		$tweets = '';
-		
+
 		//Create cache folder if not exists
 		if(!JFolder::exists( $cache_path )) JFolder::create( $cache_path );
 
 		$cache_file_created  = ((Jfile::exists($cache_file))) ? filemtime($cache_file) : 0;
-		
+
 		if (time() - $cachetime < $cache_file_created)
 		{
 			$tweets = json_decode(JFile::read( $cache_file ) );

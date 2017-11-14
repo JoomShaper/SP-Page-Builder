@@ -8,51 +8,49 @@
 //no direct accees
 defined ('_JEXEC') or die ('restricted aceess');
 
-AddonParser::addAddon('sp_alert','sp_alert_addon');
+class SppagebuilderAddonAlert extends SppagebuilderAddons{
 
-function sp_alert_addon($atts){
+	public function render() {
 
-	extract(spAddonAtts(array(
-		"title" 				=> '',
-		"heading_selector" 		=> 'h3',
-		"title_fontsize" 		=> '',
-		"title_fontweight" 		=> '',
-		"title_text_color" 		=> '',
-		"title_margin_top" 		=> '',
-		"title_margin_bottom" 	=> '',	
-		"close" 				=> 'yes',
-		"type" 					=> 'info',
-		"text"					=>'',
-		"class"					=>'',
-		), $atts));
+		$class = (isset($this->addon->settings->class) && $this->addon->settings->class) ? $this->addon->settings->class : '';
+		$type = (isset($this->addon->settings->alrt_type) && $this->addon->settings->alrt_type) ? ' sppb-alert-' . $this->addon->settings->alrt_type : '';
+		$title = (isset($this->addon->settings->title) && $this->addon->settings->title) ? $this->addon->settings->title : '';
+		$heading_selector = (isset($this->addon->settings->heading_selector) && $this->addon->settings->heading_selector) ? $this->addon->settings->heading_selector : '';
+		$close = (isset($this->addon->settings->close) && $this->addon->settings->close) ? $this->addon->settings->close : 0;
+		$text = (isset($this->addon->settings->text) && $this->addon->settings->text) ? $this->addon->settings->text : '';
 
-	$output  = '<div class="sppb-addon sppb-addon-alert ' . $class . '">';
+		if($text) {
+			
+			$output  = '<div class="sppb-addon sppb-addon-alert ' . $class .'">';
+			$output .= (!empty($title)) ? '<' . $heading_selector . ' class="sppb-addon-title">' . $title .'</' . $heading_selector . '>' : '';
+			$output .= '<div class="sppb-addon-content">';
+			$output .= '<div class="sppb-alert' . $type . ' sppb-fade in">';
+			$output .= ( $close ) ? '<button type="button" class="sppb-close" data-dismiss="sppb-alert"><span aria-hidden="true">&times;</span></button>' : '';
+			$output .= $text;
+			$output .= '</div>';
+			$output .= '</div>';
+			$output .= '</div>';
 
-	if($title) {
+			return $output;
+		}
 
-		$title_style = '';
-		if($title_margin_top !='') $title_style .= 'margin-top:' . (int) $title_margin_top . 'px;';
-		if($title_margin_bottom !='') $title_style .= 'margin-bottom:' . (int) $title_margin_bottom . 'px;';
-		if($title_text_color) $title_style .= 'color:' . $title_text_color  . ';';
-		if($title_fontsize) $title_style .= 'font-size:'.$title_fontsize.'px;line-height:'.$title_fontsize.'px;';
-		if($title_fontweight) $title_style .= 'font-weight:'.$title_fontweight.';';
-
-		$output .= '<'.$heading_selector.' class="sppb-addon-title" style="' . $title_style . '">' . $title . '</'.$heading_selector.'>';
+		return;
 	}
 
-	$output .= '<div class="sppb-addon-content">';
-	$output .= '<div class="sppb-alert sppb-alert-' . $type . ' sppb-fade in" role="alert">';
-
-	if($close=='yes') {
-		$output .= '<button type="button" class="close" data-dismiss="sppb-alert"><span aria-hidden="true">&times;</span></button>';
+	 public static function getTemplate()
+	{
+		$output = '
+		<div class="sppb-addon sppb-addon-alert {{ data.class }}">
+			<# if( !_.isEmpty( data.title ) ){ #><{{ data.heading_selector }} class="sppb-addon-title">{{{ data.title }}}</{{ data.heading_selector }}><# } #>
+			<div class="sppb-addon-content">
+				<div class="sppb-alert sppb-alert-{{ data.alrt_type }} sppb-fade in">
+					<# if( data.close ){ #>
+						<button type="button" class="sppb-close"><span aria-hidden="true">&times;</span></button>
+					<# } #>
+					{{{ data.text }}}
+				</div>
+			</div>
+		</div>';
+		return $output;
 	}
-
-	$output .= $text;
-	
-	$output .= '</div>';
-	$output .= '</div>';
-	$output .= '</div>';
-
-	return $output;
-
 }

@@ -37,7 +37,6 @@ class SppagebuilderViewPage extends JViewLegacy
 		$lang->load('tpl_' . $defaultemplate, JPATH_SITE, $lang->getName(), true);
 
 		$this->addToolBar();
-
 		parent::display($tpl);
 	}
 
@@ -46,16 +45,14 @@ class SppagebuilderViewPage extends JViewLegacy
 		$input = JFactory::getApplication()->input;
         $input->set('hidemainmenu', true);
         $isNew = ($this->item->id == 0);
-        JToolBarHelper::title($isNew ? JText::_('New')
-                                     : JText::_('Edit'));
+        JToolBarHelper::title($isNew ? JText::_('SP Page Builder - New Page') : JText::_('SP Page Builder - Edit Page'));
         JToolBarHelper::apply('page.apply');
         JToolBarHelper::save('page.save');
-
-        if (!$isNew)
-        {
+        
+        if (!$isNew) {
         	JToolbarHelper::save2copy('page.save2copy');
         }
-        JToolBarHelper::cancel('page.cancel', $isNew ? 'Cancel'
-                                                     : 'Close');
+        
+        JToolBarHelper::cancel('page.cancel', $isNew ? 'Cancel' : 'Close');
 	}
 }

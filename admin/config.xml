@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
 	<fieldset name="component">
-		<field
-			name="fontawesome"
+
+		<field name="addcontainer"
+			type="radio"
+			class="btn-group btn-group-yesno"
+			default="1"
+			label="COM_SPPAGEBUILDER_ADD_CONTAINER"
+			description="COM_SPPAGEBUILDER_ADD_CONTAINER_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+
+		<field name="gmap_api"
+			type="text"
+			label="COM_SPPAGEBUILDER_ADDON_GMAP_APIKEY"
+			description="COM_SPPAGEBUILDER_ADDON_GMAP_APIKEY_DESC" />
+
+		<field name="fontawesome"
 			type="radio"
 			class="btn-group btn-group-yesno"
 			default="1"
@@ -12,8 +27,7 @@
 			<option value="0">JNO</option>
 		</field>
 
-		<field
-			name="disableanimatecss"
+		<field name="disableanimatecss"
 			type="radio"
 			class="btn-group btn-group-yesno"
 			default="0"
@@ -23,8 +37,7 @@
 			<option value="0">JNO</option>
 		</field>
 
-		<field
-			name="disablecss"
+		<field name="disablecss"
 			type="radio"
 			class="btn-group btn-group-yesno"
 			default="0"
@@ -33,6 +46,21 @@
 			<option value="1">JYES</option>
 			<option value="0">JNO</option>
 		</field>
+
+	</fieldset>
+
+	<fieldset name="licenseupdate">
+		<field
+			name="joomshaper_email"
+			type="email"
+			label="COM_SPPAGEBUILDER_JOOMSHAPER_EMAIL"
+			description="COM_SPPAGEBUILDER_JOOMSHAPER_EMAIL_DESC" />
+
+		<field
+			name="joomshaper_license_key"
+			type="text"
+			label="COM_SPPAGEBUILDER_JOOMSHAPER_LICENSE_KEY"
+			description="COM_SPPAGEBUILDER_JOOMSHAPER_LICENSE_KEY_DESC" />
 	</fieldset>
 
 	<fieldset
