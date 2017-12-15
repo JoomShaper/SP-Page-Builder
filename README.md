@@ -48,8 +48,7 @@ and more
 
 ###Sample Video###
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=dqRzj05CySA
-" target="_blank"><img src="https://www.joomshaper.com/images/page-builder/pb-video-banner.png" 
+<a href="https://www.youtube.com/watch?v=YZcT74ZqkOA" target="_blank"><img src="https://www.joomshaper.com/images/page-builder/pb-video-banner.png" 
 alt="SP Page Builder Quick Video" width="560" height="315" border="10" /></a>
 
 
@@ -58,7 +57,5 @@ alt="SP Page Builder Quick Video" width="560" height="315" border="10" /></a>
 Demo: http://demo.joomshaper.com/page-builder/
 
 Documentation: https://www.joomshaper.com/documentation/joomla-extensions/sp-page-builder
-
-Video Tutorial: https://www.joomshaper.com/page-builder/addons
 
 You can open an issue on Github https://github.com/JoomShaper/SP-Page-Builder/issues to report bugs, fix or others. No forum support for free version. Please don't open any customization support issue. Contribution appretiate.
