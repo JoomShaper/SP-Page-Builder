@@ -534,9 +534,9 @@ class AddonParser {
         if(JFolder::exists($addons_path)) {
           $addons = JFolder::folders($addons_path);
           foreach ($addons as $addon) {
-            $path = $addons_path . '/' . $addon;
-            if(JFile::exists($path . '/site.php')) {
-              $elements[$addon] = $path;
+            $pa_path = $addons_path . '/' . $addon;
+            if(JFile::exists($pa_path . '/site.php')) {
+              $elements[$addon] = $pa_path;
             }
           }
         }
